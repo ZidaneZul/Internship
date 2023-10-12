@@ -1,0 +1,300 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UnityObjects</name>
+    </assembly>
+    <members>
+        <member name="F:UnityObjects.ModelAssemblyComp.PsIdPath">
+            <summary>
+            The ps identifier path
+            </summary>
+        </member>
+        <member name="F:UnityObjects.ModelAssemblyComp.Title">
+            <summary>
+            The title
+            </summary>
+        </member>
+        <member name="F:UnityObjects.ModelAssemblyComp.Bounds">
+            <summary>
+            The bounds
+            </summary>
+        </member>
+        <member name="F:UnityObjects.ModelAssemblyComp.ActualSizeScaleFactor">
+            <summary>
+            The actual size scale factor
+            </summary>
+        </member>
+        <member name="F:UnityObjects.ModelAssemblyComp.Parent">
+            <summary>
+            The parent
+            </summary>
+        </member>
+        <member name="F:UnityObjects.ModelAssemblyComp.AssociatedPMI">
+            <summary>
+            The associated pmi
+            </summary>
+        </member>
+        <member name="F:UnityObjects.ModelAssemblyComp.AssociatedModelViews">
+            <summary>
+            The associated design groups
+            </summary>
+        </member>
+        <member name="F:UnityObjects.ModelAssemblyComp.AssociatedDesignGroups">
+            <summary>
+            The associated design groups
+            </summary>
+        </member>
+        <member name="F:UnityObjects.ModelAssemblyComp.AssociatedProperties">
+            <summary>
+            The associated properties
+            </summary>
+        </member>
+        <member name="T:UnityObjects.PropertyEntry">
+            <summary>
+            Key of property name with x number of property values associated with name.
+            </summary>
+        </member>
+        <member name="F:UnityObjects.ModelPropertiesComp.Properties">
+            <summary>
+            The properties
+            </summary>
+        </member>
+        <member name="F:UnityObjects.ModelPropertiesComp.AssociatedAssembly">
+            <summary>
+            The associated assembly
+            </summary>
+        </member>
+        <member name="T:UnityObjects.ModelViewRootComp">
+            <summary>
+            Model View Root component.  Model views info is hung off this.
+            Note!! Leave these as public fields or the Unity inspector won't be able to show them.
+            </summary>
+        </member>
+        <member name="F:UnityObjects.ModelViewRootComp.ModelViews">
+            <summary>
+            The model views
+            </summary>
+        </member>
+        <member name="F:UnityObjects.ModelViewRootComp.Title">
+            <summary>
+            The title
+            </summary>
+        </member>
+        <member name="T:UnityObjects.ModelViewRootComp.ModelView">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:UnityObjects.ModelViewRootComp.ModelView.AdditionalParts">
+            <summary>
+            The additional parts
+            </summary>
+        </member>
+        <member name="F:UnityObjects.ModelViewRootComp.ModelView.ExcludedParts">
+            <summary>
+            The excluded parts
+            </summary>
+        </member>
+        <member name="F:UnityObjects.ModelViewRootComp.ModelView.PMI">
+            <summary>
+            The pmi
+            </summary>
+        </member>
+        <member name="F:UnityObjects.ModelViewRootComp.ModelView.PsIdPath">
+            <summary>
+            The ps identifier path
+            </summary>
+        </member>
+        <member name="F:UnityObjects.ModelViewRootComp.ModelView.Title">
+            <summary>
+            The title
+            </summary>
+        </member>
+        <member name="F:UnityObjects.ModelViewRootComp.ModelView.Parent">
+            <summary>
+            The parent
+            </summary>
+        </member>
+        <member name="F:UnityObjects.ModelViewRootComp.ModelView.AssociatedAssembly">
+            <summary>
+            The associated assembly
+            </summary>
+        </member>
+        <member name="F:UnityObjects.ModelViewRootComp.ModelView.ModelRotation">
+            <summary>
+            The model rotation
+            </summary>
+        </member>
+        <member name="M:UnityObjects.ModelViewRootComp.ModelView.#ctor">
+            <summary>
+            Prevents a default instance of the <see cref="T:UnityObjects.ModelViewRootComp.ModelView"/> class from being created.
+            </summary>
+        </member>
+        <member name="M:UnityObjects.ModelViewRootComp.ModelView.PMINodeToModelView(UnityObjects.PMIView)">
+            <summary>
+            Turn a pmi node into a model view.
+            </summary>
+            <param name="node">The pmi node.</param>
+            <returns>new model view</returns>
+        </member>
+        <member name="T:UnityObjects.PMIComp">
+            <summary>
+            PMI component.
+            </summary>
+            <seealso cref="T:UnityEngine.MonoBehaviour" />
+        </member>
+        <member name="F:UnityObjects.PMIComp.PsIdPath">
+            <summary>
+            The ps identifier path
+            </summary>
+        </member>
+        <member name="F:UnityObjects.PMIComp.Title">
+            <summary>
+            The title
+            </summary>
+        </member>
+        <member name="F:UnityObjects.PMIComp.AssociatedAssembly">
+            <summary>
+            The associated assembly
+            </summary>
+        </member>
+        <member name="F:UnityObjects.PMIComp.AdditionalParts">
+            <summary>
+            The additional parts
+            </summary>
+        </member>
+        <member name="F:UnityObjects.PMINode.Title">
+            <summary>
+            The title
+            </summary>
+        </member>
+        <member name="F:UnityObjects.PMINode.PsIdPath">
+            <summary>
+            The ps identifier path
+            </summary>
+        </member>
+        <member name="F:UnityObjects.PMINode.Parent">
+            <summary>
+            The parent
+            </summary>
+        </member>
+        <member name="M:UnityObjects.PMINode.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnityObjects.PMINode"/> class.
+            </summary>
+        </member>
+        <member name="M:UnityObjects.PMINode.#ctor(UnityObjects.PMINode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnityObjects.PMINode"/> class.
+            </summary>
+            <param name="copyNode">The copy node.</param>
+        </member>
+        <member name="T:UnityObjects.PMIAssemblyNode">
+            <summary>
+            PMI parent node.
+            Note!! Leave these as public fields or the Unity inspector won't be able to show them.
+            </summary>
+        </member>
+        <member name="F:UnityObjects.PMIAssemblyNode.AssociatedAssembly">
+            <summary>
+            The associated assembly
+            </summary>
+        </member>
+        <member name="F:UnityObjects.PMIAssemblyNode.Children">
+            <summary>
+            The assembly's children.
+            </summary>
+        </member>
+        <member name="M:UnityObjects.PMIAssemblyNode.AddChild(UnityObjects.PMINode)">
+            <summary>
+            Adds the child.
+            </summary>
+            <param name="child">The child.</param>
+        </member>
+        <member name="T:UnityObjects.PMIGroup">
+            <summary>
+            Group of pmi (design)
+            Note!! Leave these as public fields or the Unity inspector won't be able to show them.
+            </summary>
+        </member>
+        <member name="F:UnityObjects.PMIGroup.PMI">
+            <summary>
+            The pmi
+            </summary>
+        </member>
+        <member name="F:UnityObjects.PMIGroup.AdditionalParts">
+            <summary>
+            The additional parts
+            </summary>
+        </member>
+        <member name="M:UnityObjects.PMIGroup.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnityObjects.PMIGroup"/> class.
+            </summary>
+        </member>
+        <member name="M:UnityObjects.PMIGroup.#ctor(UnityObjects.PMIGroup)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnityObjects.PMIGroup"/> class.
+            </summary>
+            <param name="copyNode">The copy node.</param>
+        </member>
+        <member name="T:UnityObjects.PMIView">
+            <summary>
+            Pmi view (model views)
+            Note!! Leave these as public fields or the Unity inspector won't be able to show them.
+            </summary>
+        </member>
+        <member name="F:UnityObjects.PMIView.ExcludedParts">
+            <summary>
+            The excluded parts
+            </summary>
+        </member>
+        <member name="F:UnityObjects.PMIView.ModelRotation">
+            <summary>
+            The model rotation
+            </summary>
+        </member>
+        <member name="M:UnityObjects.PMIView.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnityObjects.PMIView"/> class.
+            </summary>
+        </member>
+        <member name="M:UnityObjects.PMIView.#ctor(UnityObjects.PMIView)">
+            <summary>
+            Initializes a new instance of the <see cref="T:UnityObjects.PMIView"/> class.
+            </summary>
+            <param name="copyNode">The copy node.</param>
+        </member>
+        <member name="T:UnityObjects.PointComp">
+            <summary>
+            Component used for pmi points.
+            Note!! Leave these as public fields or the Unity inspector won't be able to show them.
+            </summary>
+        </member>
+        <member name="F:UnityObjects.PointComp.PointSize">
+            <summary>
+            The point size
+            </summary>
+        </member>
+        <member name="F:UnityObjects.PointComp._worldScale">
+            <summary>
+            The world scale
+            </summary>
+        </member>
+        <member name="M:UnityObjects.PointComp.Update">
+            <summary>
+            Update handler for the Unity update loop.
+            </summary>
+        </member>
+        <member name="T:UnityObjects.SelectableComp">
+            <summary>
+            Handles materials for selection revert.
+            </summary>
+        </member>
+        <member name="F:UnityObjects.SelectableComp.OriginalMaterials">
+            <summary>
+            The original materials
+            </summary>
+        </member>
+    </members>
+</doc>

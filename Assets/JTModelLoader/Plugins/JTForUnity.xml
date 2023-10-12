@@ -1,0 +1,991 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JTForUnity</name>
+    </assembly>
+    <members>
+        <member name="T:JTForUnity.JTLoaderInternal">
+            <summary>
+            Base JTModelBehavior that Unity level JTModelBehavior inherits from.
+            Takes care of some boilerplate initialization code and starts the conversion when the behavior starts.
+            </summary>
+            <seealso cref="T:UnityEngine.MonoBehaviour" />
+        </member>
+        <member name="P:JTForUnity.JTLoaderInternal.StatusCallback">
+            <summary>
+            Gets or sets the status callback.  Use this to receive status updates while loading JT data.
+            </summary>
+            <value>
+            The status callback delegate.
+            </value>
+        </member>
+        <member name="F:JTForUnity.JTLoaderInternal.PathToLoad">
+            <summary>
+            The path to load the JT JSON model from.
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTLoaderInternal.PackagedAsStreamingAsset">
+            <summary>
+            If true the JT file is packaged as a streaming asset and the path to the JT data will be resolved internally.
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTLoaderInternal.Options">
+            <summary>
+            The options
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTLoaderInternal.CenterModelInScene">
+            <summary>
+            Center model in scene.  Set to True if Model should be centered in scene.  If loading two or more models that must maintain their relative position set to False.
+            </summary>
+        </member>
+        <member name="P:JTForUnity.JTLoaderInternal.Worker">
+            <summary>
+            Gets or sets the worker.
+            </summary>
+            <value>
+            The worker.
+            </value>
+        </member>
+        <member name="M:JTForUnity.JTLoaderInternal.Convert">
+            <summary>
+            Start the JT JSON loading process
+            </summary>
+        </member>
+        <member name="M:JTForUnity.JTLoaderInternal.LoaderNotify(JTForUnity.JTModelLoaderConstants.StatusCodes,System.Object)">
+            <summary>
+            Handles the internal status updates and forwards it on to any registered listeners.
+            </summary>
+            <param name="code">The status code.</param>
+            <param name="obj">The object.
+            StatusCodes.RootCreated-> roots.Assembly
+            StatusCodes.Success-> all roots;(assembly, pmi, model views, design groups.
+            </param>
+        </member>
+        <member name="M:JTForUnity.JTLoaderInternal.ZFlipTransform(UnityEngine.Transform)">
+            <summary>
+            zs the flip transform.
+            </summary>
+            <param name="transform">The transform.</param>
+        </member>
+        <member name="M:JTForUnity.JTLoaderInternal.ZFlipRotation(UnityEngine.Quaternion@)">
+            <summary>
+            zs the flip rotation.
+            </summary>
+            <param name="rotation">The rotation.</param>
+        </member>
+        <member name="M:JTForUnity.JTLoaderInternal.ZFlipBounds(UnityEngine.Bounds)">
+            <summary>
+            zs the flip bounds.
+            </summary>
+            <param name="bounds">The bounds.</param>
+            <returns></returns>
+        </member>
+        <member name="T:JTForUnity.JTDataManager`1">
+            <summary>
+            Utility class used to stack up structure nodes for further processing.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <seealso cref="T:System.IDisposable" />
+        </member>
+        <member name="T:JTForUnity.JTDataManager`1.ModelStackObject`1">
+            <summary>
+            Model stack object.  Represents data the is added to the stack object for future processing.
+            </summary>
+            <typeparam name="T1">The type of the 1.</typeparam>
+            <seealso cref="T:System.IDisposable" />
+        </member>
+        <member name="M:JTForUnity.JTDataManager`1.ModelStackObject`1.#ctor(`1,UnityEngine.GameObject)">
+            <summary>
+            Initializes a new instance of the ModelStackObject class.
+            </summary>
+            <param name="structObj">The struct object.</param>
+            <param name="parent">The game object parent.</param>
+        </member>
+        <member name="P:JTForUnity.JTDataManager`1.ModelStackObject`1.structNode">
+            <summary>
+            The structure node
+            </summary>
+        </member>
+        <member name="P:JTForUnity.JTDataManager`1.ModelStackObject`1.Parent">
+            <summary>
+            The parent
+            </summary>
+        </member>
+        <member name="P:JTForUnity.JTDataManager`1.StackCount">
+            <summary>
+            Gets the stack count. (number of structure objects for further processing)
+            </summary>
+            <value>
+            The stack count.
+            </value>
+        </member>
+        <member name="F:JTForUnity.JTDataManager`1._modelLoadStack">
+            <summary>
+            The model load stack
+            </summary>
+        </member>
+        <member name="M:JTForUnity.JTDataManager`1.Clear">
+            <summary>
+            Clears pending stack objs.
+            </summary>
+        </member>
+        <member name="M:JTForUnity.JTDataManager`1.AddChild(`0,UnityEngine.GameObject)">
+            <summary>
+            Adds the child to stack for processing.
+            </summary>
+            <param name="data">The data to be added</param>
+            <param name="obj">The game obj to associate.</param>
+        </member>
+        <member name="M:JTForUnity.JTDataManager`1.RemoveChild">
+            <summary>
+            Removes the top structure.
+            </summary>
+            <returns>struct object</returns>
+        </member>
+        <member name="M:JTForUnity.JTDataManager`1.HaveChildren">
+            <summary>
+            do we have objects for processing
+            </summary>
+            <returns>True=yes, false=no</returns>
+        </member>
+        <member name="T:JTForUnity.JTModelLoaderConstants">
+            <summary>
+            Public constants available to model loader user.
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelLoaderConstants.ZeroBounds">
+            <summary>
+            The zero bounds
+            </summary>
+        </member>
+        <member name="T:JTForUnity.JTModelLoaderConstants.StatusCodes">
+            <summary>
+            Status codes returned by the StatusCallback in JTModelBehaviorInternal
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelLoaderConstants.StatusCodes.Success">
+            <summary>
+            Ssuccess
+            in the case of the status callback the second parameter, obj, will be equal to NodesCollection fully populated. 
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelLoaderConstants.StatusCodes.RootCreated">
+            <summary>
+            notification root has been created.
+            in the case of the status callback the second parameter, obj, will be equal to ModelAssemblyComp with the root information populated.
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelLoaderConstants.StatusCodes.JSONFileNotFound">
+            <summary>
+            unable to load JT file.
+            in the case of the status callback the second parameter, obj, will be null.
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelLoaderConstants.StatusCodes.ConversionComplete">
+            <summary>
+            Successful JT conversion complete.
+            in the case of the status callback the second parameter, obj, will be null.
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelLoaderConstants.StatusCodes.undefined">
+            <summary>
+             none of the above.
+             in the case of the status callback the second parameter, obj, will be null.
+            </summary>
+        </member>
+        <member name="T:JTForUnity.NodesCollection">
+            <summary>
+            Collection of root nodes for the various Unity(JT) roots.
+            </summary>
+        </member>
+        <member name="F:JTForUnity.NodesCollection.Assembly">
+            <summary>
+            The assembly (structure) based information.
+            </summary>
+        </member>
+        <member name="F:JTForUnity.NodesCollection.PMI">
+            <summary>
+            The pmi based information. (if any)
+            </summary>
+        </member>
+        <member name="F:JTForUnity.NodesCollection.PMIModelViews">
+            <summary>
+            The pmi model views information (if any)
+            </summary>
+        </member>
+        <member name="F:JTForUnity.NodesCollection.PMIDesignGroups">
+            <summary>
+            The pmi design groups information (if any)
+            </summary>
+        </member>
+        <member name="T:JTForUnity.JTModelConverter">
+            <summary>
+            Model Loader behavior that does the actual conversion of JT->Unity.
+            </summary>
+            <seealso cref="T:UnityEngine.MonoBehaviour" />
+        </member>
+        <member name="P:JTForUnity.JTModelConverter.Options">
+            <summary>
+            Options preferences for the conversion.
+            </summary>
+        </member>
+        <member name="P:JTForUnity.JTModelConverter.Worker">
+            <summary>
+            Injected thread worker
+            </summary>
+            <value>
+            Injected thread worker
+            </value>
+        </member>
+        <member name="P:JTForUnity.JTModelConverter.StatusCallback">
+            <summary>
+            Status callback.  Fired at various times during conversion (See StatusCodes)
+            </summary>
+            <value>
+            The status callback.
+            </value>
+        </member>
+        <member name="F:JTForUnity.JTModelConverter._structObject">
+            <summary>
+            Structure, pmi, and Properties from the JT File.
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelConverter._pmiObject">
+            <summary>
+            Structure, pmi, and Properties from the JT File.
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelConverter._propsObject">
+            <summary>
+            Structure, pmi, and Properties from the JT File.
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelConverter._structDone">
+            <summary>
+            Structure, pmi, and properties done (or not applicable)
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelConverter._pmiDone">
+            <summary>
+            Structure, pmi, and properties done (or not applicable)
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelConverter._propsDone">
+            <summary>
+            Structure, pmi, and properties done (or not applicable)
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelConverter._gameObjectHash">
+            <summary>
+            The game object hash that tracks instance ids for reuse of game objects.
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelConverter._psIdToAssemblyCompMap">
+            <summary>
+            The psId->structure assembly lookup
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelConverter._psIdToModelPropertiesMap">
+            <summary>
+            dictionary to be populated with properties.  Lookup via psid.
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelConverter._jtResources">
+            <summary>
+            Handles the model resources associated with the JT and provide helper methods to manipulate them.
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelConverter._roots">
+            <summary>
+            working collection of roots.
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelConverter._pendingActions">
+            <summary>
+            The pending actions list;  Allows creation of Unity structure, pmi, and properties to be started before the conversion thread has completely finished.
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelConverter._modelCentered">
+            <summary>
+            True if model has already been centered.
+            </summary>
+        </member>
+        <member name="M:JTForUnity.JTModelConverter.Awake">
+            <summary>
+            Awake.  Called by Unity awake loop.
+            </summary>
+        </member>
+        <member name="M:JTForUnity.JTModelConverter.CreateRootNode">
+            <summary>
+            Creates the root nodes for structure and pmi.
+            </summary>
+        </member>
+        <member name="M:JTForUnity.JTModelConverter.Load(System.String)">
+            <summary>
+            Starts the load process with given JT JSON file.
+            </summary>
+            <param name="jtJSONPath">JT json file/path to load</param>
+        </member>
+        <member name="M:JTForUnity.JTModelConverter.Loadmodel(System.String)">
+            <summary>
+            internal load process with given JT JSON file.  Sets up the parser callbacks and starts the process.
+            </summary>
+            <param name="jtJSONPath">JT json file/path to load</param>
+        </member>
+        <member name="M:JTForUnity.JTModelConverter.Generate3dModelFromJSON(System.String,System.Boolean,System.Boolean,JTParser.dataReady,JTParser.finished)">
+            <summary>
+            Generates the model with given options and status callbacks.
+            </summary>
+            <param name="jtJSONPath">The filename.</param>
+            <param name="usePMI">if set to <c>true</c> [use pmi].</param>
+            <param name="useProperties">if set to <c>true</c> [use properties].</param>
+            <param name="readyDelegate">The ready delegate.</param>
+            <param name="finishedDelegate">The finished delegate.</param>
+        </member>
+        <member name="M:JTForUnity.JTModelConverter.ProcessProperties(JTParser.PropertiesObject)">
+            <summary>
+            Processes the JT properties into a dictionary.
+            </summary>
+            <param name="props">The JT properties</param>
+            <returns>n/a</returns>
+        </member>
+        <member name="M:JTForUnity.JTModelConverter.ProcessPMI(JTParser.PMIObject)">
+            <summary>
+            Processes the JT pmi data into Unity objects.
+            </summary>
+            <param name="pmi">The JT pmi.</param>
+            <returns>n/a</returns>
+        </member>
+        <member name="M:JTForUnity.JTModelConverter.ProcessStructure(JTParser.StructObject)">
+            <summary>
+            Processes the JT structure into a unity structure.
+            </summary>
+            <param name="structure">The JT structure.</param>
+            <returns>n/a</returns>
+        </member>
+        <member name="M:JTForUnity.JTModelConverter.SetBounds(UnityObjects.ModelAssemblyComp)">
+            <summary>
+            Sets the bounds.
+            </summary>
+            <param name="assemblyRoot">The assembly root.</param>
+        </member>
+        <member name="M:JTForUnity.JTModelConverter.UpdateParentScaleWithChildScaleFactor(UnityEngine.GameObject,System.Single)">
+            <summary>
+            Updates the parent scale with child scale factor.
+            </summary>
+            <param name="child">The child.</param>
+            <param name="scaleFactor">The scale factor.</param>
+        </member>
+        <member name="M:JTForUnity.JTModelConverter.Update">
+            <summary>
+            Unity update loop handler.
+            </summary>
+        </member>
+        <member name="M:JTForUnity.JTModelConverter.ProcessQueuedActions">
+            <summary>
+            Processes the queued actions.  If there are queued actions in the list pulls the bottom one off and executes it.
+            </summary>
+            <returns>True if action started, otherwise false.</returns>
+        </member>
+        <member name="M:JTForUnity.JTModelConverter.AddQueuedAction(System.Action)">
+            <summary>
+            Adds the queued action.  Will be dequeued in the Update() loo;.
+            </summary>
+            <param name="act">The action to add to the queue</param>
+        </member>
+        <member name="M:JTForUnity.JTModelConverter.FinishUpdate">
+            <summary>
+            Conversion to Unity objects complete.  cleanup and fire statusCallback with success.
+            </summary>
+        </member>
+        <member name="M:JTForUnity.JTModelConverter.CreateBoxCollider">
+            <summary>
+            create a box collider if no MeshColliders were created
+            </summary>
+        </member>
+        <member name="M:JTForUnity.JTModelConverter.Cleanup">
+            <summary>
+            de-references working options from the convesion process.
+            </summary>
+        </member>
+        <member name="M:JTForUnity.JTModelConverter.FillAssemblyCompMap(UnityObjects.ModelAssemblyComp)">
+            <summary>
+            Fills the psid/assembly component map with created assembly component references.
+            </summary>
+            <param name="assemblyRoot">The assembly root.</param>
+        </member>
+        <member name="T:JTForUnity.JTModelOptions">
+            <summary>
+            Available conversion options.
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelOptions.LoadPMI">
+            <summary>
+            The load JT pmi
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelOptions.LoadProperties">
+            <summary>
+            The load JT properties
+            </summary>
+        </member>
+        <member name="T:JTForUnity.JTModelResources">
+            <summary>
+            Handles the model resources associated with the JT and provide helper methods to manipulate them.
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelResources._unityMaterials">
+            <summary>
+            The unity materials list
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelResources._standardMaterial">
+            <summary>
+            The standard material
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelResources._vertexColorMaterial">
+            <summary>
+            The vertex color material
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelResources._textureMaterial">
+            <summary>
+            The texture material
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelResources._pointAndLineMaterial">
+            <summary>
+            The point and line material
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelResources._pmiMaterial">
+            <summary>
+            The pmi material
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelResources._planeMaterial">
+            <summary>
+            The plane material
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelResources._pointSetSphereGameObject">
+            <summary>
+            The point set sphere game object
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTModelResources._transparentMaterial">
+            <summary>
+            The transparent material
+            </summary>
+        </member>
+        <member name="M:JTForUnity.JTModelResources.Awake">
+            <summary>
+            Awakes this instance.
+            </summary>
+        </member>
+        <member name="M:JTForUnity.JTModelResources.GetColor(JTParser.Base64BodObj.RGBA)">
+            <summary>
+            Gets the color.
+            </summary>
+            <param name="color">The color.</param>
+            <returns></returns>
+        </member>
+        <member name="M:JTForUnity.JTModelResources.GetColoredMaterial(JTForUnity.JTModelResources,UnityEngine.Color,System.Boolean)">
+            <summary>
+            Gets the colored material.
+            </summary>
+            <param name="resources">The resources.</param>
+            <param name="diffuse">The diffuse.</param>
+            <param name="forPointAndLine">if set to <c>true</c> [for point and line].</param>
+            <returns></returns>
+        </member>
+        <member name="M:JTForUnity.JTModelResources.GetColoredMaterial(JTForUnity.JTModelResources,UnityEngine.Color,UnityEngine.Color,UnityEngine.Color,System.Single,System.Boolean)">
+            <summary>
+            Gets the colored material.
+            </summary>
+            <param name="resources">The resources.</param>
+            <param name="diffuse">The diffuse.</param>
+            <param name="emissive">The emissive.</param>
+            <param name="specular">The specular.</param>
+            <param name="specularCoef">The specular coef.</param>
+            <param name="forPointAndLine">if set to <c>true</c> [for point and line].</param>
+            <returns></returns>
+        </member>
+        <member name="M:JTForUnity.JTModelResources.ApplyMeshes(System.Collections.Generic.List{UnityEngine.Mesh},System.Collections.Generic.List{UnityEngine.Material},UnityEngine.GameObject,System.Boolean,System.Boolean,UnityEngine.Vector3[],System.Boolean[])">
+            <summary>
+            Applies the meshes.
+            </summary>
+            <param name="meshes">The meshes.</param>
+            <param name="materials">The materials.</param>
+            <param name="parentGameObject">The parent game object.</param>
+            <param name="addCollider">if set to <c>true</c> [add collider].</param>
+            <param name="combinePartMeshes">if set to <c>true</c> [combine part meshes].</param>
+            <param name="vects"></param>
+            <param name="shouldApply"></param>
+            <exception cref="T:System.ArgumentException">Must contain same number of meshes and materials.</exception>
+        </member>
+        <member name="M:JTForUnity.JTModelResources.FindMeshesToCombine(System.Collections.Generic.List{UnityEngine.Mesh})">
+            <summary>
+            Finds the meshes to combine.
+            </summary>
+            <param name="meshes">The meshes.</param>
+            <returns></returns>
+        </member>
+        <member name="M:JTForUnity.JTModelResources.ApplyMesh(UnityEngine.Mesh,UnityEngine.Material,UnityEngine.GameObject,System.Boolean,UnityEngine.Vector3[])">
+            <summary>
+            Applies the mesh.
+            </summary>
+            <param name="mesh">The mesh.</param>
+            <param name="material">The material.</param>
+            <param name="parentGameObject">The parent game object.</param>
+            <param name="addCollider">if set to <c>true</c> [add collider].</param>
+        </member>
+        <member name="M:JTForUnity.JTModelResources.ApplyMesh(UnityEngine.Mesh,UnityEngine.Material[],UnityEngine.GameObject,System.Boolean,UnityEngine.Vector3[])">
+            <summary>
+            Applies the mesh.
+            </summary>
+            <param name="mesh">The mesh.</param>
+            <param name="materials">The materials.</param>
+            <param name="parentGameObject">The parent game object.</param>
+            <param name="addCollider">if set to <c>true</c> [add collider].</param>
+        </member>
+        <member name="M:JTForUnity.JTModelResources.ApplyLineMesh(UnityEngine.Vector3[],System.Int32[],UnityEngine.Material,UnityEngine.GameObject)">
+            <summary>
+            Creates and applies a Line Mesh.
+            </summary>
+            <param name="vertices">The line vertices of the mesh.</param>
+            <param name="indices">The line indices of the mesh</param>
+            <param name="material">The material.</param>
+            <param name="parentGameObject">The parent game object.</param>
+        </member>
+        <member name="M:JTForUnity.JTModelResources.ApplyPointSet(System.Single,UnityEngine.GameObject)">
+            <summary>
+            Applies the point set.
+            </summary>
+            <param name="pointSize">Size of the point.</param>
+            <param name="parentGameObject">The parent game object.</param>
+            <returns></returns>
+        </member>
+        <member name="M:JTForUnity.JTModelResources.ApplyPoint(UnityEngine.Vector3,UnityEngine.Material,UnityEngine.GameObject,UnityEngine.GameObject)">
+            <summary>
+            Applies the point.
+            </summary>
+            <param name="vPosition">The v position.</param>
+            <param name="material">The material.</param>
+            <param name="pointSetGameObject">The point set game object.</param>
+            <param name="pointSetSphereGameObject">The point set sphere game object.</param>
+        </member>
+        <member name="M:JTForUnity.JTModelResources.GetModelBounds(UnityEngine.GameObject,System.Boolean)">
+            <summary>
+            calculate the model bounds from the structure
+            </summary>
+            <param name="gameObject">The root structure game object.</param>
+            <param name="includeInactive">if set to <c>true</c> [include inactive].</param>
+            <returns> model bounds</returns>
+        </member>
+        <member name="T:JTForUnity.JTToGameObj">
+            <summary>
+            Utility class to convert JT data into Unity formatted data/objects.
+            </summary>
+            <seealso cref="T:System.IDisposable" />
+        </member>
+        <member name="F:JTForUnity.JTToGameObj.MaxVerts">
+            <summary>
+            The maximum verts
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTToGameObj.MMPerInch">
+            <summary>
+            The mm per inch
+            </summary>
+        </member>
+        <member name="F:JTForUnity.JTToGameObj.ConversionFactors">
+            <summary>
+            The conversion factors
+            </summary>
+        </member>
+        <member name="M:JTForUnity.JTToGameObj.ApplyTransform(System.Collections.Generic.IList{System.Single},UnityEngine.GameObject)">
+            <summary>
+            Applies the transform to the game object.
+            </summary>
+            <param name="jtTransform">The jt transform to apply</param>
+            <param name="gameObject">The target game object.</param>
+        </member>
+        <member name="M:JTForUnity.JTToGameObj.ApplyTransform(System.Collections.Generic.IList{System.Double},UnityEngine.GameObject)">
+            <summary>
+            Applies the transform to the game object
+            </summary>
+            <param name="jtTransform">The jt transform to apply</param>
+            <param name="gameObject">The target game object.</param>
+        </member>
+        <member name="M:JTForUnity.JTToGameObj.ApplyAffineTransform(System.Collections.Generic.IList{System.Single},UnityEngine.GameObject)">
+            <summary>
+            Applies the floating point affine transform.
+            </summary>
+            <param name="jtAffineTransform">The jt affine transform.</param>
+            <param name="gameObject">The game object</param>
+        </member>
+        <member name="M:JTForUnity.JTToGameObj.ApplyAffineTransform(System.Collections.Generic.IList{System.Double},UnityEngine.GameObject)">
+            <summary>
+            Applies the double affine transform.
+            </summary>
+            <param name="jtAffineTransform">The jt affine transform.</param>
+            <param name="gameObject">The game object.</param>
+        </member>
+        <member name="M:JTForUnity.JTToGameObj.GetScaleFactorFromUnit(JTParser.IStructNodeBase)">
+            <summary>
+            Gets the scale factor from unit.
+            </summary>
+            <param name="childNode">The child node.</param>
+            <returns>scale factor</returns>
+        </member>
+        <member name="M:JTForUnity.JTToGameObj.ProcessMaterial(JTParser.Base64BodObj.Material,JTForUnity.JTModelResources)">
+            <summary>
+            Processes the JT material into Unity material
+            </summary>
+            <param name="mat">The JT material</param>
+            <param name="jtResources">The resources repository.</param>
+        </member>
+        <member name="M:JTForUnity.JTToGameObj.CreateMaterialAndGeometry(UnityEngine.GameObject,System.Nullable{JTParser.Base64BodObj.MaterialObject},JTForUnity.JTModelResources,JTForUnity.JTModelOptions,UnityEngine.Vector3[],System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Creates the material and geometry.
+            </summary>
+            <param name="parentGameObj">The parent game object.</param>
+            <param name="material">The material.</param>
+            <param name="jtResources">The jt resources.</param>
+            <param name="options">The options.</param>
+        </member>
+        <member name="M:JTForUnity.JTToGameObj.CreateUnityObjFromTriStrip(JTParser.Base64BodObj.Geometry,System.Collections.Generic.List{UnityEngine.Material},JTForUnity.JTModelResources,System.Collections.Generic.List{UnityEngine.Mesh},System.Collections.Generic.List{UnityEngine.Material})">
+            <summary>
+            Creates the unity object from tri strip.
+            </summary>
+            <param name="geometry">The geometry.</param>
+            <param name="unityMaterials">The unity materials.</param>
+            <param name="jtResources">The jt resources.</param>
+            <param name="meshes">The meshes.</param>
+            <param name="materials">The materials.</param>
+        </member>
+        <member name="M:JTForUnity.JTToGameObj.CreateUnityObjFromLineStrip(UnityEngine.GameObject,JTParser.Base64BodObj.Geometry,JTForUnity.JTModelResources,UnityEngine.Vector3[],System.Boolean)">
+            <summary>
+            Creates the unity object from line strip.
+            </summary>
+            <param name="parentGameObject">The parent game object.</param>
+            <param name="geometry">The geometry.</param>
+            <param name="jtResources">The jt resources.</param>
+        </member>
+        <member name="T:JTForUnity.UnityPmiDataCreator">
+            <summary>
+            Converts the JT PMI object to Unity game objects.
+            </summary>
+            <seealso cref="T:System.IDisposable" />
+        </member>
+        <member name="F:JTForUnity.UnityPmiDataCreator.PlaneTriangles">
+            <summary>
+            The plane triangles constant
+            </summary>
+        </member>
+        <member name="F:JTForUnity.UnityPmiDataCreator.AxisIndeces">
+            <summary>
+            The axis indeces constant
+            </summary>
+        </member>
+        <member name="F:JTForUnity.UnityPmiDataCreator._psIdToAssemblyCompMap">
+            <summary>
+            The ps identifier to assembly comp map
+            </summary>
+        </member>
+        <member name="F:JTForUnity.UnityPmiDataCreator._psIdToPMICompMap">
+            <summary>
+            The ps identifier to pmi comp map
+            </summary>
+        </member>
+        <member name="F:JTForUnity.UnityPmiDataCreator._psIdToPMIGroupMap">
+            <summary>
+            The ps identifier to pmi group map
+            </summary>
+        </member>
+        <member name="P:JTForUnity.UnityPmiDataCreator.PmiExists">
+            <summary>
+            Gets a value indicating whether [pmi exists].
+            </summary>
+            <value>
+              <c>true</c> if [pmi exists]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:JTForUnity.UnityPmiDataCreator.ModelViewsExists">
+            <summary>
+            Gets a value indicating whether [model views exists].
+            </summary>
+            <value>
+              <c>true</c> if [model views exists]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:JTForUnity.UnityPmiDataCreator.DesignGroupsExists">
+            <summary>
+            Gets a value indicating whether [design groups exists].
+            </summary>
+            <value>
+              <c>true</c> if [design groups exists]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="F:JTForUnity.UnityPmiDataCreator._modelResources">
+            <summary>
+            The model resources object
+            </summary>
+        </member>
+        <member name="F:JTForUnity.UnityPmiDataCreator._options">
+            <summary>
+            The options object
+            </summary>
+        </member>
+        <member name="F:JTForUnity.UnityPmiDataCreator._gameObjectCreator">
+            <summary>
+            The game object creator object
+            </summary>
+        </member>
+        <member name="M:JTForUnity.UnityPmiDataCreator.Init(JTForUnity.JTModelResources,JTForUnity.JTModelOptions,System.Collections.Generic.Dictionary{System.String,UnityObjects.ModelAssemblyComp},JTForUnity.JTToGameObj)">
+            <summary>
+            Initializes the PMI data creator with necessary objects.
+            </summary>
+            <param name="modelResources">The model resources obj</param>
+            <param name="options">The options obj</param>
+            <param name="psIdToAssemblyCompMap">The psId->structure assembly lookup</param>
+            <param name="gameObjectCreator">The game object creator obj</param>
+        </member>
+        <member name="M:JTForUnity.UnityPmiDataCreator.CreateGameObjectsForPMINodes(JTParser.IJTObject,JTForUnity.NodesCollection@,UnityEngine.GameObject)">
+            <summary>
+            Loads the jt pmi nodes into Unity game objects.
+            </summary>
+            <param name="pmiJTObject">The pmi jt object.</param>
+            <param name="roots">The roots to be populated</param>
+            <param name="actualSizeScaleFactor">actual size scale factor of model</param>
+            <param name="rootGameObject">root gameobject of model</param>
+        </member>
+        <member name="M:JTForUnity.UnityPmiDataCreator.CreatePMIHeirarchy(JTParser.PMIObject.PMINode,UnityEngine.GameObject)">
+            <summary>
+            Creates the pmi heirarchy
+            </summary>
+            <param name="pmiObjectNode">The pmi object to process</param>
+            <param name="parentGameObject">The parent game object.</param>
+            <returns>new pmi component</returns>
+        </member>
+        <member name="M:JTForUnity.UnityPmiDataCreator.CreateText(JTParser.PMIObject.TextDataObject,UnityEngine.GameObject)">
+            <summary>
+            Creates the Unity text object from the JT Text data obj.
+            </summary>
+            <param name="textObj">The text object to convert</param>
+            <param name="parentGameObject">The parent game object.</param>
+        </member>
+        <member name="M:JTForUnity.UnityPmiDataCreator.CreatePMINodes(JTParser.PMIObject.PMINode)">
+            <summary>
+            convert pmi groupings (model views and design groups) into a Unity hierarchy.
+            </summary>
+            <param name="pmiObjectNode">The parent node.</param>
+            <returns>
+            Unity node representing the PMI Design Groups and Model Views hierarchy
+            </returns>
+        </member>
+        <member name="T:JTForUnity.UnityPropertiesDataCreator">
+            <summary>
+            Converts the JT properties object to Unity data.
+            </summary>
+        </member>
+        <member name="M:JTForUnity.UnityPropertiesDataCreator.ProcessProperties(JTParser.PropertiesObject,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{UnityObjects.PropertyEntry}})">
+            <summary>
+            Processes the properties into a dictionary with entries associated with the appropriate structure object.
+            </summary>
+            <param name="props">The properties to process</param>
+            <param name="psIdToModelPropertiesMap">dictionary to be populated with properties.</param>
+        </member>
+        <member name="M:JTForUnity.UnityPropertiesDataCreator.CreateUnityObjectProperties(System.Collections.Generic.List{JTParser.PropertiesObject.PropertyEntry})">
+            <summary>
+            convert the JTParser Property entry to a UnityObject property entry.
+            </summary>
+            <param name="propertyEntries">The JTParser property entries to convert</param>
+            <returns>List of UnityObject properties.</returns>
+        </member>
+        <member name="T:JTForUnity.UnityStructDataCreator">
+            <summary>
+            Unity structure object hierarchy creator
+            </summary>
+            <seealso cref="T:System.IDisposable" />
+        </member>
+        <member name="F:JTForUnity.UnityStructDataCreator._resources">
+            <summary>
+            The resources to create meshes (materials, shaders, etc, etc)
+            </summary>
+        </member>
+        <member name="F:JTForUnity.UnityStructDataCreator._options">
+            <summary>
+            The options used to create the structure assembly.
+            </summary>
+        </member>
+        <member name="F:JTForUnity.UnityStructDataCreator._jtData">
+            <summary>
+            The jt data to base the structure on.
+            </summary>
+        </member>
+        <member name="M:JTForUnity.UnityStructDataCreator.Init(JTForUnity.JTModelResources,JTForUnity.JTModelOptions,JTForUnity.JTDataManager{JTParser.IStructNodeBase})">
+            <summary>
+            Initializes the Unity structure data creator.
+            </summary>
+            <param name="modelResources">The model resources.</param>
+            <param name="options">The options used for creator</param>
+            <param name="jtData">The jt data manager stack processor</param>
+        </member>
+        <member name="M:JTForUnity.UnityStructDataCreator.CreateGameObjectHierarchyFromStructure(JTParser.IStructNodeBase,UnityEngine.GameObject,System.Collections.Hashtable,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{UnityObjects.PropertyEntry}},JTForUnity.JTToGameObj)">
+            <summary>
+            Creates the game object hierarchy from JT structure object
+            </summary>
+            <param name="structNode">The structure node to process</param>
+            <param name="parentGameObject">The parent game object.</param>
+            <param name="gameObjectHash">The game object hash that tracks instance ids for reuse</param>
+            <param name="psIdToModelPropertiesMap">dictionary to be populated with properties.</param>
+            <param name="gameObjCreator">The unity game object creator.</param>
+            <returns></returns>
+        </member>
+        <member name="M:JTForUnity.UnityStructDataCreator.UpdateAssemblyNodeForClone(UnityEngine.GameObject,UnityObjects.ModelAssemblyComp,System.String)">
+            <summary>
+            Updates a cloned node with specific info to this instance use of the clone
+            </summary>
+            <param name="clonedGameObject">The cloned game object.</param>
+            <param name="parentNode">The parent node.</param>
+            <param name="cloneParentPsIdPath">The clone parent psId</param>
+        </member>
+        <member name="T:Matrix4x4Extensions">
+            <summary>
+            Extension api's for the Unity 4x4 Matrix.
+            </summary>
+        </member>
+        <member name="M:Matrix4x4Extensions.MatrixToTranslation(UnityEngine.Matrix4x4)">
+            <summary>
+            Extract translation from transform matrix.
+            </summary>
+            <param name="obj">Transform matrix. This parameter is passed by reference
+            to improve performance; no changes will be made to it.</param>
+            <returns>
+            Translation offset.
+            </returns>
+        </member>
+        <member name="M:Matrix4x4Extensions.MatrixToRotation(UnityEngine.Matrix4x4)">
+            <summary>
+            Extract rotation quaternion from transform matrix.
+            </summary>
+            <param name="obj">Transform matrix. This parameter is passed by reference
+            to improve performance; no changes will be made to it.</param>
+            <returns>
+            Quaternion representation of rotation transform.
+            </returns>
+        </member>
+        <member name="M:Matrix4x4Extensions.MatrixToScale(UnityEngine.Matrix4x4)">
+            <summary>
+            Extract scale from transform matrix.
+            </summary>
+            <param name="obj">Transform matrix. This parameter is passed by reference
+            to improve performance; no changes will be made to it.</param>
+            <returns>
+            Scale vector.
+            </returns>
+        </member>
+        <member name="M:Matrix4x4Extensions.DecomposeMatrix(UnityEngine.Matrix4x4,UnityEngine.Vector3@,UnityEngine.Quaternion@,UnityEngine.Vector3@)">
+            <summary>
+            Extract position, rotation and scale from TRS matrix.
+            </summary>
+            <param name="obj">Transform matrix. This parameter is passed by reference
+            to improve performance; no changes will be made to it.</param>
+            <param name="localPosition">Output position.</param>
+            <param name="localRotation">Output rotation.</param>
+            <param name="localScale">Output scale.</param>
+        </member>
+        <member name="M:Matrix4x4Extensions.MatrixToTransform(UnityEngine.Matrix4x4,UnityEngine.Transform)">
+            <summary>
+            Set transform component from TRS matrix.
+            </summary>
+            <param name="transform">Transform component.</param>
+            <param name="obj">Transform matrix. This parameter is passed by reference
+            to improve performance; no changes will be made to it.</param>
+        </member>
+        <member name="M:Matrix4x4Extensions.XnaGeometryToUnityMatrix(UnityEngine.Matrix4x4,XnaGeometry.Matrix)">
+            <summary>
+            Xnas the geometry to unity matrix.
+            </summary>
+            <param name="obj">The object.</param>
+            <param name="matrix">The matrix.</param>
+        </member>
+        <member name="T:StrokeAlphabet">
+            <summary>
+            Utility class for PMI text.
+            </summary>
+        </member>
+        <member name="F:StrokeAlphabet._characterWidth">
+            <summary>
+            The character width
+            </summary>
+        </member>
+        <member name="F:StrokeAlphabet._fontPoints">
+            <summary>
+            The font points
+            </summary>
+        </member>
+        <member name="F:StrokeAlphabet._fontIndices">
+            <summary>
+            The font indices
+            </summary>
+        </member>
+        <member name="F:StrokeAlphabet.pointStartPerSymbol">
+            <summary>
+            The point start per symbol
+            </summary>
+        </member>
+        <member name="M:StrokeAlphabet.GetTextStrokeData(System.String,System.Int32,System.Collections.Generic.List{UnityEngine.Vector3}@,System.Collections.Generic.List{System.Int32}@)">
+            <summary>
+            Gets the text stroke data.
+            </summary>
+            <param name="inputString">The input string.</param>
+            <param name="fontIndex">Index of the font.</param>
+            <param name="positions_array">The positions array.</param>
+            <param name="indices_array">The indices array.</param>
+            <returns></returns>
+        </member>
+        <member name="M:XnaGeometry.Matrix.findDeterminants(XnaGeometry.Matrix@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@,System.Double@)">
+            <summary>
+            Helper method for using the Laplace expansion theorem using two rows expansions to calculate major and 
+            minor determinants of a 4x4 matrix. This method is used for inverting a matrix.
+            </summary>
+        </member>
+        <member name="M:XnaGeometry.PlaneHelper.ClassifyPoint(XnaGeometry.Vector3@,XnaGeometry.Plane@)">
+            <summary>
+            Returns a value indicating what side (positive/negative) of a plane a point is
+            </summary>
+            <param name="point">The point to check with</param>
+            <param name="plane">The plane to check against</param>
+            <returns>Greater than zero if on the positive side, less than zero if on the negative size, 0 otherwise</returns>
+        </member>
+        <member name="M:XnaGeometry.PlaneHelper.PerpendicularDistance(XnaGeometry.Vector3@,XnaGeometry.Plane@)">
+            <summary>
+            Returns the perpendicular distance from a point to a plane
+            </summary>
+            <param name="point">The point to check</param>
+            <param name="plane">The place to check</param>
+            <returns>The perpendicular distance from the point to the plane</returns>
+        </member>
+        <member name="M:XnaGeometry.Vector3.Transform(XnaGeometry.Vector3,XnaGeometry.Quaternion)">
+            <summary>
+            Transforms a vector by a quaternion rotation.
+            </summary>
+            <param name="vec">The vector to transform.</param>
+            <param name="quat">The quaternion to rotate the vector by.</param>
+            <returns>The result of the operation.</returns>
+        </member>
+        <member name="M:XnaGeometry.Vector3.Transform(XnaGeometry.Vector3@,XnaGeometry.Quaternion@,XnaGeometry.Vector3@)">
+            <summary>
+            Transforms a vector by a quaternion rotation.
+            </summary>
+            <param name="vec">The vector to transform.</param>
+            <param name="quat">The quaternion to rotate the vector by.</param>
+            <param name="result">The result of the operation.</param>
+        </member>
+    </members>
+</doc>
