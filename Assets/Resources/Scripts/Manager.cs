@@ -12,7 +12,7 @@ public class Manager : MonoBehaviour
 
     public int Wifi, LimitButton, FlashLight, USB, PushButton;
 
-    public TextMeshProUGUI wifiAmt, LimitAmt, FlashLightAmt, USBAmt, PushButtonAmt;
+    public TextMeshProUGUI Amt;
 
     public List<string> ListOfItemsToMake = new List<string>();
 
@@ -47,31 +47,36 @@ public class Manager : MonoBehaviour
     public void AddWifi()
     {
         Wifi++;
-        wifiAmt.text = Wifi.ToString();
+        Amt.text = FlashLight.ToString() + "\n" + USB.ToString() +
+            "\n" + Wifi.ToString() + "\n" + LimitButton.ToString() + "\n" + PushButton.ToString();
         ListOfItemsToMake.Add("Wifi");
     }
     public void AddLimit()
     {
         LimitButton++;
-        LimitAmt.text = LimitButton.ToString();
+        Amt.text = FlashLight.ToString() + "\n" + USB.ToString() +
+                    "\n" + Wifi.ToString() + "\n" + LimitButton.ToString() + "\n" + PushButton.ToString();
         ListOfItemsToMake.Add("Limit");
     }
     public void AddFlashLight()
     {
         FlashLight++;
-        FlashLightAmt.text = FlashLight.ToString();
+        Amt.text = FlashLight.ToString() + "\n" + USB.ToString() +
+                    "\n" + Wifi.ToString() + "\n" + LimitButton.ToString() + "\n" + PushButton.ToString();
         ListOfItemsToMake.Add("Flashlight");
     }
     public void AddUSB()
     {
         USB++;
-        USBAmt.text = USB.ToString();
+        Amt.text = FlashLight.ToString() + "\n" + USB.ToString() +
+                    "\n" + Wifi.ToString() + "\n" + LimitButton.ToString() + "\n" + PushButton.ToString();
         ListOfItemsToMake.Add("USB");
     }
     public void AddPushButton()
     {
         PushButton++;
-        PushButtonAmt.text = PushButton.ToString();
+        Amt.text = FlashLight.ToString() + "\n" + USB.ToString() +
+                    "\n" + Wifi.ToString() + "\n" + LimitButton.ToString() + "\n" + PushButton.ToString();
         ListOfItemsToMake.Add("PushButton");
     }
 }

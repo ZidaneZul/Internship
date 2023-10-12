@@ -106,6 +106,7 @@ public class ConveyorItemScript : MonoBehaviour
                 {
                     Debug.Log("AM HERE");
                     yield return new WaitForSeconds(1f);
+                    Debug.Log("testing if this workds");
                 }
                 yield return null;
             }
