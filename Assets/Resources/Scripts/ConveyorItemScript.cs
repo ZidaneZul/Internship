@@ -90,27 +90,29 @@ public class ConveyorItemScript : MonoBehaviour
 
     private IEnumerator MakeFlashLight()
     {
-        for(int i = 0; i < FlashLightOrder.Length; )
+        int i = 0;
+        currentMachineNumber = FlashLightOrder[i];
+
+        Debug.Log("order debug");
+        foreach (GameObject point in pointsToFollow)
         {
-            Debug.Log("Testing forloops in coroutines");
-            currentMachineNumber  = FlashLightOrder[i];
-            if(Input.anyKey)
-            i++;
-        }
-        foreach(GameObject point in pointsToFollow)
-        {
+            Debug.Log("point debug");
+           // Debug.Log(Vector3.Distance(point.transform.position, transform.position) > 0.05f);
             while (Vector3.Distance(point.transform.position, transform.position) > 0.05f)
             {
                 transform.position = Vector3.MoveTowards(transform.position, point.transform.position, speed * Time.deltaTime);
-                if( Vector3.Distance(transform.position, fifthMachine.transform.position) <= 0.1)
+
+              //  Debug.Log(Vector3.Distance(transform.position, Machines[i].transform.position));
+                if (Vector3.Distance(transform.position, Machines[currentMachineNumber - 1].transform.position) <= 0.1)
                 {
-                    Debug.Log("AM HERE");
+                    Debug.Log("we reached");
+                    currentMachineNumber = FlashLightOrder[i++];
                     yield return new WaitForSeconds(1f);
-                    Debug.Log("testing if this workds");
                 }
                 yield return null;
             }
         }
+
     }
 
     private IEnumerator Circling()
