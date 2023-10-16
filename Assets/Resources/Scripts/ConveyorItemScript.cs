@@ -102,16 +102,30 @@ public class ConveyorItemScript : MonoBehaviour
             {
                 transform.position = Vector3.MoveTowards(transform.position, point.transform.position, speed * Time.deltaTime);
 
-              //  Debug.Log(Vector3.Distance(transform.position, Machines[i].transform.position));
+                //  Debug.Log(Vector3.Distance(transform.position, Machines[i].transform.position));
                 if (Vector3.Distance(transform.position, Machines[currentMachineNumber - 1].transform.position) <= 0.1)
                 {
                     Debug.Log("we reached");
-                    currentMachineNumber = FlashLightOrder[i++];
-                    yield return new WaitForSeconds(1f);
+                    i++;
+                    if (i != FlashLightOrder.Count())
+                    {
+                        currentMachineNumber = FlashLightOrder[i];
+                        yield return new WaitForSeconds(1f);
+
+                    }
+                    else
+                    {
+                        ItemToMake = null;
+
+                    }
                 }
                 yield return null;
             }
         }
+
+    }
+    private IEnumerator ResetToBay()
+    {
 
     }
 
