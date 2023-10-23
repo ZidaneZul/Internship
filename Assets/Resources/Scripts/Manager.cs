@@ -37,9 +37,19 @@ public class Manager : MonoBehaviour
 
     public void StartProduction()
     {
-        foreach(GameObject carry in carriers)
+        foreach (GameObject carry in carriers)
         {
-            carry.GetComponent<ConveyorItemScript>().GetItemToMake();
+            ConveyorItemScript carrierScript = carry.GetComponent<ConveyorItemScript>();
+            if (ListOfItemsToMake != null)
+            {
+                string currentItemToMake = ListOfItemsToMake[0];
+                carrierScript.itemToMake_string = currentItemToMake;
+                ListOfItemsToMake.Remove(currentItemToMake);
+
+
+                carrierScript.MakeItem();
+
+            }
         }
     }
 

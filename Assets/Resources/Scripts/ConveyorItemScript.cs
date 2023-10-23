@@ -6,6 +6,7 @@ using System.Linq;
 public class ConveyorItemScript : MonoBehaviour
 {
 
+    #region containers
     public GameObject[] pointsToFollow;
     public GameObject[] carriers;
     public GameObject carrierInfront;
@@ -15,33 +16,40 @@ public class ConveyorItemScript : MonoBehaviour
 
     Dictionary<GameObject, int> machineNumbers = new Dictionary<GameObject, int>();
 
-    int currentMachineNumber;
-
     public int[] FlashLightOrder = { 5, 3, 4 };
     public int[] USBOrder = { 5, 2, 4 };
     public int[] PushButtonOrder = { 5, 3, 1 };
     public int[] WifiOrder = { 5, 2, 3, 4, 1 };
     public int[] LimitSwitchOrder = { 5, 1, 4, 1 };
+    #endregion
 
-    public float speed;
-    float time;
+    public Manager manager;
+    public RestPointScript restPointScript;
+
+    public string itemToMake_string;
+    public string restPoint_string;
+    public GameObject currentRestPoint_GO;
+    public int currentRestPoint_int;
+
+    GameObject currentMachine_GO;
 
     public float limitDistance;
-
-    Rigidbody rb;
-    Manager manager;
-    public string ItemToMake;
-
+    int currentMachineNumber;
+    public float speed;
+    float time;
     public bool PauseHere;
     public bool isFinished = false;
     bool ResetValues;
+    bool startGoing;
+
+
     // Start is called before the first frame update
     void Start()
     {
         pointsToFollow = GameObject.FindGameObjectsWithTag("StopPoint");
-        rb = GetComponent<Rigidbody>();
 
         manager = GameObject.Find("SceneManager").GetComponent<Manager>();
+        restPointScript = GameObject.Find("RestPoints").GetComponent<RestPointScript>();
 
         GetCarrierInfront();
 
@@ -56,6 +64,8 @@ public class ConveyorItemScript : MonoBehaviour
         Machines[2] = thirdMachine;
         Machines[3] = fourthMachine;
         Machines[4] = fifthMachine;
+
+       // pointsToFollow = GameObject.Find("StoppiongPoints").GetComponentsInChildren<Transform>();
 
 
         //StartCoroutine(Circling());
@@ -74,29 +84,26 @@ public class ConveyorItemScript : MonoBehaviour
             Debug.Log("PUASE HERE PLS");
         }
     }
-    public void GetItemToMake()
+    public void MakeItem()
     {
-        if (manager.ListOfItemsToMake != null)
+        switch (itemToMake_string)
         {
-            ItemToMake = manager.ListOfItemsToMake[0];
-            manager.ListOfItemsToMake.Remove(ItemToMake);
-
-            if (ItemToMake == "Flashlight")
-            {
+            case "Flashlight":
                 StartCoroutine(MakeFlashLight());
-            }
+                break;
         }
     }
 
     private IEnumerator MakeFlashLight()
     {
         int i = 0;
+        currentRestPoint_GO = null;   
         currentMachineNumber = FlashLightOrder[i];
 
         Debug.Log("order debug");
         foreach (GameObject point in pointsToFollow)
         {
-            Debug.Log("point debug");
+            //Debug.Log("point debug");
            // Debug.Log(Vector3.Distance(point.transform.position, transform.position) > 0.05f);
             while (Vector3.Distance(point.transform.position, transform.position) > 0.05f)
             {
@@ -105,19 +112,24 @@ public class ConveyorItemScript : MonoBehaviour
                 //  Debug.Log(Vector3.Distance(transform.position, Machines[i].transform.position));
                 if (Vector3.Distance(transform.position, Machines[currentMachineNumber - 1].transform.position) <= 0.1)
                 {
-                    Debug.Log("we reached");
+                   // Debug.Log("we reached");
                     i++;
-                    if (i != FlashLightOrder.Count())
+                    Debug.Log("i= " + i + "\n FlashlightCount " + FlashLightOrder.Count());
+                    if (i < FlashLightOrder.Count())
                     {
+                        Debug.Log("YEETS");
                         currentMachineNumber = FlashLightOrder[i];
+                        currentMachine_GO = point;
                         yield return new WaitForSeconds(1f);
 
                     }
                     else
                     {
-                        ItemToMake = null;
+                        StartCoroutine(ResetToBay());
 
-                    }
+                        Debug.Log("nothing to make!");
+                        itemToMake_string = null;
+                        yield break;                    }
                 }
                 yield return null;
             }
@@ -126,9 +138,43 @@ public class ConveyorItemScript : MonoBehaviour
     }
     private IEnumerator ResetToBay()
     {
+        Debug.Log("Time to sleep in rest point " + restPointScript.GetAvailableSlotInt());
+        currentRestPoint_int = restPointScript.GetAvailableSlotInt();
+        currentRestPoint_GO = GameObject.Find("RestPoint" + (currentRestPoint_int + 1));
+        
+        foreach(GameObject point in pointsToFollow)
+        {
+            if(point == currentMachine_GO)
+            {
+                startGoing = true;
+            }
+
+            while (Vector3.Distance(point.transform.position, transform.position) > 0.05f && startGoing)
+            {
+                //stops the carrier if its close to the item infront
+                while (IsCloseToFrontItem())
+                {
+                    yield return null;
+                }
+
+                if(Vector3.Distance(transform.position, currentRestPoint_GO.transform.position) < 0.05f)
+                {
+                    yield break;
+                }
+
+                //function to move the carriers
+                transform.position = Vector3.MoveTowards(transform.position, currentRestPoint_GO.transform.position, speed * Time.deltaTime);
+                yield return null;
+            }
+        }
+        
 
     }
 
+    //private IEnumerator MoveUpRestBay()
+    //{
+        
+    //}
     private IEnumerator Circling()
     {
         Debug.Log("Running IEnumerator");
