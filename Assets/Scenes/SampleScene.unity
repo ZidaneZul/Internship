@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 43136904}
   - component: {fileID: 43136905}
-  - component: {fileID: 43136906}
   m_Layer: 0
   m_Name: Machine4
   m_TagString: Untagged
@@ -170,21 +169,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &43136906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 43136903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e074a8caf5a86478164942838d60af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items: []
-  speed: 5
-  direction: {x: 1, y: 0, z: 0}
 --- !u!1 &67545193
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,7 +494,6 @@ GameObject:
   m_Component:
   - component: {fileID: 189492475}
   - component: {fileID: 189492476}
-  - component: {fileID: 189492477}
   m_Layer: 0
   m_Name: BeltCorner1
   m_TagString: Untagged
@@ -546,21 +529,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 0.1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &189492477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 189492474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e074a8caf5a86478164942838d60af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items: []
-  speed: 5
-  direction: {x: 1, y: 0, z: 0}
 --- !u!1 &233508449
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,7 +559,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1942644669}
-  m_RootOrder: 6
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &233508451
 MonoBehaviour:
@@ -616,7 +584,6 @@ GameObject:
   m_Component:
   - component: {fileID: 272776367}
   - component: {fileID: 272776368}
-  - component: {fileID: 272776369}
   m_Layer: 0
   m_Name: Machine2
   m_TagString: Untagged
@@ -653,21 +620,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &272776369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 272776366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e074a8caf5a86478164942838d60af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items: []
-  speed: 5
-  direction: {x: 1, y: 0, z: 0}
 --- !u!1 &290427511
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,7 +650,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1942644669}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &290427513
 MonoBehaviour:
@@ -723,7 +675,6 @@ GameObject:
   m_Component:
   - component: {fileID: 308888100}
   - component: {fileID: 308888101}
-  - component: {fileID: 308888102}
   m_Layer: 0
   m_Name: BeltMc6
   m_TagString: Untagged
@@ -759,21 +710,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.4448514, y: 0.1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &308888102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 308888099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e074a8caf5a86478164942838d60af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items: []
-  speed: 5
-  direction: {x: 1, y: 0, z: 0}
 --- !u!1 &312279763
 GameObject:
   m_ObjectHideFlags: 0
@@ -2680,7 +2616,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1942644669}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &794413113
 MonoBehaviour:
@@ -2705,7 +2641,6 @@ GameObject:
   m_Component:
   - component: {fileID: 800648086}
   - component: {fileID: 800648087}
-  - component: {fileID: 800648088}
   m_Layer: 0
   m_Name: BeltMc5
   m_TagString: Untagged
@@ -2741,21 +2676,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.195517, y: 0.1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &800648088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 800648085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e074a8caf5a86478164942838d60af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items: []
-  speed: 5
-  direction: {x: 1, y: 0, z: 0}
 --- !u!1 &847021778
 GameObject:
   m_ObjectHideFlags: 0
@@ -3052,7 +2972,6 @@ GameObject:
   m_Component:
   - component: {fileID: 936994955}
   - component: {fileID: 936994956}
-  - component: {fileID: 936994957}
   m_Layer: 0
   m_Name: BeltMc1
   m_TagString: Untagged
@@ -3088,21 +3007,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.9193306, y: 0.11423782, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &936994957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 936994954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e074a8caf5a86478164942838d60af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items: []
-  speed: 5
-  direction: {x: 1, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -3197,7 +3101,6 @@ GameObject:
   m_Component:
   - component: {fileID: 979024759}
   - component: {fileID: 979024760}
-  - component: {fileID: 979024761}
   m_Layer: 0
   m_Name: Machine5
   m_TagString: Untagged
@@ -3234,21 +3137,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &979024761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 979024758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e074a8caf5a86478164942838d60af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items: []
-  speed: 5
-  direction: {x: 1, y: 0, z: 0}
 --- !u!1 &988611940
 GameObject:
   m_ObjectHideFlags: 0
@@ -3259,7 +3147,6 @@ GameObject:
   m_Component:
   - component: {fileID: 988611941}
   - component: {fileID: 988611942}
-  - component: {fileID: 988611943}
   m_Layer: 0
   m_Name: BeltMc2
   m_TagString: Untagged
@@ -3295,21 +3182,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10.682852, y: 0.1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &988611943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 988611940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e074a8caf5a86478164942838d60af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items: []
-  speed: 5
-  direction: {x: 1, y: 0, z: 0}
 --- !u!1 &1087796255
 GameObject:
   m_ObjectHideFlags: 0
@@ -3320,7 +3192,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1087796256}
   - component: {fileID: 1087796257}
-  - component: {fileID: 1087796258}
   m_Layer: 0
   m_Name: Machine3
   m_TagString: Untagged
@@ -3357,21 +3228,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1087796258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1087796255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e074a8caf5a86478164942838d60af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items: []
-  speed: 5
-  direction: {x: 1, y: 0, z: 0}
 --- !u!1 &1124488796
 GameObject:
   m_ObjectHideFlags: 0
@@ -3847,7 +3703,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1942644669}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1213625464
 MonoBehaviour:
@@ -3994,7 +3850,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1942644669}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1268445404
 MonoBehaviour:
@@ -4257,7 +4113,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1942644669}
-  m_RootOrder: 1
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1415048304
 MonoBehaviour:
@@ -4388,7 +4244,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1439212646}
   - component: {fileID: 1439212647}
-  - component: {fileID: 1439212648}
   m_Layer: 0
   m_Name: BeltCorner2
   m_TagString: Untagged
@@ -4424,21 +4279,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.0512667, y: 0.1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1439212648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1439212645}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e074a8caf5a86478164942838d60af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items: []
-  speed: 5
-  direction: {x: 1, y: 0, z: 0}
 --- !u!1 &1453840242
 GameObject:
   m_ObjectHideFlags: 0
@@ -5042,7 +4882,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1674041926}
   - component: {fileID: 1674041927}
-  - component: {fileID: 1674041928}
   m_Layer: 0
   m_Name: BeltMc3
   m_TagString: Untagged
@@ -5078,21 +4917,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.98, y: 0.1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1674041928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1674041925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e074a8caf5a86478164942838d60af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items: []
-  speed: 5
-  direction: {x: 1, y: 0, z: 0}
 --- !u!1 &1688847525
 GameObject:
   m_ObjectHideFlags: 0
@@ -5263,7 +5087,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1942644669}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1712617788
 MonoBehaviour:
@@ -5288,7 +5112,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1723767021}
   - component: {fileID: 1723767022}
-  - component: {fileID: 1723767023}
   m_Layer: 0
   m_Name: BeltMc4
   m_TagString: Untagged
@@ -5324,21 +5147,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.8, y: 0.1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1723767023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1723767020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e074a8caf5a86478164942838d60af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items: []
-  speed: 10
-  direction: {x: 0, y: 0, z: 0}
 --- !u!1 &1741870289
 GameObject:
   m_ObjectHideFlags: 0
@@ -5381,7 +5189,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1779536512}
   - component: {fileID: 1779536513}
-  - component: {fileID: 1779536514}
   m_Layer: 0
   m_Name: Machine1
   m_TagString: Untagged
@@ -5418,21 +5225,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1779536514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1779536511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e074a8caf5a86478164942838d60af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items: []
-  speed: 5
-  direction: {x: 1, y: 0, z: 0}
 --- !u!1 &1799149562
 GameObject:
   m_ObjectHideFlags: 0
@@ -5776,7 +5568,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1906021260}
   - component: {fileID: 1906021261}
-  - component: {fileID: 1906021262}
   m_Layer: 0
   m_Name: BeltMc7
   m_TagString: Untagged
@@ -5812,21 +5603,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.606656, y: 0.1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1906021262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1906021259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e074a8caf5a86478164942838d60af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items: []
-  speed: 5
-  direction: {x: 1, y: 0, z: 0}
 --- !u!1 &1933354127
 GameObject:
   m_ObjectHideFlags: 0
@@ -5888,14 +5664,14 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 290427512}
-  - {fileID: 1415048303}
-  - {fileID: 794413112}
-  - {fileID: 2056538371}
-  - {fileID: 1712617787}
-  - {fileID: 1213625463}
-  - {fileID: 233508450}
   - {fileID: 1268445403}
+  - {fileID: 233508450}
+  - {fileID: 1213625463}
+  - {fileID: 1712617787}
+  - {fileID: 2056538371}
+  - {fileID: 794413112}
+  - {fileID: 1415048303}
+  - {fileID: 290427512}
   m_Father: {fileID: 9191177116889223686}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5911,9 +5687,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcc1e2c05ae12e148b45a9362d4d81b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemResting: {fileID: 0}
-  itemsRestingList: []
-  restPoint:
+  occupiedRestPoints: []
+  inactiveCarriers: []
+  restPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  restPointsList: []
+  carriers:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -6117,7 +5903,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1942644669}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2056538372
 MonoBehaviour:

@@ -24,9 +24,11 @@ public class ConveyorItemScript : MonoBehaviour
     #endregion
 
     public Manager manager;
-    public RestPointScript restPointScript;
+    public RestingScript restPointScript;
 
     public string itemToMake_string;
+    public int currentOrderNumber;
+
     public string restPoint_string;
     public GameObject currentRestPoint_GO;
     public int currentRestPoint_int;
@@ -49,7 +51,7 @@ public class ConveyorItemScript : MonoBehaviour
         pointsToFollow = GameObject.FindGameObjectsWithTag("StopPoint");
 
         manager = GameObject.Find("SceneManager").GetComponent<Manager>();
-        restPointScript = GameObject.Find("RestPoints").GetComponent<RestPointScript>();
+        restPointScript = GameObject.Find("RestPoints").GetComponent<RestingScript>();
 
         GetCarrierInfront();
 
@@ -128,8 +130,8 @@ public class ConveyorItemScript : MonoBehaviour
                         StartCoroutine(ResetToBay());
 
                         Debug.Log("nothing to make!");
-                        itemToMake_string = null;
-                        yield break;                    }
+                        yield break;
+                    }
                 }
                 yield return null;
             }
@@ -138,11 +140,15 @@ public class ConveyorItemScript : MonoBehaviour
     }
     private IEnumerator ResetToBay()
     {
-        Debug.Log("Time to sleep in rest point " + restPointScript.GetAvailableSlotInt());
-        currentRestPoint_int = restPointScript.GetAvailableSlotInt();
-        currentRestPoint_GO = GameObject.Find("RestPoint" + (currentRestPoint_int + 1));
+        itemToMake_string = null;
+
+        Debug.Log("Time to sleep in rest point " + restPointScript.GetLastPossibleRestSlot());
+
+        currentRestPoint_int = restPointScript.GetLastPossibleRestSlot();
+        currentRestPoint_GO = GameObject.Find("RestPoint" + currentRestPoint_int);
         
         foreach(GameObject point in pointsToFollow)
+            //to cycle thru the points and start to move after reaching the correct machine
         {
             if(point == currentMachine_GO)
             {
