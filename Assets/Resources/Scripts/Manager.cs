@@ -8,7 +8,7 @@ public class Manager : MonoBehaviour
 {
     public GameObject itemPrefab;
     public GameObject[] points;
-
+    public GameObject[] restPoints;
     public GameObject[] carriers;
 
     public GameObject[] carriersInOrder = new GameObject[8];
@@ -24,6 +24,7 @@ public class Manager : MonoBehaviour
     {
         points = GameObject.FindGameObjectsWithTag("StopPoint");
         carriers = GameObject.FindGameObjectsWithTag("Carrier");
+        restPoints = GameObject.FindGameObjectsWithTag("RestPoint");
        // GameObject item = Instantiate(itemPrefab, holder.transform);
 
     }
@@ -64,11 +65,15 @@ public class Manager : MonoBehaviour
 
         int i = 0; 
 
-        foreach (GameObject carrier in carriers)
+        foreach (GameObject points in restPoints)
         {
-            ConveyorItemScript itemScript = carrier.GetComponent<ConveyorItemScript>();
+            RestPointHolder restPointHOlder = points.GetComponent<RestPointHolder>();
 
-            carriersInOrder[itemScript.currentOrderNumber] = carrier;
+            if (restPointHOlder.itemResting != null)
+            {
+                carriersInOrder[i] = restPointHOlder.itemResting;
+                i++;
+            }
         }
     }
     public void UpdateItemCount()
