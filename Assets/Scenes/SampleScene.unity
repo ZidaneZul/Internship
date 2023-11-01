@@ -209,7 +209,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: speed
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: fifthMachine
@@ -235,9 +235,21 @@ PrefabInstance:
       propertyPath: secondMachine
       value: 
       objectReference: {fileID: 326253172}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: currentOrderNumber
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: currentRestPoint_GO
+      value: 
+      objectReference: {fileID: 2056538370}
     - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -281,7 +293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_Name
-      value: Plate5
+      value: Plate4
       objectReference: {fileID: 0}
     - target: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_TagString
@@ -354,7 +366,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: speed
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: fifthMachine
@@ -380,9 +392,21 @@ PrefabInstance:
       propertyPath: secondMachine
       value: 
       objectReference: {fileID: 326253172}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: currentOrderNumber
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: currentRestPoint_GO
+      value: 
+      objectReference: {fileID: 290427511}
     - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_RootOrder
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -426,7 +450,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_Name
-      value: Plate8
+      value: Plate7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_TagString
@@ -540,7 +568,7 @@ GameObject:
   - component: {fileID: 233508450}
   - component: {fileID: 233508451}
   m_Layer: 0
-  m_Name: RestPoint2
+  m_Name: RestPoint1
   m_TagString: RestPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -573,7 +601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5dc8aa115f05b741976f01e421d78d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemResting: {fileID: 0}
+  itemResting: {fileID: 997605061}
 --- !u!1 &272776366
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,7 +659,7 @@ GameObject:
   - component: {fileID: 290427512}
   - component: {fileID: 290427513}
   m_Layer: 0
-  m_Name: RestPoint8
+  m_Name: RestPoint7
   m_TagString: RestPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -664,7 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5dc8aa115f05b741976f01e421d78d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemResting: {fileID: 0}
+  itemResting: {fileID: 1477632666}
 --- !u!1 &308888099
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,6 +980,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 337911379}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &338053539 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+  m_PrefabInstance: {fileID: 1569998459}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &359247092
 GameObject:
   m_ObjectHideFlags: 0
@@ -1619,6 +1652,11 @@ Transform:
   m_Father: {fileID: 550789636}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &453649163 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+  m_PrefabInstance: {fileID: 3080411459418887129}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &498760949
 GameObject:
   m_ObjectHideFlags: 0
@@ -2597,7 +2635,7 @@ GameObject:
   - component: {fileID: 794413112}
   - component: {fileID: 794413113}
   m_Layer: 0
-  m_Name: RestPoint6
+  m_Name: RestPoint5
   m_TagString: RestPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2630,7 +2668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5dc8aa115f05b741976f01e421d78d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemResting: {fileID: 0}
+  itemResting: {fileID: 1080338744}
 --- !u!1 &800648085
 GameObject:
   m_ObjectHideFlags: 0
@@ -3182,6 +3220,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10.682852, y: 0.1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &997605061 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+  m_PrefabInstance: {fileID: 1422169619}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1080338744 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+  m_PrefabInstance: {fileID: 1165457749}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1087796255
 GameObject:
   m_ObjectHideFlags: 0
@@ -3370,7 +3418,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: speed
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: fifthMachine
@@ -3396,9 +3444,21 @@ PrefabInstance:
       propertyPath: secondMachine
       value: 
       objectReference: {fileID: 326253172}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: currentOrderNumber
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: currentRestPoint_GO
+      value: 
+      objectReference: {fileID: 794413111}
     - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3442,7 +3502,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_Name
-      value: Plate6
+      value: Plate5
       objectReference: {fileID: 0}
     - target: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_TagString
@@ -3684,7 +3744,7 @@ GameObject:
   - component: {fileID: 1213625463}
   - component: {fileID: 1213625464}
   m_Layer: 0
-  m_Name: RestPoint3
+  m_Name: RestPoint2
   m_TagString: RestPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3717,7 +3777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5dc8aa115f05b741976f01e421d78d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemResting: {fileID: 0}
+  itemResting: {fileID: 1581146451}
 --- !u!1 &1242902984
 GameObject:
   m_ObjectHideFlags: 0
@@ -3831,7 +3891,7 @@ GameObject:
   - component: {fileID: 1268445403}
   - component: {fileID: 1268445404}
   m_Layer: 0
-  m_Name: RestPoint1
+  m_Name: RestPoint0
   m_TagString: RestPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3864,7 +3924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5dc8aa115f05b741976f01e421d78d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemResting: {fileID: 0}
+  itemResting: {fileID: 453649163}
 --- !u!1 &1329693497
 GameObject:
   m_ObjectHideFlags: 0
@@ -4094,7 +4154,7 @@ GameObject:
   - component: {fileID: 1415048303}
   - component: {fileID: 1415048304}
   m_Layer: 0
-  m_Name: RestPoint7
+  m_Name: RestPoint6
   m_TagString: RestPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4127,7 +4187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5dc8aa115f05b741976f01e421d78d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemResting: {fileID: 0}
+  itemResting: {fileID: 2115410060}
 --- !u!1001 &1422169619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4137,7 +4197,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: speed
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: fifthMachine
@@ -4163,6 +4223,14 @@ PrefabInstance:
       propertyPath: secondMachine
       value: 
       objectReference: {fileID: 326253172}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: currentOrderNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: currentRestPoint_GO
+      value: 
+      objectReference: {fileID: 233508449}
     - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4209,7 +4277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_Name
-      value: Plate2
+      value: Plate1
       objectReference: {fileID: 0}
     - target: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_TagString
@@ -4320,6 +4388,11 @@ Transform:
 --- !u!4 &1476391001 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+  m_PrefabInstance: {fileID: 168106936}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1477632666 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
   m_PrefabInstance: {fileID: 168106936}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1495827897
@@ -4499,7 +4572,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: speed
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: fifthMachine
@@ -4525,9 +4598,21 @@ PrefabInstance:
       propertyPath: secondMachine
       value: 
       objectReference: {fileID: 326253172}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: currentOrderNumber
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: currentRestPoint_GO
+      value: 
+      objectReference: {fileID: 1415048302}
     - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4571,7 +4656,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_Name
-      value: Plate7
+      value: Plate6
       objectReference: {fileID: 0}
     - target: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_TagString
@@ -4631,6 +4716,11 @@ Transform:
   m_Father: {fileID: 9191177116889223686}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1542415990 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+  m_PrefabInstance: {fileID: 98404281}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1569998459
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4640,7 +4730,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: speed
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: fifthMachine
@@ -4666,9 +4756,21 @@ PrefabInstance:
       propertyPath: secondMachine
       value: 
       objectReference: {fileID: 326253172}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: currentOrderNumber
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: currentRestPoint_GO
+      value: 
+      objectReference: {fileID: 1712617786}
     - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4712,7 +4814,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_Name
-      value: Plate4
+      value: Plate3
       objectReference: {fileID: 0}
     - target: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_TagString
@@ -4736,6 +4838,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
   m_PrefabInstance: {fileID: 1569998459}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1581146451 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+  m_PrefabInstance: {fileID: 2029109880}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1644380350
 GameObject:
@@ -5068,7 +5175,7 @@ GameObject:
   - component: {fileID: 1712617787}
   - component: {fileID: 1712617788}
   m_Layer: 0
-  m_Name: RestPoint4
+  m_Name: RestPoint3
   m_TagString: RestPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5101,7 +5208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5dc8aa115f05b741976f01e421d78d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemResting: {fileID: 0}
+  itemResting: {fileID: 338053539}
 --- !u!1 &1723767020
 GameObject:
   m_ObjectHideFlags: 0
@@ -5708,6 +5815,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  testing: 
 --- !u!4 &1971710405 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
@@ -5745,6 +5853,15 @@ MonoBehaviour:
   itemPrefab: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
   points: []
   carriers: []
+  carriersInOrder:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   Wifi: 0
   LimitButton: 0
   FlashLight: 0
@@ -5776,7 +5893,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: speed
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: fifthMachine
@@ -5802,9 +5919,21 @@ PrefabInstance:
       propertyPath: secondMachine
       value: 
       objectReference: {fileID: 326253172}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: currentOrderNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: currentRestPoint_GO
+      value: 
+      objectReference: {fileID: 1213625462}
     - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5848,7 +5977,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_Name
-      value: Plate3
+      value: Plate2
       objectReference: {fileID: 0}
     - target: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_TagString
@@ -5884,7 +6013,7 @@ GameObject:
   - component: {fileID: 2056538371}
   - component: {fileID: 2056538372}
   m_Layer: 0
-  m_Name: RestPoint5
+  m_Name: RestPoint4
   m_TagString: RestPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5917,7 +6046,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5dc8aa115f05b741976f01e421d78d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemResting: {fileID: 0}
+  itemResting: {fileID: 1542415990}
+--- !u!1 &2115410060 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+  m_PrefabInstance: {fileID: 1502154241}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2131795531
 GameObject:
   m_ObjectHideFlags: 0
@@ -11416,7 +11550,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: speed
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: fifthMachine
@@ -11442,6 +11576,10 @@ PrefabInstance:
       propertyPath: secondMachine
       value: 
       objectReference: {fileID: 326253172}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: currentRestPoint_GO
+      value: 
+      objectReference: {fileID: 1268445402}
     - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -11500,7 +11638,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_Name
-      value: Plate1
+      value: Plate0
       objectReference: {fileID: 0}
     - target: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_TagString

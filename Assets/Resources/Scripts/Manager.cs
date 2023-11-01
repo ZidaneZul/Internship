@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class Manager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Manager : MonoBehaviour
     public GameObject[] points;
 
     public GameObject[] carriers;
+
+    public GameObject[] carriersInOrder = new GameObject[8];
 
     public int Wifi, LimitButton, FlashLight, USB, PushButton;
 
@@ -33,11 +36,15 @@ public class Manager : MonoBehaviour
         {
            // GameObject item = Instantiate(itemPrefab, startPoint.transform);
         }
+
+        DisplayCorrectNumberOfItemsToMake();
     }
 
     public void StartProduction()
     {
-        foreach (GameObject carry in carriers)
+        SortCarrier();
+
+        foreach (GameObject carry in carriersInOrder)
         {
             ConveyorItemScript carrierScript = carry.GetComponent<ConveyorItemScript>();
             if (ListOfItemsToMake != null)
@@ -46,13 +53,61 @@ public class Manager : MonoBehaviour
                 carrierScript.itemToMake_string = currentItemToMake;
                 ListOfItemsToMake.Remove(currentItemToMake);
 
-
                 carrierScript.MakeItem();
-
             }
         }
     }
 
+    public void SortCarrier()
+    {
+        Array.Clear(carriersInOrder, 0, carriersInOrder.Length);
+
+        int i = 0; 
+
+        foreach (GameObject carrier in carriers)
+        {
+            ConveyorItemScript itemScript = carrier.GetComponent<ConveyorItemScript>();
+
+            carriersInOrder[itemScript.currentOrderNumber] = carrier;
+        }
+    }
+    public void UpdateItemCount()
+    {
+        Wifi = 0;
+        LimitButton = 0;
+        FlashLight = 0;
+        USB = 0;
+        PushButton = 0;
+
+        foreach (string item in ListOfItemsToMake)
+        {
+            switch (item)
+            {
+                case "Flashlight":
+                    FlashLight++;
+                    break;
+                case "USB":
+                    USB++;
+                    break;
+                case "PushButton":
+                    PushButton++;
+                    break;
+                case "Limit":
+                    LimitButton++;
+                    break;
+                case "Wifi":
+                    Wifi++;
+                    break;
+            }
+        }
+    }   
+    public void DisplayCorrectNumberOfItemsToMake()
+    {
+        UpdateItemCount();
+
+        Amt.text = FlashLight.ToString() + "\n" + USB.ToString() +
+          "\n" + Wifi.ToString() + "\n" + LimitButton.ToString() + "\n" + PushButton.ToString();
+    }
 
     public void AddWifi()
     {

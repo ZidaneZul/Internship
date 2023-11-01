@@ -5,7 +5,6 @@ using System.Linq;
 
 public class RestingScript : MonoBehaviour
 {
-    public Dictionary<GameObject, GameObject> restingPairs = new Dictionary<GameObject, GameObject>();
     public List<GameObject> occupiedRestPoints = new List<GameObject>();
     public List<GameObject> inactiveCarriers = new List<GameObject>();
 
@@ -14,6 +13,8 @@ public class RestingScript : MonoBehaviour
 
     public GameObject[] carriers = new GameObject[8];
 
+    public string testing;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,16 +22,17 @@ public class RestingScript : MonoBehaviour
 
         carriers = GameObject.FindGameObjectsWithTag("Carrier");
 
-        foreach(GameObject points in restPoints)
+        for(int i = 8; i >=0; i--)
         {
-            restingPairs.Add(points, null);
+            testing += i.ToString();
         }
+        Debug.Log(testing.ToString());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //Debug.Log("This thing is running");
     }
 
     public int GetAvailableSlotInt()
@@ -65,40 +67,84 @@ public class RestingScript : MonoBehaviour
 
     public List<GameObject> GetListOfInactiveCarriers()
     {
+        Debug.Log("Getting list of inactive carriers");
         inactiveCarriers.Clear();
 
-        foreach( GameObject carry in carriers)
-        {
-            ConveyorItemScript conveyorScript = carry.GetComponent<ConveyorItemScript>();
+        string debugLogTesting = "";
 
-            if(conveyorScript.itemToMake_string != null)
+        //foreach( GameObject carry in carriers)
+        //{
+        //    ConveyorItemScript conveyorScript = carry.GetComponent<ConveyorItemScript>();
+
+        //    if (conveyorScript.itemToMake_string == null || conveyorScript.itemToMake_string == "")
+        //    {
+        //        inactiveCarriers.Add(carry);
+        //        debugLogTesting += carry.ToString();
+        //    }
+        //}
+
+        foreach(GameObject restPoints in restPoints)
+        {
+            RestPointHolder restpointHOlder = restPoints.GetComponent<RestPointHolder>();
+
+            //Debug.Log(restpointHOlder);
+
+            if(restpointHOlder.itemResting != null)
             {
-                inactiveCarriers.Add(carry);
+                inactiveCarriers.Add(restpointHOlder.itemResting);
+                debugLogTesting += restpointHOlder.itemResting.ToString() + "\n";
             }
         }
 
+        Debug.Log(debugLogTesting);
+        
         return inactiveCarriers;
     }
     public int GetLastPossibleRestSlot()
     {
-        for(int i = 8; i == 0; i--)
+        for(int i = 7; i > 0; i--)
         {
-            RestPointHolder restPointHolderScipr = restPointsList[i].GetComponentInParent<RestPointHolder>();
+            RestPointHolder restPointHolderScipr = restPoints[i].GetComponent<RestPointHolder>();
 
+            Debug.Log("gameobject is " + restPoints[i].gameObject + "\n restpoint script " + restPointHolderScipr);
+            
             if (restPointHolderScipr.itemResting != null)
             {
-                return i++;
+                Debug.Log("Rest Bay number" + i + "is empty");
+
+                if(i == 7)
+                {
+                  //  RemoveRestBayItems();
+                    SetRestingPoints();
+                    MoveInactiveCarriersToNewRest();
+                }
+                return i;
+            }
+            else
+            {
+                Debug.Log("Rest Bay Number: " + i + "has item " + restPointHolderScipr.itemResting.gameObject);
             }
         }
-        return 8;
+        return 0;
+    }
+
+    public void RemoveRestBayItems()
+    {
+        foreach(GameObject restPoint in restPoints)
+        {
+            RestPointHolder restPointHolder = restPoint.GetComponent<RestPointHolder>();
+            restPointHolder.itemResting = null;
+        }
     }
     public void SetRestingPoints()
         ///sets resting point for ALL the inactive carriers
     {
-        int i = 1;
+        Debug.Log("Resting Point \n  SETTING ALL POINTS");
+        int i = 0;
 
         restPointsList.Clear();
         restPointsList = restPoints.ToList();
+
 
         foreach (GameObject inactiveCarrier in GetListOfInactiveCarriers())
         {
@@ -117,18 +163,37 @@ public class RestingScript : MonoBehaviour
                 break;
             }
         }
+        foreach(GameObject restPoint in restPointsList)
+        {
+            RestPointHolder restPointHolder = restPoint.GetComponent<RestPointHolder>();
+
+            restPointHolder.itemResting = null;
+        }
     }
 
-    //public void UpdateRestPoint()
-    //{
-    //    for(int i = 1; i < carriers.Length; i++)
-    //    {
+    public void MoveInactiveCarriersToNewRest()
+    {
+        foreach(GameObject carrier in carriers)
+        {
+            ConveyorItemScript itemScript = carrier.GetComponent<ConveyorItemScript>();
 
-    //    }
-    //}
-
+            if (itemScript.itemToMake_string == "" || itemScript.itemToMake_string == null)
+            {
+             //   Debug.Log("Moving " + carrier.name + " to " + itemScript.currentRestPoint_GO);
+                   StartCoroutine(itemScript.MoveUpRestBay());
+            }
+            else
+            {
+                Debug.Log(itemScript.itemToMake_string);
+            }
+        }
+    }
     ///HOW TO GET CORRECT ORDER OF ITEM RESTING??
     ///just go thru the list of restpoint and find which item is resting
     ///it WILL go thru the order and able to find the carrier to go first
     ///need to set the carrier order number afterwards!
+    ///
+    ///setting new restpoints doesnt remove the saved items in restpoint 7!
+    ///meaning if plate 0 was in respoint 7 and goes to 6, 7 would still store plate0 
+    ///as resting there 
 }

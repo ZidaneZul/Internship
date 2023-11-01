@@ -16,23 +16,28 @@ public class ConveyorItemScript : MonoBehaviour
 
     Dictionary<GameObject, int> machineNumbers = new Dictionary<GameObject, int>();
 
-    public int[] FlashLightOrder = { 5, 3, 4 };
-    public int[] USBOrder = { 5, 2, 4 };
-    public int[] PushButtonOrder = { 5, 3, 1 };
-    public int[] WifiOrder = { 5, 2, 3, 4, 1 };
-    public int[] LimitSwitchOrder = { 5, 1, 4, 1 };
+    int[] FlashLightOrder = { 5, 3, 4 };
+    int[] USBOrder = { 5, 2, 4 };
+    int[] PushButtonOrder = { 5, 3, 1 };
+    int[] WifiOrder = { 5, 2, 3, 4, 1 };
+    int[] LimitSwitchOrder = { 5, 1, 4, 1 };
+
+    int[] currentOrder;
     #endregion
 
-    public Manager manager;
-    public RestingScript restPointScript;
+    Manager manager;
+    RestingScript restPointScript;
 
+    //string to store which item is being made
     public string itemToMake_string;
+
+    //suppose to be used to store the order of item, if first = 0, last = 7 (for production)
     public int currentOrderNumber;
 
-    public string restPoint_string;
     public GameObject currentRestPoint_GO;
     public int currentRestPoint_int;
 
+    //to remember which machine it stopped at after finishing order
     GameObject currentMachine_GO;
 
     public float limitDistance;
@@ -66,11 +71,6 @@ public class ConveyorItemScript : MonoBehaviour
         Machines[2] = thirdMachine;
         Machines[3] = fourthMachine;
         Machines[4] = fifthMachine;
-
-       // pointsToFollow = GameObject.Find("StoppiongPoints").GetComponentsInChildren<Transform>();
-
-
-        //StartCoroutine(Circling());
     }
 
     // Update is called once per frame
@@ -91,45 +91,58 @@ public class ConveyorItemScript : MonoBehaviour
         switch (itemToMake_string)
         {
             case "Flashlight":
-                StartCoroutine(MakeFlashLight());
+                currentOrder = FlashLightOrder;
+                break;
+            case "USB":
+                currentOrder = USBOrder;
+                break;
+            case "PushButton":
+                currentOrder = PushButtonOrder;
+                break;
+            case "Limit":
+                currentOrder = LimitSwitchOrder;
+                break;
+            case "Wifi":
+                currentOrder = WifiOrder;
                 break;
         }
+
+        StartCoroutine(MakeItem(currentOrder));
     }
 
-    private IEnumerator MakeFlashLight()
+    private IEnumerator MakeItem(int[] order)
     {
         int i = 0;
-        currentRestPoint_GO = null;   
-        currentMachineNumber = FlashLightOrder[i];
+        RemoveRestBayValue();
+        currentMachineNumber = order[i];
 
-        Debug.Log("order debug");
         foreach (GameObject point in pointsToFollow)
-        {
-            //Debug.Log("point debug");
-           // Debug.Log(Vector3.Distance(point.transform.position, transform.position) > 0.05f);
+        { 
+            //while loop runs if the plate is far from the point to follow
             while (Vector3.Distance(point.transform.position, transform.position) > 0.05f)
             {
+
+                //moves the plate using the transform position
                 transform.position = Vector3.MoveTowards(transform.position, point.transform.position, speed * Time.deltaTime);
 
-                //  Debug.Log(Vector3.Distance(transform.position, Machines[i].transform.position));
+                //if the plate is close enough, runs code to continue to the next machine order or reset to bay.
                 if (Vector3.Distance(transform.position, Machines[currentMachineNumber - 1].transform.position) <= 0.1)
                 {
-                   // Debug.Log("we reached");
                     i++;
-                    Debug.Log("i= " + i + "\n FlashlightCount " + FlashLightOrder.Count());
-                    if (i < FlashLightOrder.Count())
+
+                    if (i < order.Count())
                     {
-                        Debug.Log("YEETS");
-                        currentMachineNumber = FlashLightOrder[i];
+                        currentMachineNumber = order[i];
                         currentMachine_GO = point;
                         yield return new WaitForSeconds(1f);
 
                     }
                     else
                     {
+                        Debug.Log("nothing to make!");
+
                         StartCoroutine(ResetToBay());
 
-                        Debug.Log("nothing to make!");
                         yield break;
                     }
                 }
@@ -142,10 +155,15 @@ public class ConveyorItemScript : MonoBehaviour
     {
         itemToMake_string = null;
 
-        Debug.Log("Time to sleep in rest point " + restPointScript.GetLastPossibleRestSlot());
-
         currentRestPoint_int = restPointScript.GetLastPossibleRestSlot();
         currentRestPoint_GO = GameObject.Find("RestPoint" + currentRestPoint_int);
+        
+        RestPointHolder restPointHolder = currentRestPoint_GO.GetComponent<RestPointHolder>();
+
+        if(restPointHolder.itemResting != gameObject)
+        {
+            restPointHolder.itemResting = gameObject;
+        }
         
         foreach(GameObject point in pointsToFollow)
             //to cycle thru the points and start to move after reaching the correct machine
@@ -173,14 +191,25 @@ public class ConveyorItemScript : MonoBehaviour
                 yield return null;
             }
         }
-        
+    }
+ 
+    public IEnumerator MoveUpRestBay()
+    {
+        while(Vector3.Distance(currentRestPoint_GO.transform.position, transform.position) > 0.05f)
+        {
+            while (IsCloseToFrontItem())
+            {
+                yield return null;
+            }
+            if(Vector3.Distance(transform.position, currentRestPoint_GO.transform.position) < 0.2f)
+            {
+                yield break;
+            }
+            transform.position = Vector3.MoveTowards(transform.position, currentRestPoint_GO.transform.position, speed * Time.deltaTime);
+            yield return null;
+        }
 
     }
-
-    //private IEnumerator MoveUpRestBay()
-    //{
-        
-    //}
     private IEnumerator Circling()
     {
         Debug.Log("Running IEnumerator");
@@ -286,5 +315,19 @@ public class ConveyorItemScript : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void RemoveRestBayValue()
+    {
+        RestPointHolder restPointHolder = currentRestPoint_GO.GetComponent<RestPointHolder>();
+
+        restPointHolder.itemResting = null;
+        currentRestPoint_GO = null;
+        currentRestPoint_int = 99;
+    }
+
+    public void Debuging(string str)
+    {
+        Debug.Log(str);
     }
 }
