@@ -25,8 +25,6 @@ public class Manager : MonoBehaviour
         points = GameObject.FindGameObjectsWithTag("StopPoint");
         carriers = GameObject.FindGameObjectsWithTag("Carrier");
         restPoints = GameObject.FindGameObjectsWithTag("RestPoint");
-       // GameObject item = Instantiate(itemPrefab, holder.transform);
-
     }
 
     // Update is called once per frame

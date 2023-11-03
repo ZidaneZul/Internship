@@ -67,7 +67,6 @@ public class RestingScript : MonoBehaviour
 
     public List<GameObject> GetListOfInactiveCarriers()
     {
-        Debug.Log("Getting list of inactive carriers");
         inactiveCarriers.Clear();
 
         string debugLogTesting = "";
@@ -96,17 +95,16 @@ public class RestingScript : MonoBehaviour
             }
         }
 
-        Debug.Log(debugLogTesting);
+        //Debug.Log(debugLogTesting);
         
         return inactiveCarriers;
     }
     public int GetLastPossibleRestSlot()
     {
+
         for(int i = 7; i > 0; i--)
         {
             RestPointHolder restPointHolderScipr = restPoints[i].GetComponent<RestPointHolder>();
-
-            Debug.Log("gameobject is " + restPoints[i].gameObject + "\n restpoint script " + restPointHolderScipr);
             
             if (restPointHolderScipr.itemResting != null)
             {
@@ -118,13 +116,15 @@ public class RestingScript : MonoBehaviour
                     SetRestingPoints();
                     MoveInactiveCarriersToNewRest();
                 }
-                return i;
+                
             }
             else
             {
                 Debug.Log("Rest Bay Number: " + i + "has item " + restPointHolderScipr.itemResting.gameObject);
             }
         }
+
+
         return 0;
     }
 
@@ -139,7 +139,6 @@ public class RestingScript : MonoBehaviour
     public void SetRestingPoints()
         ///sets resting point for ALL the inactive carriers
     {
-        Debug.Log("Resting Point \n  SETTING ALL POINTS");
         int i = 0;
 
         restPointsList.Clear();
@@ -184,7 +183,7 @@ public class RestingScript : MonoBehaviour
             }
             else
             {
-                Debug.Log(itemScript.itemToMake_string);
+               // Debug.Log(itemScript.itemToMake_string);
             }
         }
     }

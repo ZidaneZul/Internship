@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
+using TMPro;
 
 public class ConveyorItemScript : MonoBehaviour
 {
@@ -26,8 +28,8 @@ public class ConveyorItemScript : MonoBehaviour
     #endregion
 
     Manager manager;
-    RestingScript restPointScript;
-
+    public RestingScript restPointScript;
+    
     //string to store which item is being made
     public string itemToMake_string;
 
@@ -38,7 +40,7 @@ public class ConveyorItemScript : MonoBehaviour
     public int currentRestPoint_int;
 
     //to remember which machine it stopped at after finishing order
-    GameObject currentMachine_GO;
+    public GameObject currentMachine_GO;
 
     public float limitDistance;
     int currentMachineNumber;
@@ -49,6 +51,8 @@ public class ConveyorItemScript : MonoBehaviour
     bool ResetValues;
     bool startGoing;
 
+    TextMeshPro TMP;
+
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +61,8 @@ public class ConveyorItemScript : MonoBehaviour
 
         manager = GameObject.Find("SceneManager").GetComponent<Manager>();
         restPointScript = GameObject.Find("RestPoints").GetComponent<RestingScript>();
+
+        TMP = GetComponentInChildren<TextMeshPro>();
 
         GetCarrierInfront();
 
@@ -112,49 +118,66 @@ public class ConveyorItemScript : MonoBehaviour
 
     private IEnumerator MakeItem(int[] order)
     {
+        Debug.Log("check to see how much it runs EAEWAEA");
         int i = 0;
         RemoveRestBayValue();
         currentMachineNumber = order[i];
 
-        foreach (GameObject point in pointsToFollow)
-        { 
-            //while loop runs if the plate is far from the point to follow
-            while (Vector3.Distance(point.transform.position, transform.position) > 0.05f)
+        TextChange("M");
+
+        foreach (int int1 in order)
+        {
+            foreach (GameObject point in pointsToFollow)
             {
-
-                //moves the plate using the transform position
-                transform.position = Vector3.MoveTowards(transform.position, point.transform.position, speed * Time.deltaTime);
-
-                //if the plate is close enough, runs code to continue to the next machine order or reset to bay.
-                if (Vector3.Distance(transform.position, Machines[currentMachineNumber - 1].transform.position) <= 0.1)
+                //while loop runs if the plate is far from the point to follow
+                while (Vector3.Distance(point.transform.position, transform.position) > 0.05f)
                 {
-                    i++;
+                    ///moves the plate using the transform position
+                    transform.position = Vector3.MoveTowards(transform.position, point.transform.position, speed * Time.deltaTime);
 
-                    if (i < order.Count())
+                    currentMachine_GO = point;
+
+
+                   // Debug.Log("Going to point " + point + "\n current machine " + Machines[currentMachineNumber - 1]);
+
+                    ///if the plate is close enough, runs code to continue to the next machine order or reset to bay.
+                    /// currentMachine - 1 is cuz array starts from 0 while naming the machines starts from 1
+                    if (Vector3.Distance(transform.position, Machines[currentMachineNumber - 1].transform.position) <= 0.1)
                     {
-                        currentMachineNumber = order[i];
-                        currentMachine_GO = point;
-                        yield return new WaitForSeconds(1f);
+                        i++;
 
+                        //Debug.Log("conveyor item value i is " + i + "\n" +
+                         //   "order count is " + order.Count());
+
+                        if (i < order.Count())
+                        {
+                            currentMachineNumber = order[i];
+                            yield return new WaitForSeconds(1f);
+
+                        }
+                        else
+                        {
+                         //   Debug.Log("nothing to make!");
+
+                            StartCoroutine(ResetToBay());
+
+                            yield break;
+                        }
                     }
-                    else
-                    {
-                        Debug.Log("nothing to make!");
-
-                        StartCoroutine(ResetToBay());
-
-                        yield break;
-                    }
+                    yield return null;
                 }
-                yield return null;
-            }
+               // Debug.Log("In foreach out of everything");
+           }
         }
-
     }
     private IEnumerator ResetToBay()
     {
+        Debug.Log("help " + currentMachine_GO);
         itemToMake_string = null;
 
+        TextChange("R");
+
+        startGoing = false;
         currentRestPoint_int = restPointScript.GetLastPossibleRestSlot();
         currentRestPoint_GO = GameObject.Find("RestPoint" + currentRestPoint_int);
         
@@ -183,18 +206,21 @@ public class ConveyorItemScript : MonoBehaviour
 
                 if(Vector3.Distance(transform.position, currentRestPoint_GO.transform.position) < 0.05f)
                 {
+                    TextChange("");
                     yield break;
                 }
 
                 //function to move the carriers
-                transform.position = Vector3.MoveTowards(transform.position, currentRestPoint_GO.transform.position, speed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, point.transform.position, speed * Time.deltaTime);
                 yield return null;
             }
         }
     }
- 
+
+
     public IEnumerator MoveUpRestBay()
     {
+        TextChange("G");
         while(Vector3.Distance(currentRestPoint_GO.transform.position, transform.position) > 0.05f)
         {
             while (IsCloseToFrontItem())
@@ -329,5 +355,10 @@ public class ConveyorItemScript : MonoBehaviour
     public void Debuging(string str)
     {
         Debug.Log(str);
+    }
+
+    public void TextChange(string str)
+    {
+        TMP.text = str;
     }
 }
