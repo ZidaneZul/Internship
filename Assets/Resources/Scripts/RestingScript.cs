@@ -102,25 +102,27 @@ public class RestingScript : MonoBehaviour
     public int GetLastPossibleRestSlot()
     {
 
+    restart:
+        Debug.Log("restarting");
         for(int i = 7; i > 0; i--)
         {
+            Debug.Log("for looop " + i);
             RestPointHolder restPointHolderScipr = restPoints[i].GetComponent<RestPointHolder>();
-            
+
             if (restPointHolderScipr.itemResting != null)
             {
-                Debug.Log("Rest Bay number" + i + "is empty");
+                Debug.Log("Rest Bay number" + i + "has " + restPointHolderScipr.itemResting);
 
                 if(i == 7)
                 {
+                    Debug.Log("triggered"); 
                   //  RemoveRestBayItems();
                     SetRestingPoints();
                     MoveInactiveCarriersToNewRest();
+                    goto restart;
                 }
-                
-            }
-            else
-            {
-                Debug.Log("Rest Bay Number: " + i + "has item " + restPointHolderScipr.itemResting.gameObject);
+                int empty = i;
+                return i;
             }
         }
 
@@ -176,7 +178,9 @@ public class RestingScript : MonoBehaviour
         {
             ConveyorItemScript itemScript = carrier.GetComponent<ConveyorItemScript>();
 
-            if (itemScript.itemToMake_string == "" || itemScript.itemToMake_string == null)
+            Debug.Log(itemScript.gameObject + "is resting " + itemScript.resting);
+
+            if ((itemScript.itemToMake_string == "" || itemScript.itemToMake_string == null) && itemScript.resting == true)
             {
              //   Debug.Log("Moving " + carrier.name + " to " + itemScript.currentRestPoint_GO);
                    StartCoroutine(itemScript.MoveUpRestBay());

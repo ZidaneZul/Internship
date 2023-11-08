@@ -51,6 +51,8 @@ public class ConveyorItemScript : MonoBehaviour
     bool ResetValues;
     bool startGoing;
 
+    public bool resting = true;
+
     TextMeshPro TMP;
 
 
@@ -118,6 +120,8 @@ public class ConveyorItemScript : MonoBehaviour
 
     private IEnumerator MakeItem(int[] order)
     {
+        resting = false;
+
         Debug.Log("check to see how much it runs EAEWAEA");
         int i = 0;
         RemoveRestBayValue();
@@ -172,47 +176,60 @@ public class ConveyorItemScript : MonoBehaviour
     }
     private IEnumerator ResetToBay()
     {
-        Debug.Log("help " + currentMachine_GO);
         itemToMake_string = null;
 
         TextChange("R");
 
         startGoing = false;
-        currentRestPoint_int = restPointScript.GetLastPossibleRestSlot();
+        currentRestPoint_int = restPointScript.GetLastPossibleRestSlot() + 1;
+        Debug.Log("Curresntly gonna rest in RestPoint" + currentRestPoint_int);
         currentRestPoint_GO = GameObject.Find("RestPoint" + currentRestPoint_int);
-        
+
         RestPointHolder restPointHolder = currentRestPoint_GO.GetComponent<RestPointHolder>();
 
-        if(restPointHolder.itemResting != gameObject)
+        if (restPointHolder.itemResting != gameObject)
         {
             restPointHolder.itemResting = gameObject;
         }
-        
-        foreach(GameObject point in pointsToFollow)
-            //to cycle thru the points and start to move after reaching the correct machine
-        {
-            if(point == currentMachine_GO)
-            {
-                startGoing = true;
-            }
 
-            while (Vector3.Distance(point.transform.position, transform.position) > 0.05f && startGoing)
+        for (int i = 0; i < 3; i++)
+        {
+
+            foreach (GameObject point in pointsToFollow)
+            //to cycle thru the points and start to move after reaching the correct machine
             {
-                //stops the carrier if its close to the item infront
-                while (IsCloseToFrontItem())
+                if (point == currentMachine_GO)
                 {
+                    startGoing = true;
+                }
+
+                // while (Vector3.Distance(point.transform.position, transform.position) > 0.05f && startGoing)
+                while (point.transform.position != transform.position && startGoing)
+                {
+                    //Debug.Log("Distance is " + Vector3.Distance(currentRestPoint_GO.transform.position, transform.position)
+                    //    + " to " + currentRestPoint_GO);
+
+                    //stops the carrier if its close to the item infront
+                    while (IsCloseToFrontItem())
+                    {
+                        yield return null;
+                    }
+
+                    transform.position = Vector3.MoveTowards(transform.position, point.transform.position, speed * Time.deltaTime);
+
+                    if (Vector3.Distance(transform.position, currentRestPoint_GO.transform.position) < 0.05f)
+                    //if (transform.position == currentRestPoint_GO.transform.position)
+                    {
+                        Debuging("ResetToBay complete");
+                        resting = true;
+                        TextChange("");
+                        yield break;
+                    }
+
+                    //function to move the carriers
                     yield return null;
                 }
 
-                if(Vector3.Distance(transform.position, currentRestPoint_GO.transform.position) < 0.05f)
-                {
-                    TextChange("");
-                    yield break;
-                }
-
-                //function to move the carriers
-                transform.position = Vector3.MoveTowards(transform.position, point.transform.position, speed * Time.deltaTime);
-                yield return null;
             }
         }
     }
@@ -221,18 +238,25 @@ public class ConveyorItemScript : MonoBehaviour
     public IEnumerator MoveUpRestBay()
     {
         TextChange("G");
-        while(Vector3.Distance(currentRestPoint_GO.transform.position, transform.position) > 0.05f)
+        //while(Vector3.Distance(currentRestPoint_GO.transform.position, transform.position) > 0.05f)
+        Debug.Log("Move up restBay!");
+        while(currentRestPoint_GO.transform.position != transform.position)
         {
+            //Debug.Log("going there!");
             while (IsCloseToFrontItem())
             {
                 yield return null;
             }
-            if(Vector3.Distance(transform.position, currentRestPoint_GO.transform.position) < 0.2f)
-            {
-                yield break;
-            }
             transform.position = Vector3.MoveTowards(transform.position, currentRestPoint_GO.transform.position, speed * Time.deltaTime);
             yield return null;
+        }
+
+        if (Vector3.Distance(transform.position, currentRestPoint_GO.transform.position) < 0.2f)
+        {
+            resting = true;
+            TextChange("");
+            Debuging(gameObject + " MoveUpRestBay Complete \n Distance: " + Vector3.Distance(transform.position, currentRestPoint_GO.transform.position) + currentRestPoint_GO);
+            yield break;
         }
 
     }
