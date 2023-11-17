@@ -29,6 +29,7 @@ public class ConveyorItemScript : MonoBehaviour
 
     Manager manager;
     public RestingScript restPointScript;
+    public ConveyorItemScript carrierInfront_Script;
     
     //string to store which item is being made
     public string itemToMake_string;
@@ -84,10 +85,6 @@ public class ConveyorItemScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     { 
-        if (isFinished)
-        {
-            StartCoroutine(Circling());
-        }
         if (Input.GetKeyUp(KeyCode.A))
         {
             PauseHere = true;
@@ -141,8 +138,12 @@ public class ConveyorItemScript : MonoBehaviour
 
                     currentMachine_GO = point;
 
+                    while (IsCloseToFrontItem())
+                    {
+                        yield return null;
+                    }
 
-                   // Debug.Log("Going to point " + point + "\n current machine " + Machines[currentMachineNumber - 1]);
+                    // Debug.Log("Going to point " + point + "\n current machine " + Machines[currentMachineNumber - 1]);
 
                     ///if the plate is close enough, runs code to continue to the next machine order or reset to bay.
                     /// currentMachine - 1 is cuz array starts from 0 while naming the machines starts from 1
@@ -150,6 +151,7 @@ public class ConveyorItemScript : MonoBehaviour
                     {
                         i++;
 
+                        
                         //Debug.Log("conveyor item value i is " + i + "\n" +
                          //   "order count is " + order.Count());
 
@@ -262,21 +264,14 @@ public class ConveyorItemScript : MonoBehaviour
     }
     private IEnumerator Circling()
     {
-        Debug.Log("Running IEnumerator");
+        TextChange("C");
         int count  = 0;
-        isFinished = false;
 
         foreach (GameObject point in pointsToFollow)
         {
             // Debug.Log("goin thru points");
             while (Vector3.Distance(point.transform.position, transform.position) > 0.05f)
             {
-                //just a puase
-                while (PauseHere)
-                {
-                    StartTimer(2f);
-                    yield return null;
-                }
 
                 //stops the carrier if its close to the item infront
                 while (IsCloseToFrontItem())
@@ -284,21 +279,15 @@ public class ConveyorItemScript : MonoBehaviour
                     yield return null;
                 }
 
-             //function to move the carriers
-               transform.position = Vector3.MoveTowards(transform.position, point.transform.position, speed * Time.deltaTime);
+                //function to move the carriers
+                transform.position = Vector3.MoveTowards(transform.position, point.transform.position, speed * Time.deltaTime);
                 yield return null;
             }
             count++;
 
         }
 
-        //to rerun the coroutine after going thru all the points.
-        //prevents the spamming and running mulitple coroutine.
-        if(count >= pointsToFollow.Length)
-        {
-            isFinished = true;
-        }
-        
+        yield break;
     }
 
     public bool StartTimer(float seconds)
@@ -351,6 +340,7 @@ public class ConveyorItemScript : MonoBehaviour
                 {
                     farDistance = Vector3.Distance(transform.position, carry.transform.position);
                     carrierInfront = carry;
+                    carrierInfront_Script = carry.GetComponent<ConveyorItemScript>();
                 }
             }
         }
@@ -358,9 +348,14 @@ public class ConveyorItemScript : MonoBehaviour
 
     public bool IsCloseToFrontItem()
     {
-        //Debug.Log(Vector3.Distance(transform.position, carrierInfront.transform.position) + gameObject.name);
+        Debug.Log(Vector3.Distance(transform.position, carrierInfront.transform.position) + gameObject.name);
         if(Vector3.Distance(transform.position, carrierInfront.transform.position) <= limitDistance)
         {
+            if (carrierInfront_Script.resting)
+            {
+
+
+            }
           //  Debug.LogWarning("Pauseeeee");
             return true;
         }
