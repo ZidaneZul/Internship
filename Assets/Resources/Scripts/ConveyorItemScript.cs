@@ -360,7 +360,7 @@ public class ConveyorItemScript : MonoBehaviour
             return true;
         }
         return false;
-    }
+    } 
 
     public void RemoveRestBayValue()
     {
