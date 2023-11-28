@@ -85,11 +85,11 @@ public class ConveyorItemScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     { 
-        if (Input.GetKeyUp(KeyCode.A))
-        {
-            PauseHere = true;
-            Debug.Log("PUASE HERE PLS");
-        }
+        //if (Input.GetKeyUp(KeyCode.A))
+        //{
+        //    PauseHere = true;
+        //    Debug.Log("PUASE HERE PLS");
+        //}
     }
     public void MakeItem()
     {
@@ -140,6 +140,7 @@ public class ConveyorItemScript : MonoBehaviour
 
                     while (IsCloseToFrontItem())
                     {
+                        Debug.Log("Stopppppppp");
                         yield return null;
                     }
 
@@ -348,14 +349,14 @@ public class ConveyorItemScript : MonoBehaviour
 
     public bool IsCloseToFrontItem()
     {
-        Debug.Log(Vector3.Distance(transform.position, carrierInfront.transform.position) + gameObject.name);
+        //Debug.Log(Vector3.Distance(transform.position, carrierInfront.transform.position) + gameObject.name);
         if(Vector3.Distance(transform.position, carrierInfront.transform.position) <= limitDistance)
         {
-            if (carrierInfront_Script.resting)
-            {
+            //if (carrierInfront_Script.resting)
+            //{
 
 
-            }
+            //}
           //  Debug.LogWarning("Pauseeeee");
             return true;
         }
