@@ -140,7 +140,7 @@ public class ConveyorItemScript : MonoBehaviour
 
                     while (IsCloseToFrontItem())
                     {
-                        Debug.Log("Stopppppppp");
+                      //  Debug.Log("Stopppppppp");
                         yield return null;
                     }
 
@@ -263,17 +263,16 @@ public class ConveyorItemScript : MonoBehaviour
         }
 
     }
-    private IEnumerator Circling()
+    public IEnumerator Circling()
     {
         TextChange("C");
-        int count  = 0;
 
+        resting = false;
         foreach (GameObject point in pointsToFollow)
         {
             // Debug.Log("goin thru points");
             while (Vector3.Distance(point.transform.position, transform.position) > 0.05f)
             {
-
                 //stops the carrier if its close to the item infront
                 while (IsCloseToFrontItem())
                 {
@@ -284,10 +283,8 @@ public class ConveyorItemScript : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, point.transform.position, speed * Time.deltaTime);
                 yield return null;
             }
-            count++;
-
         }
-
+        resting = true;
         yield break;
     }
 
@@ -341,7 +338,7 @@ public class ConveyorItemScript : MonoBehaviour
                 {
                     farDistance = Vector3.Distance(transform.position, carry.transform.position);
                     carrierInfront = carry;
-                    carrierInfront_Script = carry.GetComponent<ConveyorItemScript>();
+                    carrierInfront_Script = carrierInfront.GetComponent<ConveyorItemScript>();
                 }
             }
         }
@@ -352,12 +349,13 @@ public class ConveyorItemScript : MonoBehaviour
         //Debug.Log(Vector3.Distance(transform.position, carrierInfront.transform.position) + gameObject.name);
         if(Vector3.Distance(transform.position, carrierInfront.transform.position) <= limitDistance)
         {
-            //if (carrierInfront_Script.resting)
-            //{
+            if (carrierInfront_Script.resting == true)
+            {
+                Debug.Log("Move the other things");
+                manager.CircleInactiveItems();
 
-
-            //}
-          //  Debug.LogWarning("Pauseeeee");
+            }
+            //  Debug.LogWarning("Pauseeeee");
             return true;
         }
         return false;
@@ -381,4 +379,6 @@ public class ConveyorItemScript : MonoBehaviour
     {
         TMP.text = str;
     }
+    ///Known Issues: Plates 1+ would not save the script of the plate infront, cause an error
+    ///in circling function that if its close error occurs.
 }

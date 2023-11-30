@@ -57,6 +57,20 @@ public class Manager : MonoBehaviour
         }
     }
 
+    public void CircleInactiveItems()
+    {
+        foreach(GameObject carry in carriersInOrder)
+        {
+            ConveyorItemScript carrierScript = carry.GetComponent<ConveyorItemScript> ();
+
+            if(carrierScript.resting == true)
+            {
+                Debug.Log(carry.gameObject + "is resting! Moving now");
+                StartCoroutine(carrierScript.Circling());
+            }
+        }
+    }
+
     public void SortCarrier()
     {
         Array.Clear(carriersInOrder, 0, carriersInOrder.Length);
