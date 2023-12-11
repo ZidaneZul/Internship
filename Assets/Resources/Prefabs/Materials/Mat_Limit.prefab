@@ -13,10 +13,11 @@ GameObject:
   - component: {fileID: 7205259384336726535}
   - component: {fileID: 7205259384336726534}
   - component: {fileID: 7205259384336726533}
-  - component: {fileID: -5853031978996779405}
-  - component: {fileID: 7044986053903664874}
+  - component: {fileID: -5246243713775193583}
+  - component: {fileID: 3688631465537905000}
+  - component: {fileID: 7713107328292550126}
   m_Layer: 0
-  m_Name: Mat_USB
+  m_Name: Mat_Limit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 84b8eb197a79d154495a806939b67888, type: 2}
+  - {fileID: 2100000, guid: 300cc75ccfb2539458a1c8a1fcae237f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -117,7 +118,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &-5853031978996779405
+--- !u!114 &-5246243713775193583
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autoConstraintSelection: 1
   selectedConstraints: []
---- !u!114 &7044986053903664874
+--- !u!114 &3688631465537905000
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -359,6 +360,19 @@ MonoBehaviour:
       reference: MixedReality.Toolkit.SpatialManipulation.RotateLogic, MixedReality.Toolkit.SpatialManipulation
     scaleLogicType:
       reference: MixedReality.Toolkit.SpatialManipulation.ScaleLogic, MixedReality.Toolkit.SpatialManipulation
+--- !u!114 &7713107328292550126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7205259384336726532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9e06805cc400b84b82e43658585546a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typeOfMaterial: Limit
 --- !u!1 &7480348667888160293
 GameObject:
   m_ObjectHideFlags: 0

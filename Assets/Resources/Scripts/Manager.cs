@@ -88,6 +88,18 @@ public class Manager : MonoBehaviour
             }
         }
     }
+
+    public void MakeItem(string itemType)
+    {
+        switch (itemType)
+        {
+            case "Flashlight":
+                Debug.Log("Making flashLight!");
+                break;
+        }
+    }
+
+    #region UI Functions
     public void UpdateItemCount()
     {
         Wifi = 0;
@@ -161,4 +173,5 @@ public class Manager : MonoBehaviour
                     "\n" + Wifi.ToString() + "\n" + LimitButton.ToString() + "\n" + PushButton.ToString();
         ListOfItemsToMake.Add("PushButton");
     }
+    #endregion
 }

@@ -13,10 +13,11 @@ GameObject:
   - component: {fileID: 7205259384336726535}
   - component: {fileID: 7205259384336726534}
   - component: {fileID: 7205259384336726533}
-  - component: {fileID: -6545525021907829867}
-  - component: {fileID: 5373450562152908336}
+  - component: {fileID: -8499746585392300955}
+  - component: {fileID: 7365666288637760676}
+  - component: {fileID: 5924139188736412899}
   m_Layer: 0
-  m_Name: Mat_Wifi
+  m_Name: Mat_Flashlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9676fcdd0fc407141b16a290bbde3b37, type: 2}
+  - {fileID: 2100000, guid: 08a29fef82935f544b646309446494b1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -117,7 +118,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &-6545525021907829867
+--- !u!114 &-8499746585392300955
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autoConstraintSelection: 1
   selectedConstraints: []
---- !u!114 &5373450562152908336
+--- !u!114 &7365666288637760676
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -359,6 +360,19 @@ MonoBehaviour:
       reference: MixedReality.Toolkit.SpatialManipulation.RotateLogic, MixedReality.Toolkit.SpatialManipulation
     scaleLogicType:
       reference: MixedReality.Toolkit.SpatialManipulation.ScaleLogic, MixedReality.Toolkit.SpatialManipulation
+--- !u!114 &5924139188736412899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7205259384336726532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9e06805cc400b84b82e43658585546a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typeOfMaterial: Flashlight
 --- !u!1 &7480348667888160293
 GameObject:
   m_ObjectHideFlags: 0
