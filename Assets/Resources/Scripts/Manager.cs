@@ -96,6 +96,18 @@ public class Manager : MonoBehaviour
             case "Flashlight":
                 Debug.Log("Making flashLight!");
                 break;
+            case "USB":
+                Debug.Log("Makine USB!");
+                break;
+            case "PushButton":
+                Debug.Log("Making PushButton!");
+                break;
+            case "Limit":
+                Debug.Log("Making Limit");
+                break;
+            case "Wifi":
+                Debug.Log("Makine Wifi!");
+                break;
         }
     }
 
