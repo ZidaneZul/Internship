@@ -13,7 +13,7 @@ public class MaterialsScript : MonoBehaviour
 
     public GameObject manufactoringMachine;
 
-    bool isItemInManufactoringZone;
+    public bool isItemInManufactoringZone;
 
     // Start is called before the first frame update
     void Start()
@@ -48,23 +48,42 @@ public class MaterialsScript : MonoBehaviour
         }
         else
         {
-            TeleportBackToBox(); 
+            TeleportBackToBox();
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    Debug.Log(gameObject + "Item has collided with " + collision.gameObject);
+    //    if (collision.gameObject == manufactoringMachine)
+    //    {
+    //        Debug.Log("Item is in zone!");
+    //        isItemInManufactoringZone = true;
+    //    }
+    //}
+
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if (collision.gameObject == manufactoringMachine)
+    //    {
+    //        isItemInManufactoringZone = false;
+    //    }
+    //}
+    private void OnTriggerStay(Collider other)
     {
-        if (collision.gameObject == manufactoringMachine)
+        Debug.Log(gameObject + "Item has collided with " + other.gameObject);
+        if (other.gameObject == manufactoringMachine)
         {
+            Debug.Log("Item is in zone!");
             isItemInManufactoringZone = true;
         }
     }
-
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject == manufactoringMachine)
+        if (other.gameObject == manufactoringMachine)
         {
             isItemInManufactoringZone = false;
         }
     }
+
 }

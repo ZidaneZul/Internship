@@ -57,6 +57,23 @@ public class Manager : MonoBehaviour
         }
     }
 
+    public void StartProducingItem(string itemToMake)
+    {
+        SortCarrier();
+
+        foreach (GameObject carry in carriersInOrder)
+        {
+            ConveyorItemScript carrierScript = carry.GetComponent<ConveyorItemScript>();
+            if (itemToMake != null)
+            {
+                carrierScript.itemToMake_string = itemToMake;
+
+                carrierScript.MakeItem();
+            }
+        }
+    }
+
+
     public void CircleInactiveItems()
     {
         foreach(GameObject carry in carriersInOrder)
@@ -95,18 +112,23 @@ public class Manager : MonoBehaviour
         {
             case "Flashlight":
                 Debug.Log("Making flashLight!");
+                StartProducingItem(itemType);
                 break;
             case "USB":
                 Debug.Log("Makine USB!");
+                StartProducingItem(itemType);
                 break;
             case "PushButton":
                 Debug.Log("Making PushButton!");
+                StartProducingItem(itemType);
                 break;
             case "Limit":
                 Debug.Log("Making Limit");
+                StartProducingItem(itemType);
                 break;
             case "Wifi":
                 Debug.Log("Makine Wifi!");
+                StartProducingItem(itemType);
                 break;
         }
     }

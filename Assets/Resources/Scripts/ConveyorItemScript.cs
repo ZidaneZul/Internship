@@ -322,10 +322,11 @@ public class ConveyorItemScript : MonoBehaviour
                 carrierList.Remove(carry);
                 break;
             }
-            if (Vector3.Distance(transform.position, carry.transform.position) <= distance && transform.position.x < carry.transform.position.x)
+            if ((Vector3.Distance(transform.position, carry.transform.position) <= distance) && transform.position.x < carry.transform.position.x)
             {
                 distance = Vector3.Distance(transform.position, carry.transform.position);
                 carrierInfront = carry;
+                carrierInfront_Script = carry.GetComponent<ConveyorItemScript>();
             }
 
         }
@@ -338,7 +339,7 @@ public class ConveyorItemScript : MonoBehaviour
                 {
                     farDistance = Vector3.Distance(transform.position, carry.transform.position);
                     carrierInfront = carry;
-                    carrierInfront_Script = carrierInfront.GetComponent<ConveyorItemScript>();
+                    carrierInfront_Script = carry.GetComponent<ConveyorItemScript>();
                 }
             }
         }

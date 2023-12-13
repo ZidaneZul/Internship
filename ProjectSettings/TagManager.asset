@@ -8,6 +8,8 @@ TagManager:
   - Carrier
   - RestPoint
   - Manager
+  - ProductPoint
+  - MaterialPoint
   layers:
   - Default
   - TransparentFX

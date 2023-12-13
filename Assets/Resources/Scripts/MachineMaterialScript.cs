@@ -26,19 +26,5 @@ public class MachineMaterialScript : MonoBehaviour
     {
     
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.GetComponent<MaterialsScript>() != null)
-        {
-            Debug.Log("testing collision"); 
-            MaterialsScript matScripts = collision.gameObject.GetComponent<MaterialsScript>();
-
-            manager.MakeItem(matScripts.typeOfMaterial);
-
-        }
-    }
+    
 }
