@@ -53,6 +53,8 @@ public class ConveyorItemScript : MonoBehaviour
     bool startGoing;
 
     public bool resting = true;
+    public bool pastRestPoint = false;
+
 
     TextMeshPro TMP;
 
@@ -267,25 +269,46 @@ public class ConveyorItemScript : MonoBehaviour
     {
         TextChange("C");
 
+        pastRestPoint = false; 
+
         resting = false;
-        foreach (GameObject point in pointsToFollow)
+        for (int i = 0; i < 3; i++)
         {
-            // Debug.Log("goin thru points");
-            while (Vector3.Distance(point.transform.position, transform.position) > 0.05f)
+            foreach (GameObject point in pointsToFollow)
             {
-                //stops the carrier if its close to the item infront
-                while (IsCloseToFrontItem())
+
+                // Debug.Log("goin thru points");
+
+                while (Vector3.Distance(point.transform.position, transform.position) > 0.05f)
                 {
+                    ///to make make sure it goes past its own rest point before changing the bool
+                    ///to true. Bool is there to make sure it stops at the resting point after 
+                    ///circle, else there would be infinite circling.
+                    if (Vector3.Distance(point.transform.position, transform.position) < 0.5f)
+                    {
+                        pastRestPoint = true;
+                    }
+
+                    if (pastRestPoint && Vector3.Distance(transform.position, currentRestPoint_GO.transform.position) < 0.1f)
+                    {
+                        TextChange("");
+                        yield break;
+                    }
+
+                    ///stops the carrier if its close to the item infront
+                    while (IsCloseToFrontItem())
+                    {
+                        yield return null;
+                    }
+
+                    ///function to move the carriers
+                    transform.position = Vector3.MoveTowards(transform.position, point.transform.position, speed * Time.deltaTime);
                     yield return null;
                 }
-
-                //function to move the carriers
-                transform.position = Vector3.MoveTowards(transform.position, point.transform.position, speed * Time.deltaTime);
-                yield return null;
             }
+            resting = true;
+            TextChange("");
         }
-        resting = true;
-        yield break;
     }
 
     public bool StartTimer(float seconds)
