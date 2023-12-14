@@ -106,12 +106,12 @@ public class RestingScript : MonoBehaviour
         Debug.Log("restarting");
         for(int i = 7; i > 0; i--)
         {
-            Debug.Log("for looop " + i);
+            //Debug.Log("for looop " + i);
             RestPointHolder restPointHolderScipr = restPoints[i].GetComponent<RestPointHolder>();
 
             if (restPointHolderScipr.itemResting != null)
             {
-                Debug.Log("Rest Bay number" + i + "has " + restPointHolderScipr.itemResting);
+               // Debug.Log("Rest Bay number" + i + "has " + restPointHolderScipr.itemResting);
 
                 if(i == 7)
                 {
@@ -178,7 +178,7 @@ public class RestingScript : MonoBehaviour
         {
             ConveyorItemScript itemScript = carrier.GetComponent<ConveyorItemScript>();
 
-            Debug.Log(itemScript.gameObject + "is resting " + itemScript.resting);
+            //Debug.Log(itemScript.gameObject + "is resting " + itemScript.resting);
 
             if ((itemScript.itemToMake_string == "" || itemScript.itemToMake_string == null) && itemScript.resting == true)
             {

@@ -8,18 +8,28 @@ public class MaterialsScript : MonoBehaviour
 
     public Transform spawnPoint;
 
-    MaterialSpawner matSpawner;
-    Manager manager;
-
     public GameObject manufactoringMachine;
 
     public bool isItemInManufactoringZone;
+
+    #region Scripts
+
+    MaterialSpawner matSpawner;
+    Manager manager;
+    public MachineMaterialScript machineMatScript;
+
+
+    #endregion
+
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         matSpawner = GameObject.FindGameObjectWithTag("Manager").GetComponent<MaterialSpawner>();
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<Manager>();
+        machineMatScript = GameObject.Find("Machine2").GetComponent<MachineMaterialScript>();
     }
 
     // Update is called once per frame
@@ -44,31 +54,23 @@ public class MaterialsScript : MonoBehaviour
     {
         if (isItemInManufactoringZone)
         {
-            manager.MakeItem(typeOfMaterial);
+            ///spawn the prefab on point in the machine
+            machineMatScript.PutMatsOnPoint(typeOfMaterial);
+
+            ///runs the code to make the carrier run
+            if (machineMatScript.didAddNewMat)
+            {
+                Debug.Log("Gonna run manager!");
+                manager.MakeItem(typeOfMaterial);
+            }
+
+            TeleportBackToBox();
         }
         else
         {
             TeleportBackToBox();
         }
     }
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    Debug.Log(gameObject + "Item has collided with " + collision.gameObject);
-    //    if (collision.gameObject == manufactoringMachine)
-    //    {
-    //        Debug.Log("Item is in zone!");
-    //        isItemInManufactoringZone = true;
-    //    }
-    //}
-
-    //private void OnCollisionExit(Collision collision)
-    //{
-    //    if (collision.gameObject == manufactoringMachine)
-    //    {
-    //        isItemInManufactoringZone = false;
-    //    }
-    //}
     private void OnTriggerStay(Collider other)
     {
         Debug.Log(gameObject + "Item has collided with " + other.gameObject);

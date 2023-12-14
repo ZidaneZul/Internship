@@ -8,7 +8,7 @@ using TMPro;
 public class ConveyorItemScript : MonoBehaviour
 {
 
-    #region containers
+    #region Containers for Machines, Carriers and Orders
     public GameObject[] pointsToFollow;
     public GameObject[] carriers;
     public GameObject carrierInfront;
@@ -18,24 +18,6 @@ public class ConveyorItemScript : MonoBehaviour
 
     Dictionary<GameObject, int> machineNumbers = new Dictionary<GameObject, int>();
 
-    int[] FlashLightOrder = { 5, 3, 4 };
-    int[] USBOrder = { 5, 2, 4 };
-    int[] PushButtonOrder = { 5, 3, 1 };
-    int[] WifiOrder = { 5, 2, 3, 4, 1 };
-    int[] LimitSwitchOrder = { 5, 1, 4, 1 };
-
-    int[] currentOrder;
-    #endregion
-
-    Manager manager;
-    public RestingScript restPointScript;
-    public ConveyorItemScript carrierInfront_Script;
-    
-    //string to store which item is being made
-    public string itemToMake_string;
-
-    //suppose to be used to store the order of item, if first = 0, last = 7 (for production)
-    public int currentOrderNumber;
 
     public GameObject currentRestPoint_GO;
     public int currentRestPoint_int;
@@ -43,8 +25,37 @@ public class ConveyorItemScript : MonoBehaviour
     //to remember which machine it stopped at after finishing order
     public GameObject currentMachine_GO;
 
-    public float limitDistance;
+    int[] FlashLightOrder = { 5, 3, 4 };
+    int[] USBOrder = { 5, 2, 4 };
+    int[] PushButtonOrder = { 5, 3, 1 };
+    int[] WifiOrder = { 5, 2, 3, 4, 1 };
+    int[] LimitSwitchOrder = { 5, 1, 4, 1 };
+
+    int[] currentOrder;
+
     int currentMachineNumber;
+
+    //suppose to be used to store the order of item, if first = 0, last = 7 (for production)
+    public int currentOrderNumber;
+
+    TextMeshPro TMP;
+
+    #endregion
+
+    #region Scripts
+
+    Manager manager;
+    public RestingScript restPointScript;
+    public ConveyorItemScript carrierInfront_Script;
+
+    #endregion
+
+    #region Other Variables
+
+    //string to store which item is being made
+    public string itemToMake_string;
+
+    public float limitDistance;
     public float speed;
     float time;
     public bool PauseHere;
@@ -55,8 +66,7 @@ public class ConveyorItemScript : MonoBehaviour
     public bool resting = true;
     public bool pastRestPoint = false;
 
-
-    TextMeshPro TMP;
+    #endregion
 
 
     // Start is called before the first frame update
@@ -222,7 +232,7 @@ public class ConveyorItemScript : MonoBehaviour
 
                     transform.position = Vector3.MoveTowards(transform.position, point.transform.position, speed * Time.deltaTime);
 
-                    if (Vector3.Distance(transform.position, currentRestPoint_GO.transform.position) < 0.05f)
+                    if (Vector3.Distance(transform.position, currentRestPoint_GO.transform.position) < 0.1f)
                     //if (transform.position == currentRestPoint_GO.transform.position)
                     {
                         Debuging("ResetToBay complete");
@@ -373,9 +383,9 @@ public class ConveyorItemScript : MonoBehaviour
         //Debug.Log(Vector3.Distance(transform.position, carrierInfront.transform.position) + gameObject.name);
         if(Vector3.Distance(transform.position, carrierInfront.transform.position) <= limitDistance)
         {
-            if (carrierInfront_Script.resting == true)
+            if (carrierInfront_Script.resting == true && resting == false)
             {
-                Debug.Log("Move the other things");
+                Debug.Log(gameObject + " triggered the other carrier to move");
                 manager.CircleInactiveItems();
 
             }

@@ -69,6 +69,7 @@ public class Manager : MonoBehaviour
                 carrierScript.itemToMake_string = itemToMake;
 
                 carrierScript.MakeItem();
+                break;
             }
         }
     }
@@ -78,11 +79,12 @@ public class Manager : MonoBehaviour
     {
         foreach(GameObject carry in carriersInOrder)
         {
+            Debug.Log(carry.name);
             ConveyorItemScript carrierScript = carry.GetComponent<ConveyorItemScript> ();
 
             if(carrierScript.resting == true)
             {
-                Debug.Log(carry.gameObject + "is resting! Moving now");
+                //Debug.Log(carry.gameObject + "is resting! Moving now");
                 StartCoroutine(carrierScript.Circling());
             }
         }
