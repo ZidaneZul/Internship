@@ -40,6 +40,8 @@ public class ConveyorItemScript : MonoBehaviour
 
     TextMeshPro TMP;
 
+    public Transform itemLocation;
+
     #endregion
 
     #region Scripts
@@ -94,15 +96,6 @@ public class ConveyorItemScript : MonoBehaviour
         Machines[4] = fifthMachine;
     }
 
-    // Update is called once per frame
-    void Update()
-    { 
-        //if (Input.GetKeyUp(KeyCode.A))
-        //{
-        //    PauseHere = true;
-        //    Debug.Log("PUASE HERE PLS");
-        //}
-    }
     public void MakeItem()
     {
         switch (itemToMake_string)
@@ -127,6 +120,7 @@ public class ConveyorItemScript : MonoBehaviour
         StartCoroutine(MakeItem(currentOrder));
     }
 
+    #region Coroutines to move item Holders
     private IEnumerator MakeItem(int[] order)
     {
         resting = false;
@@ -321,25 +315,9 @@ public class ConveyorItemScript : MonoBehaviour
         }
     }
 
-    public bool StartTimer(float seconds)
-    {
-        if (ResetValues)
-        {
-           time = 0f;
-            ResetValues = false;
-        }
+    #endregion
 
-        time += Time.deltaTime;
-        Debug.Log(time);
-
-        if (seconds <= time)
-        {   
-            ResetValues = true;
-            PauseHere = false;
-            return true;
-        }
-        else return false;
-    }
+   
 
     public void GetCarrierInfront()
     {
@@ -404,6 +382,15 @@ public class ConveyorItemScript : MonoBehaviour
         currentRestPoint_int = 99;
     }
 
+
+
+    public void ChildItemToCarrier(GameObject gameObject)
+    {
+        if(itemLocation.childCount == 1)
+        {
+            gameObject.transform.parent = itemLocation;
+        }
+    }
     public void Debuging(string str)
     {
         Debug.Log(str);
@@ -413,6 +400,4 @@ public class ConveyorItemScript : MonoBehaviour
     {
         TMP.text = str;
     }
-    ///Known Issues: Plates 1+ would not save the script of the plate infront, cause an error
-    ///in circling function that if its close error occurs.
 }

@@ -39,6 +39,9 @@ public class Manager : MonoBehaviour
         DisplayCorrectNumberOfItemsToMake();
     }
 
+    /// <summary>
+    /// Used in display 2 where buttons are used to start producing itemss
+    /// </summary>
     public void StartProduction()
     {
         SortCarrier();
@@ -80,12 +83,15 @@ public class Manager : MonoBehaviour
         foreach(GameObject carry in carriersInOrder)
         {
             Debug.Log(carry.name);
-            ConveyorItemScript carrierScript = carry.GetComponent<ConveyorItemScript> ();
-
-            if(carrierScript.resting == true)
+            if (carry != null)
             {
-                //Debug.Log(carry.gameObject + "is resting! Moving now");
-                StartCoroutine(carrierScript.Circling());
+                ConveyorItemScript carrierScript = carry.GetComponent<ConveyorItemScript>();
+
+                if (carrierScript.resting == true)
+                {
+                    //Debug.Log(carry.gameObject + "is resting! Moving now");
+                    StartCoroutine(carrierScript.Circling());
+                }
             }
         }
     }
