@@ -42,7 +42,7 @@ public class Manager : MonoBehaviour
     /// <summary>
     /// Used in display 2 where buttons are used to start producing itemss
     /// </summary>
-    public void StartProduction()
+    public void StartProductionUI()
     {
         SortCarrier();
 
@@ -60,7 +60,7 @@ public class Manager : MonoBehaviour
         }
     }
 
-    public void StartProducingItem(string itemToMake)
+    public void StartProductionAR(string itemToMake)
     {
         SortCarrier();
 
@@ -82,7 +82,6 @@ public class Manager : MonoBehaviour
     {
         foreach(GameObject carry in carriersInOrder)
         {
-            Debug.Log(carry.name);
             if (carry != null)
             {
                 ConveyorItemScript carrierScript = carry.GetComponent<ConveyorItemScript>();
@@ -120,23 +119,23 @@ public class Manager : MonoBehaviour
         {
             case "Flashlight":
                 Debug.Log("Making flashLight!");
-                StartProducingItem(itemType);
+                StartProductionAR(itemType);
                 break;
             case "USB":
                 Debug.Log("Makine USB!");
-                StartProducingItem(itemType);
+                StartProductionAR(itemType);
                 break;
             case "PushButton":
                 Debug.Log("Making PushButton!");
-                StartProducingItem(itemType);
+                StartProductionAR(itemType);
                 break;
             case "Limit":
                 Debug.Log("Making Limit");
-                StartProducingItem(itemType);
+                StartProductionAR(itemType);
                 break;
             case "Wifi":
                 Debug.Log("Makine Wifi!");
-                StartProducingItem(itemType);
+                StartProductionAR(itemType);
                 break;
         }
     }

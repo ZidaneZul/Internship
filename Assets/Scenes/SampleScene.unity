@@ -7909,7 +7909,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2027803126}
         m_TargetAssemblyTypeName: Manager, Assembly-CSharp
-        m_MethodName: StartProduction
+        m_MethodName: StartProductionUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8172,6 +8172,7 @@ GameObject:
   - component: {fileID: 1537637388}
   - component: {fileID: 1537637386}
   - component: {fileID: 1537637387}
+  - component: {fileID: 1537637389}
   m_Layer: 0
   m_Name: Machine2
   m_TagString: Untagged
@@ -8250,6 +8251,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1537637389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537637384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4581acbc24c1a942b1f3af2aaf7cef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickMachine: {fileID: 3943288730981119631}
+  placeMachine: {fileID: 1587420299895642179}
+  pickClaw_GO: {fileID: 6412790116177034860}
+  placeClaw_GO: {fileID: 4111320966469929274}
+  carrier: {fileID: 0}
+  pointInMachine: {fileID: 0}
 --- !u!1 &1542415990 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
@@ -12858,6 +12877,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5078403942810642918}
+  - component: {fileID: 5078403942810642919}
   m_Layer: 0
   m_Name: Place_RC2
   m_TagString: Untagged
@@ -17004,6 +17024,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4733792588947941978}
   - component: {fileID: 4733792588947941979}
+  - component: {fileID: 4733792588947941980}
   m_Layer: 0
   m_Name: Pick_RC2
   m_TagString: Untagged
@@ -18373,6 +18394,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &4733792588947941980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3943288730981119631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4581acbc24c1a942b1f3af2aaf7cef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickMachine: {fileID: 0}
+  placeMachine: {fileID: 0}
+  pickClaw_GO: {fileID: 0}
+  placeClaw_GO: {fileID: 0}
+  carrier: {fileID: 0}
+  pointInMachine: {fileID: 0}
 --- !u!1 &4745988772475752694
 GameObject:
   m_ObjectHideFlags: 0
@@ -18898,6 +18937,26 @@ Transform:
   m_Father: {fileID: 1537637385}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &5078403942810642919
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1587420299895642179}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a21a84640c8cdc547b73147f68479412, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!4 &5078510865283862415
 Transform:
   m_ObjectHideFlags: 0

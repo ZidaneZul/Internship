@@ -77,10 +77,7 @@ public class MachineMaterialScript : MonoBehaviour
 
                 matsPointHolder.matWaiting = matPoint;
                 didAddNewMat = true;
-                //WRONG ITEM INSTANTIATEEEEE    
-                //Instantiate(, point.transform);
-                //matsPointHolder.matWaiting = material;
-                
+             
                 break;
             }
         }

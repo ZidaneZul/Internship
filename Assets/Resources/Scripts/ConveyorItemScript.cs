@@ -25,11 +25,11 @@ public class ConveyorItemScript : MonoBehaviour
     //to remember which machine it stopped at after finishing order
     public GameObject currentMachine_GO;
 
-    int[] FlashLightOrder = { 5, 3, 4 };
-    int[] USBOrder = { 5, 2, 4 };
-    int[] PushButtonOrder = { 5, 3, 1 };
-    int[] WifiOrder = { 5, 2, 3, 4, 1 };
-    int[] LimitSwitchOrder = { 5, 1, 4, 1 };
+    int[] FlashLightOrder = { 2, 3, 5};
+    int[] USBOrder = { 2, 3, 5 };
+    int[] PushButtonOrder = { 2, 3, 5 };
+    int[] WifiOrder = { 2, 2, 3, 4, 5};
+    int[] LimitSwitchOrder = { 2, 1, 4, 5};
 
     int[] currentOrder;
 
@@ -165,6 +165,11 @@ public class ConveyorItemScript : MonoBehaviour
                         if (i < order.Count())
                         {
                             currentMachineNumber = order[i];
+
+                            ///add code here to wait for animations
+                            ///change the wait for seconds below to something 
+                            ///else
+
                             yield return new WaitForSeconds(1f);
 
                         }
@@ -205,20 +210,20 @@ public class ConveyorItemScript : MonoBehaviour
         {
 
             foreach (GameObject point in pointsToFollow)
-            //to cycle thru the points and start to move after reaching the correct machine
+            ///to cycle thru the points and start to move after reaching the correct machine
             {
                 if (point == currentMachine_GO)
                 {
                     startGoing = true;
                 }
 
-                // while (Vector3.Distance(point.transform.position, transform.position) > 0.05f && startGoing)
+                ///while (Vector3.Distance(point.transform.position, transform.position) > 0.05f && startGoing)
                 while (point.transform.position != transform.position && startGoing)
                 {
-                    //Debug.Log("Distance is " + Vector3.Distance(currentRestPoint_GO.transform.position, transform.position)
+                   // Debug.Log(gameObject.name + " Distance is " + Vector3.Distance(currentRestPoint_GO.transform.position, transform.position)
                     //    + " to " + currentRestPoint_GO);
 
-                    //stops the carrier if its close to the item infront
+                    ///stops the carrier if its close to the item infront
                     while (IsCloseToFrontItem())
                     {
                         yield return null;
@@ -242,8 +247,6 @@ public class ConveyorItemScript : MonoBehaviour
             }
         }
     }
-
-
     public IEnumerator MoveUpRestBay()
     {
         TextChange("G");

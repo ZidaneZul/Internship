@@ -14,7 +14,6 @@ public class MaterialsScript : MonoBehaviour
 
     #region Scripts
 
-    MaterialSpawner matSpawner;
     Manager manager;
     public MachineMaterialScript machineMatScript;
 
@@ -27,7 +26,6 @@ public class MaterialsScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        matSpawner = GameObject.FindGameObjectWithTag("Manager").GetComponent<MaterialSpawner>();
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<Manager>();
         machineMatScript = GameObject.Find("Machine2").GetComponent<MachineMaterialScript>();
     }
@@ -37,13 +35,6 @@ public class MaterialsScript : MonoBehaviour
     {
 
     }
-    public void DeleteThis()
-    {
-        matSpawner.RemoveItem(gameObject);
-        matSpawner.SpawnMaterial();
-        Destroy(gameObject);
-    }
-
     public void TeleportBackToBox()
     {
         Debug.Log(gameObject + "is gonna tp back to box at " + spawnPoint.position);
