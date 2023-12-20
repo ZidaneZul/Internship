@@ -3323,8 +3323,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8db58282b46aa04aa8f6099e668e261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickRobot: {fileID: 0}
-  placeRobot: {fileID: 0}
+  pickRobot: {fileID: 6986873483126682789}
+  placeRobot: {fileID: 6530551173502769749}
 --- !u!1 &573179633
 GameObject:
   m_ObjectHideFlags: 0
@@ -4639,8 +4639,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8db58282b46aa04aa8f6099e668e261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickRobot: {fileID: 0}
-  placeRobot: {fileID: 0}
+  pickRobot: {fileID: 3571839542692626767}
+  placeRobot: {fileID: 1805125594951811780}
 --- !u!114 &914012300 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5569439093497552269, guid: 4d7e2f87fefe0ba468719b15288b46e7, type: 3}
@@ -6806,8 +6806,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8db58282b46aa04aa8f6099e668e261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickRobot: {fileID: 0}
-  placeRobot: {fileID: 0}
+  pickRobot: {fileID: 5121117620479850938}
+  placeRobot: {fileID: 5121117620479850938}
 --- !u!1 &1268445402
 GameObject:
   m_ObjectHideFlags: 0
@@ -7982,8 +7982,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8db58282b46aa04aa8f6099e668e261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickRobot: {fileID: 0}
-  placeRobot: {fileID: 0}
+  pickRobot: {fileID: 3042074279413938786}
+  placeRobot: {fileID: 9205336595513105879}
 --- !u!4 &1476391001 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
