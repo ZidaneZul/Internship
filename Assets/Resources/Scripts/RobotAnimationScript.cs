@@ -17,18 +17,12 @@ public class RobotAnimationScript : MonoBehaviour
       
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void PlayPickAnim()
+    public void PlayPickAnim()
     {
         anim.SetTrigger("Pick");
     }
 
-    void PlayPlaceAnim()
+    public void PlayPlaceAnim()
     {
         anim.SetTrigger("Place");
     }
@@ -45,5 +39,7 @@ public class RobotAnimationScript : MonoBehaviour
     {
         GO.transform.parent = pointInMachine.transform;
     }
+
+    
 
 }

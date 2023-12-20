@@ -347,11 +347,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   matWaiting: {fileID: 0}
---- !u!1 &61951092 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4260197178532356979, guid: 4089b8b4b90ebdf4ba596b2c14bc4558, type: 3}
-  m_PrefabInstance: {fileID: 1295904355}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &61951093 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4260197178532357005, guid: 4089b8b4b90ebdf4ba596b2c14bc4558, type: 3}
@@ -362,7 +357,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4260197178532357004, guid: 4089b8b4b90ebdf4ba596b2c14bc4558, type: 3}
   m_PrefabInstance: {fileID: 1295904355}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 61951092}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9e06805cc400b84b82e43658585546a, type: 3}
@@ -439,13 +434,53 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 435807788}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fifthMachine_GO
+      value: 
+      objectReference: {fileID: 1265448432}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: firstMachine_GO
+      value: 
+      objectReference: {fileID: 854554224}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: thirdMachine_GO
+      value: 
+      objectReference: {fileID: 556917107}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fourthMachine_GO
+      value: 
+      objectReference: {fileID: 1453840242}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: secondMachine_GO
+      value: 
+      objectReference: {fileID: 1537637384}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentOrderNumber
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fifthMachine_Point
+      value: 
+      objectReference: {fileID: 1260659176}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: firstMachine_Point
+      value: 
+      objectReference: {fileID: 359247092}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: thirdMachine_Point
+      value: 
+      objectReference: {fileID: 67545193}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentRestPoint_GO
       value: 
       objectReference: {fileID: 2056538370}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fourthMachine_Point
+      value: 
+      objectReference: {fileID: 326253172}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: secondMachine_Point
+      value: 
+      objectReference: {fileID: 435807788}
     - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -732,13 +767,53 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 435807788}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fifthMachine_GO
+      value: 
+      objectReference: {fileID: 1265448432}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: firstMachine_GO
+      value: 
+      objectReference: {fileID: 854554224}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: thirdMachine_GO
+      value: 
+      objectReference: {fileID: 556917107}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fourthMachine_GO
+      value: 
+      objectReference: {fileID: 1453840242}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: secondMachine_GO
+      value: 
+      objectReference: {fileID: 1537637384}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentOrderNumber
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fifthMachine_Point
+      value: 
+      objectReference: {fileID: 1260659176}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: firstMachine_Point
+      value: 
+      objectReference: {fileID: 359247092}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: thirdMachine_Point
+      value: 
+      objectReference: {fileID: 67545193}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentRestPoint_GO
       value: 
       objectReference: {fileID: 290427511}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fourthMachine_Point
+      value: 
+      objectReference: {fileID: 326253172}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: secondMachine_Point
+      value: 
+      objectReference: {fileID: 435807788}
     - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -3208,6 +3283,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 556917108}
+  - component: {fileID: 556917109}
   m_Layer: 0
   m_Name: Machine3
   m_TagString: Untagged
@@ -3235,6 +3311,20 @@ Transform:
   m_Father: {fileID: 9191177116889223686}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &556917109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556917107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8db58282b46aa04aa8f6099e668e261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickRobot: {fileID: 0}
+  placeRobot: {fileID: 0}
 --- !u!1 &573179633
 GameObject:
   m_ObjectHideFlags: 0
@@ -4507,6 +4597,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 854554225}
+  - component: {fileID: 854554226}
   m_Layer: 0
   m_Name: Machine1
   m_TagString: Untagged
@@ -4536,6 +4627,20 @@ Transform:
   m_Father: {fileID: 9191177116889223686}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &854554226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854554224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8db58282b46aa04aa8f6099e668e261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickRobot: {fileID: 0}
+  placeRobot: {fileID: 0}
 --- !u!114 &914012300 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5569439093497552269, guid: 4d7e2f87fefe0ba468719b15288b46e7, type: 3}
@@ -5586,11 +5691,6 @@ Transform:
   m_Father: {fileID: 411213222}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1072472316 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5483695675885736313, guid: 746aa4da04bae3642bd5ee4161cbe8f2, type: 3}
-  m_PrefabInstance: {fileID: 18622076}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1072472317 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5483695675885736327, guid: 746aa4da04bae3642bd5ee4161cbe8f2, type: 3}
@@ -5601,7 +5701,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5483695675885736326, guid: 746aa4da04bae3642bd5ee4161cbe8f2, type: 3}
   m_PrefabInstance: {fileID: 18622076}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072472316}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9e06805cc400b84b82e43658585546a, type: 3}
@@ -5968,13 +6068,53 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 435807788}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fifthMachine_GO
+      value: 
+      objectReference: {fileID: 1265448432}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: firstMachine_GO
+      value: 
+      objectReference: {fileID: 854554224}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: thirdMachine_GO
+      value: 
+      objectReference: {fileID: 556917107}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fourthMachine_GO
+      value: 
+      objectReference: {fileID: 1453840242}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: secondMachine_GO
+      value: 
+      objectReference: {fileID: 1537637384}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentOrderNumber
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fifthMachine_Point
+      value: 
+      objectReference: {fileID: 1260659176}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: firstMachine_Point
+      value: 
+      objectReference: {fileID: 359247092}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: thirdMachine_Point
+      value: 
+      objectReference: {fileID: 67545193}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentRestPoint_GO
       value: 
       objectReference: {fileID: 794413111}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fourthMachine_Point
+      value: 
+      objectReference: {fileID: 326253172}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: secondMachine_Point
+      value: 
+      objectReference: {fileID: 435807788}
     - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -6573,6 +6713,7 @@ GameObject:
   - component: {fileID: 1265448436}
   - component: {fileID: 1265448435}
   - component: {fileID: 1265448434}
+  - component: {fileID: 1265448437}
   m_Layer: 0
   m_Name: Machine5
   m_TagString: Untagged
@@ -6653,6 +6794,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1265448437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265448432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8db58282b46aa04aa8f6099e668e261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickRobot: {fileID: 0}
+  placeRobot: {fileID: 0}
 --- !u!1 &1268445402
 GameObject:
   m_ObjectHideFlags: 0
@@ -7394,11 +7549,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336297502}
   m_Mesh: {fileID: 4730331729558516046, guid: eac5ca40e77388745805ec6b7086fd4a, type: 3}
---- !u!1 &1402536391 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1600660539471773593, guid: bd4323f6e4012374e8087580c2d6aa21, type: 3}
-  m_PrefabInstance: {fileID: 379375787}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1402536392 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1600660539471773543, guid: bd4323f6e4012374e8087580c2d6aa21, type: 3}
@@ -7409,7 +7559,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1600660539471773542, guid: bd4323f6e4012374e8087580c2d6aa21, type: 3}
   m_PrefabInstance: {fileID: 379375787}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402536391}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9e06805cc400b84b82e43658585546a, type: 3}
@@ -7500,13 +7650,53 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 435807788}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fifthMachine_GO
+      value: 
+      objectReference: {fileID: 1265448432}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: firstMachine_GO
+      value: 
+      objectReference: {fileID: 854554224}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: thirdMachine_GO
+      value: 
+      objectReference: {fileID: 556917107}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fourthMachine_GO
+      value: 
+      objectReference: {fileID: 1453840242}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: secondMachine_GO
+      value: 
+      objectReference: {fileID: 1537637384}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentOrderNumber
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fifthMachine_Point
+      value: 
+      objectReference: {fileID: 1260659176}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: firstMachine_Point
+      value: 
+      objectReference: {fileID: 359247092}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: thirdMachine_Point
+      value: 
+      objectReference: {fileID: 67545193}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentRestPoint_GO
       value: 
       objectReference: {fileID: 233508449}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fourthMachine_Point
+      value: 
+      objectReference: {fileID: 326253172}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: secondMachine_Point
+      value: 
+      objectReference: {fileID: 435807788}
     - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -7750,6 +7940,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1453840243}
+  - component: {fileID: 1453840244}
   m_Layer: 0
   m_Name: Machine4
   m_TagString: Untagged
@@ -7779,6 +7970,20 @@ Transform:
   m_Father: {fileID: 9191177116889223686}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1453840244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1453840242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8db58282b46aa04aa8f6099e668e261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickRobot: {fileID: 0}
+  placeRobot: {fileID: 0}
 --- !u!4 &1476391001 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
@@ -7997,13 +8202,53 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 435807788}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fifthMachine_GO
+      value: 
+      objectReference: {fileID: 1265448432}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: firstMachine_GO
+      value: 
+      objectReference: {fileID: 854554224}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: thirdMachine_GO
+      value: 
+      objectReference: {fileID: 556917107}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fourthMachine_GO
+      value: 
+      objectReference: {fileID: 1453840242}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: secondMachine_GO
+      value: 
+      objectReference: {fileID: 1537637384}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentOrderNumber
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fifthMachine_Point
+      value: 
+      objectReference: {fileID: 1260659176}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: firstMachine_Point
+      value: 
+      objectReference: {fileID: 359247092}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: thirdMachine_Point
+      value: 
+      objectReference: {fileID: 67545193}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentRestPoint_GO
       value: 
       objectReference: {fileID: 1415048302}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fourthMachine_Point
+      value: 
+      objectReference: {fileID: 326253172}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: secondMachine_Point
+      value: 
+      objectReference: {fileID: 435807788}
     - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -8260,15 +8505,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1537637384}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4581acbc24c1a942b1f3af2aaf7cef2, type: 3}
+  m_Script: {fileID: 11500000, guid: b8db58282b46aa04aa8f6099e668e261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickMachine: {fileID: 3943288730981119631}
-  placeMachine: {fileID: 1587420299895642179}
-  pickClaw_GO: {fileID: 6412790116177034860}
-  placeClaw_GO: {fileID: 4111320966469929274}
-  carrier: {fileID: 0}
-  pointInMachine: {fileID: 0}
+  pickRobot: {fileID: 3943288730981119631}
+  placeRobot: {fileID: 1587420299895642179}
 --- !u!1 &1542415990 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
@@ -8314,13 +8555,53 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 435807788}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fifthMachine_GO
+      value: 
+      objectReference: {fileID: 1265448432}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: firstMachine_GO
+      value: 
+      objectReference: {fileID: 854554224}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: thirdMachine_GO
+      value: 
+      objectReference: {fileID: 556917107}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fourthMachine_GO
+      value: 
+      objectReference: {fileID: 1453840242}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: secondMachine_GO
+      value: 
+      objectReference: {fileID: 1537637384}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentOrderNumber
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fifthMachine_Point
+      value: 
+      objectReference: {fileID: 1260659176}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: firstMachine_Point
+      value: 
+      objectReference: {fileID: 359247092}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: thirdMachine_Point
+      value: 
+      objectReference: {fileID: 67545193}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentRestPoint_GO
       value: 
       objectReference: {fileID: 1712617786}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fourthMachine_Point
+      value: 
+      objectReference: {fileID: 326253172}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: secondMachine_Point
+      value: 
+      objectReference: {fileID: 435807788}
     - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -9424,11 +9705,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!1 &1903535996 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6734700941873210550, guid: 2d4ef58b8bba863429fd4c6e245ad702, type: 3}
-  m_PrefabInstance: {fileID: 1093751991}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1903535997 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6734700941873210440, guid: 2d4ef58b8bba863429fd4c6e245ad702, type: 3}
@@ -9439,7 +9715,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6734700941873210441, guid: 2d4ef58b8bba863429fd4c6e245ad702, type: 3}
   m_PrefabInstance: {fileID: 1093751991}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1903535996}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9e06805cc400b84b82e43658585546a, type: 3}
@@ -9758,13 +10034,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45dd2f08472c1c94888e88a6abf97fec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materials:
-  - {fileID: 1072472316}
-  - {fileID: 1402536391}
-  - {fileID: 1903535996}
-  - {fileID: 1677637048}
-  - {fileID: 61951092}
-  tempList: []
 --- !u!1001 &2029109880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9805,13 +10074,53 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 435807788}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fifthMachine_GO
+      value: 
+      objectReference: {fileID: 1265448432}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: firstMachine_GO
+      value: 
+      objectReference: {fileID: 854554224}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: thirdMachine_GO
+      value: 
+      objectReference: {fileID: 556917107}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fourthMachine_GO
+      value: 
+      objectReference: {fileID: 1453840242}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: secondMachine_GO
+      value: 
+      objectReference: {fileID: 1537637384}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentOrderNumber
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fifthMachine_Point
+      value: 
+      objectReference: {fileID: 1260659176}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: firstMachine_Point
+      value: 
+      objectReference: {fileID: 359247092}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: thirdMachine_Point
+      value: 
+      objectReference: {fileID: 67545193}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentRestPoint_GO
       value: 
       objectReference: {fileID: 1213625462}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fourthMachine_Point
+      value: 
+      objectReference: {fileID: 326253172}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: secondMachine_Point
+      value: 
+      objectReference: {fileID: 435807788}
     - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -15538,9 +15847,49 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 435807788}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fifthMachine_GO
+      value: 
+      objectReference: {fileID: 1265448432}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: firstMachine_GO
+      value: 
+      objectReference: {fileID: 854554224}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: thirdMachine_GO
+      value: 
+      objectReference: {fileID: 556917107}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fourthMachine_GO
+      value: 
+      objectReference: {fileID: 1453840242}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: secondMachine_GO
+      value: 
+      objectReference: {fileID: 1537637384}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fifthMachine_Point
+      value: 
+      objectReference: {fileID: 1260659176}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: firstMachine_Point
+      value: 
+      objectReference: {fileID: 359247092}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: thirdMachine_Point
+      value: 
+      objectReference: {fileID: 67545193}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentRestPoint_GO
       value: 
       objectReference: {fileID: 1268445402}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: fourthMachine_Point
+      value: 
+      objectReference: {fileID: 326253172}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: secondMachine_Point
+      value: 
+      objectReference: {fileID: 435807788}
     - target: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -18406,10 +18755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4581acbc24c1a942b1f3af2aaf7cef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickMachine: {fileID: 0}
-  placeMachine: {fileID: 0}
-  pickClaw_GO: {fileID: 0}
-  placeClaw_GO: {fileID: 0}
+  Claw_GO: {fileID: 0}
   carrier: {fileID: 0}
   pointInMachine: {fileID: 0}
 --- !u!1 &4745988772475752694

@@ -9,15 +9,15 @@ public class ConveyorItemScript : MonoBehaviour
 {
 
     #region Containers for Machines, Carriers and Orders
+
     public GameObject[] pointsToFollow;
     public GameObject[] carriers;
     public GameObject carrierInfront;
 
-    public GameObject firstMachine, secondMachine, thirdMachine, fourthMachine, fifthMachine;
-    public GameObject[] Machines = new GameObject[5];
-
-    Dictionary<GameObject, int> machineNumbers = new Dictionary<GameObject, int>();
-
+    public GameObject firstMachine_Point, secondMachine_Point, thirdMachine_Point, fourthMachine_Point, fifthMachine_Point;
+    public GameObject firstMachine_GO, secondMachine_GO, thirdMachine_GO, fourthMachine_GO, fifthMachine_GO;
+    public GameObject[] Machines_Points = new GameObject[5];
+    public GameObject[] Machines_GOs = new GameObject[5];
 
     public GameObject currentRestPoint_GO;
     public int currentRestPoint_int;
@@ -42,6 +42,8 @@ public class ConveyorItemScript : MonoBehaviour
 
     public Transform itemLocation;
 
+    public GameObject machineToRunAnimation;
+
     #endregion
 
     #region Scripts
@@ -50,6 +52,7 @@ public class ConveyorItemScript : MonoBehaviour
     public RestingScript restPointScript;
     public ConveyorItemScript carrierInfront_Script;
 
+    public MachineScript machineScript;
     #endregion
 
     #region Other Variables
@@ -83,17 +86,17 @@ public class ConveyorItemScript : MonoBehaviour
 
         GetCarrierInfront();
 
-        machineNumbers[firstMachine] = 1;
-        machineNumbers[secondMachine] = 2;
-        machineNumbers[thirdMachine] = 3;
-        machineNumbers[fourthMachine] = 4;
-        machineNumbers[fifthMachine] = 5;
+        Machines_Points[0] = firstMachine_Point;
+        Machines_Points[1] = secondMachine_Point;
+        Machines_Points[2] = thirdMachine_Point;
+        Machines_Points[3] = fourthMachine_Point;
+        Machines_Points[4] = fifthMachine_Point;
 
-        Machines[0] = firstMachine;
-        Machines[1] = secondMachine;
-        Machines[2] = thirdMachine;
-        Machines[3] = fourthMachine;
-        Machines[4] = fifthMachine;
+        Machines_GOs[0] = firstMachine_GO;
+        Machines_GOs[1] = secondMachine_GO;
+        Machines_GOs[2] = thirdMachine_GO;
+        Machines_GOs[3] = fourthMachine_GO;
+        Machines_GOs[4] = fifthMachine_GO;
     }
 
     public void MakeItem()
@@ -146,7 +149,7 @@ public class ConveyorItemScript : MonoBehaviour
 
                     while (IsCloseToFrontItem())
                     {
-                      //  Debug.Log("Stopppppppp");
+                        //  Debug.Log("Stopppppppp");
                         yield return null;
                     }
 
@@ -154,8 +157,11 @@ public class ConveyorItemScript : MonoBehaviour
 
                     ///if the plate is close enough, runs code to continue to the next machine order or reset to bay.
                     /// currentMachine - 1 is cuz array starts from 0 while naming the machines starts from 1
-                    if (Vector3.Distance(transform.position, Machines[currentMachineNumber - 1].transform.position) <= 0.1)
+                    if (Vector3.Distance(transform.position, Machines_Points[currentMachineNumber - 1].transform.position) <= 0.1)
                     {
+                        machineToRunAnimation = Machines_GOs[currentMachineNumber - 1];
+                        machineScript = machineToRunAnimation.GetComponent<MachineScript>();
+
                         i++;
 
                         
@@ -170,7 +176,8 @@ public class ConveyorItemScript : MonoBehaviour
                             ///change the wait for seconds below to something 
                             ///else
 
-                            yield return new WaitForSeconds(1f);
+                           // yield return new WaitForSeconds(1f);
+                            yield return new WaitUntil(() => machineScript.Timer(1f));
 
                         }
                         else
@@ -385,6 +392,10 @@ public class ConveyorItemScript : MonoBehaviour
         currentRestPoint_int = 99;
     }
 
+    public void MakeMachineDoAnimation()
+    {
+
+    }
 
 
     public void ChildItemToCarrier(GameObject gameObject)
