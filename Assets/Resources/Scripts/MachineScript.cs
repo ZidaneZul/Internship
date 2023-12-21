@@ -26,7 +26,6 @@ public class MachineScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 
     public void PlayPickAnimation()
@@ -40,15 +39,11 @@ public class MachineScript : MonoBehaviour
     }
     public bool Timer(float seconds)
     {
-        Debug.Log("TESTINTES timer");
         time += Time.deltaTime;
         while (time < seconds)
         {
-            Debug.Log("returning false");
-
             return false;
         }
-        Debug.Log("returning true");
         time = 0;
         return true;
     }

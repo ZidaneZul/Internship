@@ -176,20 +176,24 @@ public class ConveyorItemScript : MonoBehaviour
                             ///change the wait for seconds below to something 
                             ///else
 
-                           // yield return new WaitForSeconds(1f);
+                            // yield return new WaitForSeconds(1f);
+
+                            Debug.Log("Playing pick animation!");
+                            machineScript.PlayPickAnimation();
                             yield return new WaitUntil(() => machineScript.Timer(1f));
 
                         }
                         else
                         {
-                         //   Debug.Log("nothing to make!");
-
+                            //Debug.Log("nothing to make!");
+                            machineScript.PlayPickAnimation();
+                            yield return new WaitUntil(() => machineScript.Timer(1f));
                             StartCoroutine(ResetToBay());
 
                             yield break;
                         }
                     }
-                    yield return null;
+                    //yield return null;
                 }
                // Debug.Log("In foreach out of everything");
            }
@@ -274,7 +278,7 @@ public class ConveyorItemScript : MonoBehaviour
         {
             resting = true;
             TextChange("");
-            Debuging(gameObject + " MoveUpRestBay Complete \n Distance: " + Vector3.Distance(transform.position, currentRestPoint_GO.transform.position) + currentRestPoint_GO);
+           // Debuging(gameObject + " MoveUpRestBay Complete \n Distance: " + Vector3.Distance(transform.position, currentRestPoint_GO.transform.position) + currentRestPoint_GO);
             yield break;
         }
 

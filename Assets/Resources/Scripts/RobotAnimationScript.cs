@@ -19,11 +19,14 @@ public class RobotAnimationScript : MonoBehaviour
 
     public void PlayPickAnim()
     {
+        Debug.Log("PICK ANIM IN ROBOTANIMSCRIPT");
         anim.SetTrigger("Pick");
     }
 
     public void PlayPlaceAnim()
     {
+        Debug.Log("PLace ANIM IN ROBOTANIMSCRIPT");
+
         anim.SetTrigger("Place");
     }
 
