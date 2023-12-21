@@ -17,18 +17,26 @@ public class RobotAnimationScript : MonoBehaviour
       
     }
 
+    /// <summary>
+    /// Would rather use triggers but its running mulitple times so using bool to make it
+    /// run once
+    /// </summary>
     public void PlayPickAnim()
     {
-        Debug.Log("PICK ANIM IN ROBOTANIMSCRIPT");
-        anim.SetTrigger("Pick");
+        anim.SetBool("Pick", true);
     }
 
     public void PlayPlaceAnim()
     {
-        Debug.Log("PLace ANIM IN ROBOTANIMSCRIPT");
-
-        anim.SetTrigger("Place");
+        anim.SetBool("Place", true);
     }
+
+    public void ResetBools()
+    {
+        anim.SetBool("Pick", false);
+        anim.SetBool("Place", false);
+    }
+
 
     public void PickItemUp(GameObject item)
     {

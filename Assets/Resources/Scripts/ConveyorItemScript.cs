@@ -181,6 +181,7 @@ public class ConveyorItemScript : MonoBehaviour
                             Debug.Log("Playing pick animation!");
                             machineScript.PlayPickAnimation();
                             yield return new WaitUntil(() => machineScript.Timer(1f));
+                            machineScript.SetToIdle();
 
                         }
                         else
@@ -188,12 +189,16 @@ public class ConveyorItemScript : MonoBehaviour
                             //Debug.Log("nothing to make!");
                             machineScript.PlayPickAnimation();
                             yield return new WaitUntil(() => machineScript.Timer(1f));
+                            machineScript.SetToIdle();
+
+
                             StartCoroutine(ResetToBay());
+
 
                             yield break;
                         }
                     }
-                    //yield return null;
+                    yield return null;
                 }
                // Debug.Log("In foreach out of everything");
            }

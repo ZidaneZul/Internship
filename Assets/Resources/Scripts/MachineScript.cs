@@ -37,6 +37,12 @@ public class MachineScript : MonoBehaviour
     {
         placeRobot_animScript.PlayPlaceAnim();
     }
+    public void SetToIdle()
+    {
+        pickRobot_animScript.ResetBools();
+        placeRobot_animScript.ResetBools();
+    }
+
     public bool Timer(float seconds)
     {
         time += Time.deltaTime;
