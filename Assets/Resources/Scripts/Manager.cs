@@ -19,12 +19,16 @@ public class Manager : MonoBehaviour
 
     public List<string> ListOfItemsToMake = new List<string>();
 
+    MachineMaterialScript machineMatsScript;
+
     // Start is called before the first frame update
     void Start()
     {
         points = GameObject.FindGameObjectsWithTag("StopPoint");
         carriers = GameObject.FindGameObjectsWithTag("Carrier");
         restPoints = GameObject.FindGameObjectsWithTag("RestPoint");
+
+        machineMatsScript = GameObject.Find("Machine2").GetComponent<MachineMaterialScript>();
     }
 
     // Update is called once per frame
@@ -54,6 +58,8 @@ public class Manager : MonoBehaviour
                 string currentItemToMake = ListOfItemsToMake[0];
                 carrierScript.itemToMake_string = currentItemToMake;
                 ListOfItemsToMake.Remove(currentItemToMake);
+
+                
 
                 carrierScript.MakeItem();
             }
@@ -185,6 +191,7 @@ public class Manager : MonoBehaviour
         Amt.text = FlashLight.ToString() + "\n" + USB.ToString() +
             "\n" + Wifi.ToString() + "\n" + LimitButton.ToString() + "\n" + PushButton.ToString();
         ListOfItemsToMake.Add("Wifi");
+        machineMatsScript.PutMatsOnPoint("Wifi");
     }
     public void AddLimit()
     {
@@ -192,6 +199,8 @@ public class Manager : MonoBehaviour
         Amt.text = FlashLight.ToString() + "\n" + USB.ToString() +
                     "\n" + Wifi.ToString() + "\n" + LimitButton.ToString() + "\n" + PushButton.ToString();
         ListOfItemsToMake.Add("Limit");
+        machineMatsScript.PutMatsOnPoint("Limit");
+
     }
     public void AddFlashLight()
     {
@@ -199,6 +208,8 @@ public class Manager : MonoBehaviour
         Amt.text = FlashLight.ToString() + "\n" + USB.ToString() +
                     "\n" + Wifi.ToString() + "\n" + LimitButton.ToString() + "\n" + PushButton.ToString();
         ListOfItemsToMake.Add("Flashlight");
+        machineMatsScript.PutMatsOnPoint("Flashlight");
+
     }
     public void AddUSB()
     {
@@ -206,6 +217,8 @@ public class Manager : MonoBehaviour
         Amt.text = FlashLight.ToString() + "\n" + USB.ToString() +
                     "\n" + Wifi.ToString() + "\n" + LimitButton.ToString() + "\n" + PushButton.ToString();
         ListOfItemsToMake.Add("USB");
+        machineMatsScript.PutMatsOnPoint("USB");
+
     }
     public void AddPushButton()
     {
@@ -213,6 +226,8 @@ public class Manager : MonoBehaviour
         Amt.text = FlashLight.ToString() + "\n" + USB.ToString() +
                     "\n" + Wifi.ToString() + "\n" + LimitButton.ToString() + "\n" + PushButton.ToString();
         ListOfItemsToMake.Add("PushButton");
+        machineMatsScript.PutMatsOnPoint("PushButton");
+
     }
     #endregion
 }
