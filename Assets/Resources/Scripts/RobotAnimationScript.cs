@@ -10,11 +10,15 @@ public class RobotAnimationScript : MonoBehaviour
 
     public GameObject carrier, pointInMachine;
 
+    public bool canCarrierGo;
+
+    public MachineScript parentMachineScript;
+
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
-      
+      parentMachineScript = transform.parent.GetComponent<MachineScript>();
     }
 
     /// <summary>
@@ -23,18 +27,29 @@ public class RobotAnimationScript : MonoBehaviour
     /// </summary>
     public void PlayPickAnim()
     {
+        canCarrierGo = false;
         anim.SetBool("Pick", true);
+    }
+
+    public void PlayPlaceOnPick()
+    {
+        Debug.Log("playing place anim after pick");
+        anim.SetBool("Pick", false);
+        parentMachineScript.PlayPlaceAnimation();
     }
 
     public void PlayPlaceAnim()
     {
+        canCarrierGo = false;
         anim.SetBool("Place", true);
     }
+
 
     public void ResetBools()
     {
         anim.SetBool("Pick", false);
         anim.SetBool("Place", false);
+        canCarrierGo = false;
     }
 
 
@@ -51,6 +66,11 @@ public class RobotAnimationScript : MonoBehaviour
         GO.transform.parent = pointInMachine.transform;
     }
 
-    
+    public void SetBoolForCarriersToGo()
+    {
+        canCarrierGo = true;
+    }
+
+
 
 }

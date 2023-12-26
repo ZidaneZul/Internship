@@ -180,15 +180,20 @@ public class ConveyorItemScript : MonoBehaviour
 
                             Debug.Log("Playing pick animation!");
                             machineScript.PlayPickAnimation();
-                            yield return new WaitUntil(() => machineScript.Timer(1f));
+
+                            //yield return new WaitForSeconds(1f);
+
+                            //machineScript.PlayPlaceAnimation();
+                            yield return new WaitUntil(() => machineScript.GetBoolFromBothMachine());
                             machineScript.SetToIdle();
 
                         }
+                        ///This else statement will always be for the last machine, which is cell 5
                         else
                         {
                             //Debug.Log("nothing to make!");
                             machineScript.PlayPickAnimation();
-                            yield return new WaitUntil(() => machineScript.Timer(1f));
+                            yield return new WaitUntil(() => machineScript.GetBoolFromBothMachine());
                             machineScript.SetToIdle();
 
 

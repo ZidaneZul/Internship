@@ -33,6 +33,7 @@ public class MachineScript : MonoBehaviour
         pickRobot_animScript.PlayPickAnim();
     }
 
+
     public void PlayPlaceAnimation()
     {
         placeRobot_animScript.PlayPlaceAnim();
@@ -41,6 +42,17 @@ public class MachineScript : MonoBehaviour
     {
         pickRobot_animScript.ResetBools();
         placeRobot_animScript.ResetBools();
+    }
+    public bool GetBoolFromBothMachine()
+    {
+        if(pickRobot_animScript.canCarrierGo || placeRobot_animScript.canCarrierGo)
+        {
+            return true;
+        }
+        else
+        {
+            return false;   
+        }
     }
 
     public bool Timer(float seconds)
