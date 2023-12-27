@@ -12,6 +12,8 @@ public class MachineScript : MonoBehaviour
 
     float time = 0;
 
+    bool canCarrierMoveOn = false;  
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +35,16 @@ public class MachineScript : MonoBehaviour
         pickRobot_animScript.PlayPickAnim();
     }
 
+    public void PlayPickTrigger()
+    {
+        pickRobot_animScript.PickTrigger();
+    }
+
+    public void PlayPlaceTrigger()
+    {
+        placeRobot_animScript.PlaceTrigger();
+    }
+
 
     public void PlayPlaceAnimation()
     {
@@ -43,7 +55,7 @@ public class MachineScript : MonoBehaviour
         pickRobot_animScript.ResetBools();
         placeRobot_animScript.ResetBools();
     }
-    public bool GetBoolFromBothMachine()
+    public bool GetCanCarrierGoBoolFromBothMachine()
     {
         if(pickRobot_animScript.canCarrierGo || placeRobot_animScript.canCarrierGo)
         {
@@ -51,8 +63,31 @@ public class MachineScript : MonoBehaviour
         }
         else
         {
-            return false;   
+            return false;
         }
+    }
+
+    public bool GetIsMachineAnimationBoolFromBothMachine()
+    {
+        if (pickRobot_animScript.isAnimationDone || placeRobot_animScript.isAnimationDone)
+        {
+            return true;
+        }
+        else return false;
+    }
+
+    public bool AllowCarrierToMoveOn()
+    {
+        if (canCarrierMoveOn)
+        {
+            return true;
+        }
+         return false;
+    }
+    public void ResetBothMachineBools()
+    {
+        pickRobot_animScript.ResetBools();
+        placeRobot_animScript.ResetBools();
     }
 
     public bool Timer(float seconds)
@@ -64,5 +99,82 @@ public class MachineScript : MonoBehaviour
         }
         time = 0;
         return true;
+    }
+
+    public IEnumerator RunMachineSequence(int machineNumber,GameObject carrier)
+    {
+        canCarrierMoveOn = false;
+        switch (machineNumber)
+        {
+            case 0:
+                break;
+            case 1:
+                if(gameObject.name == "Machine1")
+                {
+                    PlayPickTrigger();
+                    yield return new WaitUntil(() => pickRobot_animScript.isAnimationDone);
+                    ResetBothMachineBools();
+
+                    PlayPlaceAnimation();
+                    yield return new WaitUntil(() => placeRobot_animScript.isAnimationDone);
+                    ResetBothMachineBools();
+
+                    canCarrierMoveOn = true;
+
+                }
+                break;
+            case 2:
+                if(gameObject.name == "Machine2")
+                {
+                    PlayPickTrigger();
+                    yield return new WaitUntil(() => pickRobot_animScript.isAnimationDone);
+                    ResetBothMachineBools();
+                    
+                    canCarrierMoveOn = true;
+
+                }
+                break;
+            case 3:
+                if (gameObject.name == "Machine3")
+                {
+                    PlayPickTrigger();
+                    yield return new WaitUntil(() => pickRobot_animScript.isAnimationDone);
+                    ResetBothMachineBools();
+
+                    PlayPlaceAnimation();
+                    yield return new WaitUntil(() => placeRobot_animScript.isAnimationDone);
+                    ResetBothMachineBools();
+
+                    canCarrierMoveOn = true;
+
+                }
+                break;
+            case 4:
+                if (gameObject.name == "Machine4")
+                {
+                    PlayPickTrigger();
+                    yield return new WaitUntil(() => pickRobot_animScript.isAnimationDone);
+                    ResetBothMachineBools();
+
+                    PlayPlaceAnimation();
+                    yield return new WaitUntil(() => placeRobot_animScript.isAnimationDone);
+                    ResetBothMachineBools();
+
+                    canCarrierMoveOn = true;
+
+                }
+                break;
+            case 5:
+                if (gameObject.name == "Machine5")
+                {
+                    PlayPlaceAnimation();
+                    yield return new WaitUntil(() => placeRobot_animScript.isAnimationDone);
+                    ResetBothMachineBools();
+
+                    canCarrierMoveOn = true;
+
+                }
+                break;
+        }
     }
 }

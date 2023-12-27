@@ -25,11 +25,11 @@ public class ConveyorItemScript : MonoBehaviour
     //to remember which machine it stopped at after finishing order
     public GameObject currentMachine_GO;
 
-    int[] FlashLightOrder = { 2, 3, 5};
-    int[] USBOrder = { 2, 3, 5 };
-    int[] PushButtonOrder = { 2, 3, 5 };
-    int[] WifiOrder = { 2, 2, 3, 4, 5};
-    int[] LimitSwitchOrder = { 2, 1, 4, 5};
+    int[] FlashLightOrder = { 2, 3, 5, 2 };
+    int[] USBOrder = { 2, 3, 5, 2 };
+    int[] PushButtonOrder = { 2, 3, 5, 2 };
+    int[] WifiOrder = { 2, 2, 3, 4, 5, 2 };
+    int[] LimitSwitchOrder = { 2, 1, 4, 5, 2 };
 
     int[] currentOrder;
 
@@ -70,6 +70,8 @@ public class ConveyorItemScript : MonoBehaviour
 
     public bool resting = true;
     public bool pastRestPoint = false;
+
+    public bool pastStartingMachine = false;
 
     #endregion
 
@@ -132,24 +134,31 @@ public class ConveyorItemScript : MonoBehaviour
         int i = 0;
         RemoveRestBayValue();
         currentMachineNumber = order[i];
+        Debug.Log("before running foreach loop, i= " + currentMachineNumber);
 
         TextChange("M");
 
+        ///this foreach loop is just so that the carrier would not be stuck after looping
+        ///pointsToFollow once
         foreach (int int1 in order)
         {
+            ///goes thru points in the machine for the carrier to follow
             foreach (GameObject point in pointsToFollow)
             {
-                //while loop runs if the plate is far from the point to follow
+                ///while loop runs if the plate is far from the point to follow
                 while (Vector3.Distance(point.transform.position, transform.position) > 0.05f)
                 {
                     ///moves the plate using the transform position
                     transform.position = Vector3.MoveTowards(transform.position, point.transform.position, speed * Time.deltaTime);
 
+                    ///to remember which machine the carrier would be in after finishing producing the 
+                    ///item. Makes it so running ResetToBay the carrier would follow the correect points
+                    ///instead of floating to the starting point and looping arond from there.
                     currentMachine_GO = point;
 
+                    ///To make the carrier stop when its too close to the carrier infront
                     while (IsCloseToFrontItem())
                     {
-                        //  Debug.Log("Stopppppppp");
                         yield return null;
                     }
 
@@ -162,44 +171,55 @@ public class ConveyorItemScript : MonoBehaviour
                         machineToRunAnimation = Machines_GOs[currentMachineNumber - 1];
                         machineScript = machineToRunAnimation.GetComponent<MachineScript>();
 
+                        ///THE CODE TO RUN ANIMATIONS AND WAIT FOR MACHINE SHOULD BE HERE INSTEADDDDDD!!!!!
+                        ///
+
+
+                        StartCoroutine(machineScript.RunMachineSequence(currentMachineNumber, gameObject));
+                        yield return new WaitUntil(() => machineScript.AllowCarrierToMoveOn());
+
+                        ///i is used to get the value in the array of machine order. Helps to check if the next cycle of this 
+                        ///code
+                        ///would be needed to be ran again. Checks if there is a next machine or not
+                        ///If i++ would be bigger than the array of machine order, make the carrier run ResetToBay(), 
+                        ///else continue with the 
+                        ///next machine.
                         i++;
 
-                        
+
                         //Debug.Log("conveyor item value i is " + i + "\n" +
-                         //   "order count is " + order.Count());
+                        //   "order count is " + order.Count());
+                        //if (i == 1)
+                        //{
+                        //    Debug.Log("First machine");
+                        //    currentMachineNumber = order[i];
+                        //    machineScript.PlayPickTrigger();
+
+                            //    yield return null;
+                            //}
 
                         if (i < order.Count())
                         {
                             currentMachineNumber = order[i];
+                            Debug.Log("Current machine number is " + currentMachineNumber);
 
                             ///add code here to wait for animations
                             ///change the wait for seconds below to something 
                             ///else
 
-                            // yield return new WaitForSeconds(1f);
+                            //Debug.Log("Playing pick animation!");
+                            //machineScript.PlayPickAnimation();
 
-                            Debug.Log("Playing pick animation!");
-                            machineScript.PlayPickAnimation();
-
-                            //yield return new WaitForSeconds(1f);
 
                             //machineScript.PlayPlaceAnimation();
-                            yield return new WaitUntil(() => machineScript.GetBoolFromBothMachine());
-                            machineScript.SetToIdle();
+                            //yield return new WaitUntil(() => machineScript.AllowCarrierToMoveOn());
+                            //machineScript.SetToIdle();
 
                         }
-                        ///This else statement will always be for the last machine, which is cell 5
+                        ///This else statement will run after finishing all the machine order
                         else
                         {
-                            //Debug.Log("nothing to make!");
-                            machineScript.PlayPickAnimation();
-                            yield return new WaitUntil(() => machineScript.GetBoolFromBothMachine());
-                            machineScript.SetToIdle();
-
-
                             StartCoroutine(ResetToBay());
-
-
                             yield break;
                         }
                     }

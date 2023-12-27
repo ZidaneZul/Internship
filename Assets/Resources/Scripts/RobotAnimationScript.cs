@@ -10,7 +10,7 @@ public class RobotAnimationScript : MonoBehaviour
 
     public GameObject carrier, pointInMachine;
 
-    public bool canCarrierGo;
+    public bool canCarrierGo, isAnimationDone;
 
     public MachineScript parentMachineScript;
 
@@ -28,42 +28,49 @@ public class RobotAnimationScript : MonoBehaviour
     public void PlayPickAnim()
     {
         canCarrierGo = false;
+        isAnimationDone = false; 
         anim.SetBool("Pick", true);
+    }
+
+    public void PickTrigger()
+    {
+        canCarrierGo = false;
+        isAnimationDone = false;
+        anim.SetTrigger("PickTrigger");
+    }
+    public void PlaceTrigger()
+    {
+        canCarrierGo=false;
+        isAnimationDone=false;
+        anim.SetTrigger("PlaceTrigger");
     }
 
     public void PlayPlaceOnPick()
     {
         Debug.Log("playing place anim after pick");
         anim.SetBool("Pick", false);
+        isAnimationDone = false;
         parentMachineScript.PlayPlaceAnimation();
     }
 
     public void PlayPlaceAnim()
     {
         canCarrierGo = false;
+        isAnimationDone = false;
         anim.SetBool("Place", true);
     }
-
-
     public void ResetBools()
     {
         anim.SetBool("Pick", false);
         anim.SetBool("Place", false);
         canCarrierGo = false;
+        isAnimationDone = false;
     }
 
-
-    public void PickItemUp(GameObject item)
+    public void EndOfAnimation()
     {
-        item.transform.parent = Claw_GO.transform;
-    }
-    public void PlaceItemOnCarrier(GameObject gameObject)
-    {
-        gameObject.transform.parent = carrier.transform;
-    }
-    public void PlaceItemInside(GameObject GO)
-    {
-        GO.transform.parent = pointInMachine.transform;
+        isAnimationDone = true;
+        
     }
 
     public void SetBoolForCarriersToGo()
