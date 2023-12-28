@@ -101,8 +101,9 @@ public class MachineScript : MonoBehaviour
         return true;
     }
 
-    public IEnumerator RunMachineSequence(int machineNumber,GameObject carrier)
+    public IEnumerator RunMachineSequence(int machineNumber,GameObject carrier, ConveyorItemScript carrierScript)
     {
+        Debug.Log("gameobject is " + carrier +"\n where as script is " + carrierScript.gameObject);
         canCarrierMoveOn = false;
         switch (machineNumber)
         {
@@ -124,14 +125,23 @@ public class MachineScript : MonoBehaviour
                 }
                 break;
             case 2:
-                if(gameObject.name == "Machine2")
+                Debug.Log("CARRIER SCRIPT BOOL IS " + carrierScript.pastStartingMachine);
+                if(gameObject.name == "Machine2" && !carrierScript.pastStartingMachine)
                 {
-                    PlayPickTrigger();
-                    yield return new WaitUntil(() => pickRobot_animScript.isAnimationDone);
+                    PlayPlaceAnimation();
+                    yield return new WaitUntil(() => placeRobot_animScript.isAnimationDone);
                     ResetBothMachineBools();
                     
                     canCarrierMoveOn = true;
+                    carrierScript.pastStartingMachine = true;
+                }
+                else if(gameObject.name == "Machine2" && carrierScript.pastStartingMachine)
+                {
+                    PlayPickAnimation();
+                    yield return new WaitUntil(() => pickRobot_animScript.isAnimationDone);
+                    ResetBothMachineBools();
 
+                    canCarrierMoveOn= true;
                 }
                 break;
             case 3:

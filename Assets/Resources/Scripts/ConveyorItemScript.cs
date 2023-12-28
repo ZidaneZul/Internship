@@ -25,10 +25,10 @@ public class ConveyorItemScript : MonoBehaviour
     //to remember which machine it stopped at after finishing order
     public GameObject currentMachine_GO;
 
-    int[] FlashLightOrder = { 2, 3, 5, 2 };
+    int[] FlashLightOrder = { 2, 3, 2 };
     int[] USBOrder = { 2, 3, 5, 2 };
     int[] PushButtonOrder = { 2, 3, 5, 2 };
-    int[] WifiOrder = { 2, 2, 3, 4, 5, 2 };
+    int[] WifiOrder = { 2, 3, 4, 2 };
     int[] LimitSwitchOrder = { 2, 1, 4, 5, 2 };
 
     int[] currentOrder;
@@ -175,7 +175,7 @@ public class ConveyorItemScript : MonoBehaviour
                         ///
 
 
-                        StartCoroutine(machineScript.RunMachineSequence(currentMachineNumber, gameObject));
+                        StartCoroutine(machineScript.RunMachineSequence(currentMachineNumber, gameObject, this));
                         yield return new WaitUntil(() => machineScript.AllowCarrierToMoveOn());
 
                         ///i is used to get the value in the array of machine order. Helps to check if the next cycle of this 
@@ -277,6 +277,7 @@ public class ConveyorItemScript : MonoBehaviour
                     {
                         Debuging("ResetToBay complete");
                         resting = true;
+                        pastStartingMachine = false;
                         TextChange("");
                         yield break;
                     }
