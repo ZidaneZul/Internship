@@ -16,7 +16,9 @@ public class ConveyorItemScript : MonoBehaviour
 
     public GameObject firstMachine_Point, secondMachine_Point, thirdMachine_Point, fourthMachine_Point, fifthMachine_Point;
     public GameObject firstMachine_GO, secondMachine_GO, thirdMachine_GO, fourthMachine_GO, fifthMachine_GO;
+    [HideInInspector]
     public GameObject[] Machines_Points = new GameObject[5];
+    [HideInInspector]
     public GameObject[] Machines_GOs = new GameObject[5];
 
     public GameObject currentRestPoint_GO;
@@ -24,6 +26,12 @@ public class ConveyorItemScript : MonoBehaviour
 
     //to remember which machine it stopped at after finishing order
     public GameObject currentMachine_GO;
+
+    public GameObject machineToRunAnimation;
+
+    public GameObject material;
+    public GameObject itemLocation;
+
 
     int[] FlashLightOrder = { 2, 3, 2 };
     int[] USBOrder = { 2, 3, 5, 2 };
@@ -40,10 +48,8 @@ public class ConveyorItemScript : MonoBehaviour
 
     TextMeshPro TMP;
 
-    public Transform itemLocation;
 
-    public GameObject machineToRunAnimation;
-
+    
     #endregion
 
     #region Scripts
@@ -173,7 +179,9 @@ public class ConveyorItemScript : MonoBehaviour
 
                         ///THE CODE TO RUN ANIMATIONS AND WAIT FOR MACHINE SHOULD BE HERE INSTEADDDDDD!!!!!
                         ///
+                       machineScript.SetMaterialToCarrier(this);
 
+                        machineScript.GetCarrierProperties(material, itemLocation);
 
                         StartCoroutine(machineScript.RunMachineSequence(currentMachineNumber, gameObject, this));
                         yield return new WaitUntil(() => machineScript.AllowCarrierToMoveOn());
@@ -427,19 +435,6 @@ public class ConveyorItemScript : MonoBehaviour
         currentRestPoint_int = 99;
     }
 
-    public void MakeMachineDoAnimation()
-    {
-
-    }
-
-
-    public void ChildItemToCarrier(GameObject gameObject)
-    {
-        if(itemLocation.childCount == 1)
-        {
-            gameObject.transform.parent = itemLocation;
-        }
-    }
     public void Debuging(string str)
     {
         Debug.Log(str);

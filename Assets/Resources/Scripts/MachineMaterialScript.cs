@@ -8,7 +8,7 @@ public class MachineMaterialScript : MonoBehaviour
 
     BoxCollider boxColl;
     Manager manager;
-    MaterialPointHolder matsPointHolder;
+    MaterialPointHolder matsPointHolder, matsPointHolder2;
 
     #endregion
 
@@ -82,5 +82,19 @@ public class MachineMaterialScript : MonoBehaviour
             }
         }
     }
-    
+
+    public void SetCarrierMaterial(ConveyorItemScript carrierScript)
+    {
+        foreach(GameObject point in Mats_Points)
+        {
+            matsPointHolder2 = point.GetComponent<MaterialPointHolder>();
+
+            if(matsPointHolder2.matWaiting != null)
+            {
+                carrierScript.material = matsPointHolder2.matWaiting;
+            }
+        }
+    }
+
+
 }

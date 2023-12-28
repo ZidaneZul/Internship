@@ -6,19 +6,19 @@ public class RobotAnimationScript : MonoBehaviour
 {
     Animator anim;
 
-    public GameObject Claw_GO;
-
-    public GameObject carrier, pointInMachine;
+    public GameObject Claw_GO, pointInMachine, carrierPoint;
 
     public bool canCarrierGo, isAnimationDone;
 
     public MachineScript parentMachineScript;
 
+    public GameObject materialToParent;
+
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
-      parentMachineScript = transform.parent.GetComponent<MachineScript>();
+        parentMachineScript = transform.parent.GetComponent<MachineScript>();
     }
 
     /// <summary>
@@ -76,6 +76,28 @@ public class RobotAnimationScript : MonoBehaviour
     public void SetBoolForCarriersToGo()
     {
         canCarrierGo = true;
+    }
+
+    public void ParentMatToCLaw()
+    {
+        materialToParent.transform.parent = Claw_GO.transform;
+    }
+
+    public void ParentMatToPointInMachine()
+    {
+        materialToParent.transform.parent = pointInMachine.transform; 
+    }
+
+    public void ParentMatToCarrier()
+    {
+        materialToParent.transform.parent = carrierPoint.transform;
+    }
+
+    public void GetMaterialAndCarrierPoint(GameObject material, GameObject carryPoint)
+    {
+        Debug.Log("rooted function is running");
+        materialToParent = material;
+        carrierPoint = carryPoint;
     }
 
 

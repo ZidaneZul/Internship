@@ -6,21 +6,19 @@ public class MachineScript : MonoBehaviour
 {
     public GameObject pickRobot, placeRobot;
 
-    Animator pickRobot_anim, placeRobot_anim;
-
     RobotAnimationScript pickRobot_animScript, placeRobot_animScript;
 
     float time = 0;
 
-    bool canCarrierMoveOn = false;  
+    bool canCarrierMoveOn = false;
+
+    MachineMaterialScript machineMatsScript;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        pickRobot_anim = pickRobot.GetComponent<Animator>();
-        placeRobot_anim = placeRobot.GetComponent<Animator>();
-        
+        machineMatsScript = GameObject.Find("Machine2").GetComponent<MachineMaterialScript>();
         pickRobot_animScript = pickRobot.GetComponent<RobotAnimationScript>();
         placeRobot_animScript = placeRobot.GetComponent<RobotAnimationScript>();
     }
@@ -34,7 +32,10 @@ public class MachineScript : MonoBehaviour
     {
         pickRobot_animScript.PlayPickAnim();
     }
-
+    public void PlayPlaceAnimation()
+    {
+        placeRobot_animScript.PlayPlaceAnim();
+    }
     public void PlayPickTrigger()
     {
         pickRobot_animScript.PickTrigger();
@@ -45,11 +46,6 @@ public class MachineScript : MonoBehaviour
         placeRobot_animScript.PlaceTrigger();
     }
 
-
-    public void PlayPlaceAnimation()
-    {
-        placeRobot_animScript.PlayPlaceAnim();
-    }
     public void SetToIdle()
     {
         pickRobot_animScript.ResetBools();
@@ -125,8 +121,8 @@ public class MachineScript : MonoBehaviour
                 }
                 break;
             case 2:
-                Debug.Log("CARRIER SCRIPT BOOL IS " + carrierScript.pastStartingMachine);
-                if(gameObject.name == "Machine2" && !carrierScript.pastStartingMachine)
+
+                if (gameObject.name == "Machine2" && !carrierScript.pastStartingMachine)
                 {
                     PlayPlaceAnimation();
                     yield return new WaitUntil(() => placeRobot_animScript.isAnimationDone);
@@ -187,4 +183,18 @@ public class MachineScript : MonoBehaviour
                 break;
         }
     }
+
+    public void GetCarrierProperties(GameObject material, GameObject carryPoint)
+    {
+        Debug.Log("In the machine SCriopt" + material.name + carryPoint.name);
+        pickRobot_animScript.GetMaterialAndCarrierPoint(material, carryPoint);
+        placeRobot_animScript.GetMaterialAndCarrierPoint(material,carryPoint);
+    }
+
+    public void SetMaterialToCarrier(ConveyorItemScript carrierScript)
+    {
+        machineMatsScript.SetCarrierMaterial(carrierScript);
+
+    }
+
 }
