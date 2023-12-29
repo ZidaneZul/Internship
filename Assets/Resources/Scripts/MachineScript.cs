@@ -14,6 +14,7 @@ public class MachineScript : MonoBehaviour
 
     MachineMaterialScript machineMatsScript;
 
+    public GameObject pointInMachine;
 
     // Start is called before the first frame update
     void Start()

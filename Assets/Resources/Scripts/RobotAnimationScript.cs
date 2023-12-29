@@ -6,7 +6,7 @@ public class RobotAnimationScript : MonoBehaviour
 {
     Animator anim;
 
-    public GameObject Claw_GO, pointInMachine, carrierPoint;
+    public GameObject Claw_GO, carrierPoint;
 
     public bool canCarrierGo, isAnimationDone;
 
@@ -14,11 +14,15 @@ public class RobotAnimationScript : MonoBehaviour
 
     public GameObject materialToParent;
 
+    GameObject pointInMachine;
+
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         parentMachineScript = transform.parent.GetComponent<MachineScript>();
+
+        pointInMachine = parentMachineScript.pointInMachine;
     }
 
     /// <summary>
