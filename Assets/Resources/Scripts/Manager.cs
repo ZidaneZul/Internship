@@ -11,6 +11,8 @@ public class Manager : MonoBehaviour
     public GameObject[] restPoints;
     public GameObject[] carriers;
 
+    public GameObject finalFlashLight, finalUSB, finalPushButton, finalWifi, finalLimitSwitch;
+
     public GameObject[] carriersInOrder = new GameObject[8];
 
     public int Wifi, LimitButton, FlashLight, USB, PushButton;
@@ -142,6 +144,37 @@ public class Manager : MonoBehaviour
             case "Wifi":
                 Debug.Log("Makine Wifi!");
                 StartProductionAR(itemType);
+                break;
+        }
+    }
+
+    public void SwitchToFinalProduct(string matName, GameObject matGO, Transform itemPosition, ConveyorItemScript script)
+    {
+        Destroy(matGO);
+        GameObject tempGO;
+
+        switch (matName)
+        {
+            case "Flashlight":
+                tempGO = Instantiate(finalFlashLight, itemPosition, true);
+                tempGO.transform.position = itemPosition.position;
+                script.material = tempGO;
+                break;
+            case "USB":
+                tempGO = Instantiate(finalUSB, itemPosition,true);
+                script.material = tempGO;
+                break;
+            case "PushButton":
+                tempGO = Instantiate(finalPushButton, itemPosition, true);
+                script.material = tempGO;
+                break;
+            case "Limit":
+                tempGO = Instantiate(finalLimitSwitch, itemPosition, true);
+                script.material = tempGO;
+                break;
+            case "Wifi":
+                tempGO = Instantiate(finalWifi, itemPosition, true);
+                script.material = tempGO;
                 break;
         }
     }

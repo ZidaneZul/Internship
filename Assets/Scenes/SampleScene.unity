@@ -10073,6 +10073,11 @@ MonoBehaviour:
   points: []
   restPoints: []
   carriers: []
+  finalFlashLight: {fileID: 7843759555944448099, guid: a3129d73ee2f19c4caaded1bf17facbb, type: 3}
+  finalUSB: {fileID: 4488901616066313882, guid: 1727ac36b2eff0447bd9b84869c2724a, type: 3}
+  finalPushButton: {fileID: 7794057457324615541, guid: 63ff5dcaf13e81148a63752a386e3b78, type: 3}
+  finalWifi: {fileID: 7188526997261079347, guid: ecdc9935e8e94b94c9bbfaf8b70b0213, type: 3}
+  finalLimitSwitch: {fileID: 134882938618354954, guid: 5597c1f77d7248b4e98e6b57f0ffbab6, type: 3}
   carriersInOrder:
   - {fileID: 0}
   - {fileID: 0}

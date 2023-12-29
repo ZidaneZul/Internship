@@ -9,9 +9,11 @@ public class ConveyorItemScript : MonoBehaviour
 {
 
     #region Containers for Machines, Carriers and Orders
-
+    [HideInInspector]
     public GameObject[] pointsToFollow;
+    [HideInInspector]
     public GameObject[] carriers;
+    [HideInInspector]
     public GameObject carrierInfront;
 
     public GameObject firstMachine_Point, secondMachine_Point, thirdMachine_Point, fourthMachine_Point, fifthMachine_Point;
@@ -21,6 +23,7 @@ public class ConveyorItemScript : MonoBehaviour
     [HideInInspector]
     public GameObject[] Machines_GOs = new GameObject[5];
 
+    [HideInInspector]
     public GameObject currentRestPoint_GO;
     public int currentRestPoint_int;
 
@@ -91,6 +94,8 @@ public class ConveyorItemScript : MonoBehaviour
         restPointScript = GameObject.Find("RestPoints").GetComponent<RestingScript>();
 
         TMP = GetComponentInChildren<TextMeshPro>();
+
+        itemLocation = transform.GetChild(1).gameObject;
 
         GetCarrierInfront();
 
@@ -186,6 +191,7 @@ public class ConveyorItemScript : MonoBehaviour
                         StartCoroutine(machineScript.RunMachineSequence(currentMachineNumber, gameObject, this));
                         yield return new WaitUntil(() => machineScript.AllowCarrierToMoveOn());
 
+                        
                         ///i is used to get the value in the array of machine order. Helps to check if the next cycle of this 
                         ///code
                         ///would be needed to be ran again. Checks if there is a next machine or not
@@ -193,6 +199,11 @@ public class ConveyorItemScript : MonoBehaviour
                         ///else continue with the 
                         ///next machine.
                         i++;
+                        //if its the second last machine
+                        if (i == order.Count() - 1)
+                        {
+                            manager.SwitchToFinalProduct(itemToMake_string, material, itemLocation.transform, this);
+                        }
 
 
                         //Debug.Log("conveyor item value i is " + i + "\n" +
@@ -210,6 +221,8 @@ public class ConveyorItemScript : MonoBehaviour
                         {
                             currentMachineNumber = order[i];
                             Debug.Log("Current machine number is " + currentMachineNumber);
+
+                            
 
                             ///add code here to wait for animations
                             ///change the wait for seconds below to something 
