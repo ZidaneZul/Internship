@@ -85,16 +85,21 @@ public class RobotAnimationScript : MonoBehaviour
     public void ParentMatToCLaw()
     {
         materialToParent.transform.parent = Claw_GO.transform;
+        materialToParent.transform.position = Claw_GO.transform.position;
+        Debug.Log("material to parent is in " + materialToParent.transform.position);
     }
 
     public void ParentMatToPointInMachine()
     {
         materialToParent.transform.parent = pointInMachine.transform; 
+        materialToParent.transform.position = pointInMachine.transform.position;
     }
 
     public void ParentMatToCarrier()
     {
         materialToParent.transform.parent = carrierPoint.transform;
+        materialToParent.transform.position = carrierPoint.transform.position;
+        materialToParent.transform.rotation = new Quaternion(0, 0, 0, 0);
     }
 
     public void GetMaterialAndCarrierPoint(GameObject material, GameObject carryPoint)
