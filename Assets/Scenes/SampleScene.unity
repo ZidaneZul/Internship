@@ -22645,7 +22645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4581acbc24c1a942b1f3af2aaf7cef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Claw_GO: {fileID: 0}
+  Claw_GO: {fileID: 4567208706172601754}
   carrierPoint: {fileID: 0}
   canCarrierGo: 0
   isAnimationDone: 0
@@ -26311,7 +26311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4581acbc24c1a942b1f3af2aaf7cef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Claw_GO: {fileID: 0}
+  Claw_GO: {fileID: 2638730606729546045}
   carrierPoint: {fileID: 0}
   canCarrierGo: 0
   isAnimationDone: 0
@@ -27411,7 +27411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4581acbc24c1a942b1f3af2aaf7cef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Claw_GO: {fileID: 0}
+  Claw_GO: {fileID: 3385701215941950628}
   carrierPoint: {fileID: 0}
   canCarrierGo: 0
   isAnimationDone: 0
