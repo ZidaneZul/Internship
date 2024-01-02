@@ -928,6 +928,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 179920716}
+  - component: {fileID: 179920717}
   m_Layer: 0
   m_Name: Point1
   m_TagString: ProductPoint
@@ -950,6 +951,19 @@ Transform:
   m_Father: {fileID: 1655487500}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &179920717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179920715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3a902196185fa4ba81eecec600dc28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matWaiting: {fileID: 0}
 --- !u!1 &188622529
 GameObject:
   m_ObjectHideFlags: 0
@@ -3273,6 +3287,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 549239940}
+  - component: {fileID: 549239941}
   m_Layer: 0
   m_Name: Point2
   m_TagString: ProductPoint
@@ -3295,6 +3310,19 @@ Transform:
   m_Father: {fileID: 1655487500}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &549239941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549239939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3a902196185fa4ba81eecec600dc28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matWaiting: {fileID: 0}
 --- !u!1 &550789635
 GameObject:
   m_ObjectHideFlags: 0
@@ -3420,6 +3448,7 @@ MonoBehaviour:
   pickRobot: {fileID: 6986873483126682789}
   placeRobot: {fileID: 6530551173502769749}
   pointInMachine: {fileID: 318502568}
+  productPoint: {fileID: 0}
 --- !u!1 &573179633
 GameObject:
   m_ObjectHideFlags: 0
@@ -4769,6 +4798,7 @@ MonoBehaviour:
   pickRobot: {fileID: 3571839542692626767}
   placeRobot: {fileID: 1805125594951811780}
   pointInMachine: {fileID: 12011974}
+  productPoint: {fileID: 0}
 --- !u!114 &914012300 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5569439093497552269, guid: 4d7e2f87fefe0ba468719b15288b46e7, type: 3}
@@ -5013,6 +5043,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 949079261}
+  - component: {fileID: 949079262}
   m_Layer: 0
   m_Name: Point3
   m_TagString: ProductPoint
@@ -5035,6 +5066,19 @@ Transform:
   m_Father: {fileID: 1655487500}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &949079262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949079260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3a902196185fa4ba81eecec600dc28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matWaiting: {fileID: 0}
 --- !u!1001 &957332878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6400,6 +6444,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1183174425}
+  - component: {fileID: 1183174426}
   m_Layer: 0
   m_Name: Point4
   m_TagString: ProductPoint
@@ -6422,6 +6467,19 @@ Transform:
   m_Father: {fileID: 1655487500}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1183174426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183174424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3a902196185fa4ba81eecec600dc28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matWaiting: {fileID: 0}
 --- !u!1 &1210399927
 GameObject:
   m_ObjectHideFlags: 0
@@ -6885,6 +6943,7 @@ MonoBehaviour:
   pickRobot: {fileID: 5121117620479850938}
   placeRobot: {fileID: 5121117620479850938}
   pointInMachine: {fileID: 0}
+  productPoint: {fileID: 0}
 --- !u!1 &1268445402
 GameObject:
   m_ObjectHideFlags: 0
@@ -8063,6 +8122,7 @@ MonoBehaviour:
   pickRobot: {fileID: 3042074279413938786}
   placeRobot: {fileID: 9205336595513105879}
   pointInMachine: {fileID: 624649347}
+  productPoint: {fileID: 0}
 --- !u!4 &1476391001 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7205259384336726529, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
@@ -8560,6 +8620,7 @@ MonoBehaviour:
   Material_Limit: {fileID: 1600660539471773593, guid: bd4323f6e4012374e8087580c2d6aa21, type: 3}
   Material_Push: {fileID: 6734700941873210550, guid: 2d4ef58b8bba863429fd4c6e245ad702, type: 3}
   Mats_Points: []
+  Product_Points: []
   didAddNewMat: 0
 --- !u!54 &1537637388
 Rigidbody:
@@ -8592,6 +8653,7 @@ MonoBehaviour:
   pickRobot: {fileID: 3943288730981119631}
   placeRobot: {fileID: 1587420299895642179}
   pointInMachine: {fileID: 0}
+  productPoint: {fileID: 0}
 --- !u!1 &1542415990 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}

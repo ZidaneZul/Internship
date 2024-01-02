@@ -42,6 +42,15 @@ public class RobotAnimationScript : MonoBehaviour
         isAnimationDone = false;
         anim.SetTrigger("PickTrigger");
     }
+
+    public void PickLastMachine()
+    {
+        canCarrierGo=false;
+        isAnimationDone=false;
+        anim.SetTrigger("FinalMachine");
+        
+    }
+
     public void PlaceTrigger()
     {
         canCarrierGo=false;
@@ -86,13 +95,19 @@ public class RobotAnimationScript : MonoBehaviour
     {
         materialToParent.transform.parent = Claw_GO.transform;
         materialToParent.transform.position = Claw_GO.transform.position;
-        Debug.Log("material to parent is in " + materialToParent.transform.position);
     }
 
     public void ParentMatToPointInMachine()
     {
         materialToParent.transform.parent = pointInMachine.transform; 
         materialToParent.transform.position = pointInMachine.transform.position;
+    }
+    public void ParentMatToFinalProductStore()
+    {
+        GameObject point = parentMachineScript.productPoint;
+        materialToParent.transform.parent = point.transform;
+        materialToParent.transform.position = point.transform.position;
+        materialToParent.transform.rotation = new Quaternion(0,0,0,0);
     }
 
     public void ParentMatToCarrier()

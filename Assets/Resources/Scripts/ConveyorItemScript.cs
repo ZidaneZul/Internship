@@ -184,14 +184,13 @@ public class ConveyorItemScript : MonoBehaviour
 
                         ///THE CODE TO RUN ANIMATIONS AND WAIT FOR MACHINE SHOULD BE HERE INSTEADDDDDD!!!!!
                         ///
-                       machineScript.SetMaterialToCarrier(this);
+                        if(material == null)
+                        {
+                        machineScript.SetMaterialToCarrier(this);
 
+                        }
                         machineScript.GetCarrierProperties(material, itemLocation);
 
-                        StartCoroutine(machineScript.RunMachineSequence(currentMachineNumber, gameObject, this));
-                        yield return new WaitUntil(() => machineScript.AllowCarrierToMoveOn());
-
-                        
                         ///i is used to get the value in the array of machine order. Helps to check if the next cycle of this 
                         ///code
                         ///would be needed to be ran again. Checks if there is a next machine or not
@@ -199,55 +198,41 @@ public class ConveyorItemScript : MonoBehaviour
                         ///else continue with the 
                         ///next machine.
                         i++;
+                        Debug.Log(gameObject + "Stuck in this one");
+
+                        StartCoroutine(machineScript.RunMachineSequence(currentMachineNumber, gameObject, this));
+                        Debug.Log(gameObject + "Stuck in this one");
+
+                        yield return new WaitUntil(() => machineScript.AllowCarrierToMoveOn());
+
                         //if its the second last machine
                         if (i == order.Count() - 1)
                         {
+                            Debug.Log(gameObject + "Stuck in this one");
+
                             manager.SwitchToFinalProduct(itemToMake_string, material, itemLocation.transform, this);
                         }
 
-
-                        //Debug.Log("conveyor item value i is " + i + "\n" +
-                        //   "order count is " + order.Count());
-                        //if (i == 1)
-                        //{
-                        //    Debug.Log("First machine");
-                        //    currentMachineNumber = order[i];
-                        //    machineScript.PlayPickTrigger();
-
-                            //    yield return null;
-                            //}
-
                         if (i < order.Count())
                         {
+                            Debug.Log(gameObject + "Stuck in this one");
+
                             currentMachineNumber = order[i];
-                            Debug.Log("Current machine number is " + currentMachineNumber);
-
-                            
-
-                            ///add code here to wait for animations
-                            ///change the wait for seconds below to something 
-                            ///else
-
-                            //Debug.Log("Playing pick animation!");
-                            //machineScript.PlayPickAnimation();
-
-
-                            //machineScript.PlayPlaceAnimation();
-                            //yield return new WaitUntil(() => machineScript.AllowCarrierToMoveOn());
-                            //machineScript.SetToIdle();
-
+                            //Debug.Log("Current machine number is " + currentMachineNumber);
                         }
                         ///This else statement will run after finishing all the machine order
                         else
                         {
+                            Debug.Log(gameObject + "Stuck in this one");
+
                             StartCoroutine(ResetToBay());
                             yield break;
                         }
                     }
                     yield return null;
                 }
-               // Debug.Log("In foreach out of everything");
-           }
+                // Debug.Log("In foreach out of everything");
+            }
         }
     }
     private IEnumerator ResetToBay()
@@ -296,7 +281,7 @@ public class ConveyorItemScript : MonoBehaviour
                     if (Vector3.Distance(transform.position, currentRestPoint_GO.transform.position) < 0.1f)
                     //if (transform.position == currentRestPoint_GO.transform.position)
                     {
-                        Debuging("ResetToBay complete");
+                        Debug.Log("ResetToBay complete");
                         resting = true;
                         pastStartingMachine = false;
                         TextChange("");
@@ -429,7 +414,7 @@ public class ConveyorItemScript : MonoBehaviour
         {
             if (carrierInfront_Script.resting == true && resting == false)
             {
-                Debug.Log(gameObject + " triggered the other carrier to move");
+                //Debug.Log(gameObject + " triggered the other carrier to move");
                 manager.CircleInactiveItems();
 
             }

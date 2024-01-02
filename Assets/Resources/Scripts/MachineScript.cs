@@ -14,7 +14,9 @@ public class MachineScript : MonoBehaviour
 
     MachineMaterialScript machineMatsScript;
 
-    public GameObject pointInMachine;
+    public GameObject pointInMachine, productPoint;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -75,11 +77,7 @@ public class MachineScript : MonoBehaviour
 
     public bool AllowCarrierToMoveOn()
     {
-        if (canCarrierMoveOn)
-        {
-            return true;
-        }
-         return false;
+        return canCarrierMoveOn;
     }
     public void ResetBothMachineBools()
     {
@@ -100,11 +98,15 @@ public class MachineScript : MonoBehaviour
 
     public IEnumerator RunMachineSequence(int machineNumber,GameObject carrier, ConveyorItemScript carrierScript)
     {
-        Debug.Log("gameobject is " + carrier +"\n where as script is " + carrierScript.gameObject);
+        Debug.Log("received " + machineNumber + "\n " + carrier + "\n" + carrierScript  );
         canCarrierMoveOn = false;
         switch (machineNumber)
         {
             case 0:
+                if(gameObject.name == "Machine2")
+                {
+                    
+                }
                 break;
             case 1:
                 if(gameObject.name == "Machine1")
@@ -125,7 +127,8 @@ public class MachineScript : MonoBehaviour
 
                 if (gameObject.name == "Machine2" && !carrierScript.pastStartingMachine)
                 {
-                    PlayPlaceAnimation();
+                    Debug.Log("IM Here");
+                    PlayPlaceTrigger();
                     yield return new WaitUntil(() => placeRobot_animScript.isAnimationDone);
                     ResetBothMachineBools();
                     
@@ -134,11 +137,16 @@ public class MachineScript : MonoBehaviour
                 }
                 else if(gameObject.name == "Machine2" && carrierScript.pastStartingMachine)
                 {
-                    PlayPickAnimation();
+
+                    productPoint = machineMatsScript.PutProductsOnPoints(pickRobot_animScript.materialToParent);
+
+                    pickRobot_animScript.PickLastMachine();
+                    Debug.Log("THis shit is " + pickRobot_animScript.isAnimationDone);
                     yield return new WaitUntil(() => pickRobot_animScript.isAnimationDone);
+                    Debug.Log("Going to reset bools");
                     ResetBothMachineBools();
 
-                    canCarrierMoveOn= true;
+                    canCarrierMoveOn = true;
                 }
                 break;
             case 3:

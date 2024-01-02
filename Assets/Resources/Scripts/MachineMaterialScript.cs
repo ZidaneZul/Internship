@@ -8,7 +8,7 @@ public class MachineMaterialScript : MonoBehaviour
 
     BoxCollider boxColl;
     Manager manager;
-    MaterialPointHolder matsPointHolder, matsPointHolder2;
+    MaterialPointHolder matsPointHolder, matsPointHolder2, productHolder;
 
     #endregion
 
@@ -21,6 +21,7 @@ public class MachineMaterialScript : MonoBehaviour
     public GameObject Material_Push;
 
     public GameObject[] Mats_Points;
+    public GameObject[] Product_Points;
 
     #endregion
 
@@ -34,6 +35,8 @@ public class MachineMaterialScript : MonoBehaviour
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<Manager>();
 
         Mats_Points = GameObject.FindGameObjectsWithTag("MaterialPoint");
+
+        Product_Points = GameObject.FindGameObjectsWithTag("ProductPoint");
     }
 
     // Update is called once per frame
@@ -52,8 +55,8 @@ public class MachineMaterialScript : MonoBehaviour
             matsPointHolder = point.GetComponent<MaterialPointHolder>();
             if (matsPointHolder.matWaiting == null)
             {
-                Debug.Log("POint is in " + point.transform.position + "\n " +
-                    "material is " + material);
+             //   Debug.Log("POint is in " + point.transform.position + "\n " +
+             //       "material is " + material);
                 GameObject matPoint = null;
 
                 switch (material)
@@ -83,15 +86,37 @@ public class MachineMaterialScript : MonoBehaviour
         }
     }
 
+    public GameObject PutProductsOnPoints(GameObject product)
+    {
+        foreach(GameObject point in Product_Points)
+        {
+            productHolder = point.GetComponent<MaterialPointHolder>();
+
+            if(productHolder.matWaiting == null)
+            {
+                productHolder.matWaiting = product;
+                product.transform.parent = point.transform;
+                product.transform.position = point.transform.position;
+                return point;
+            }
+        }
+        return null;
+    }
+
     public void SetCarrierMaterial(ConveyorItemScript carrierScript)
     {
         foreach(GameObject point in Mats_Points)
         {
             matsPointHolder2 = point.GetComponent<MaterialPointHolder>();
+            Debug.Log("Mats is " + point.name);
 
             if(matsPointHolder2.matWaiting != null)
             {
+                Debug.Log("There is a material in " + matsPointHolder2.gameObject + 
+                    "\n which is " + matsPointHolder2.matWaiting);
                 carrierScript.material = matsPointHolder2.matWaiting;
+                matsPointHolder2.matWaiting = null;
+                break;
             }
         }
     }
