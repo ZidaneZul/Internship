@@ -358,6 +358,14 @@ public class ConveyorItemScript : MonoBehaviour
 
                     ///function to move the carriers
                     transform.position = Vector3.MoveTowards(transform.position, point.transform.position, speed * Time.deltaTime);
+                    Vector3 currrentPosition = transform.position;
+
+                    if (currrentPosition == transform.position && Timer(5f))
+                    {
+                        transform.position = currentRestPoint_GO.transform.position;
+                        TextChange("");
+                        yield break;
+                    }
                     yield return null;
                 }
             }
@@ -441,5 +449,15 @@ public class ConveyorItemScript : MonoBehaviour
     public void TextChange(string str)
     {
         TMP.text = str;
+    }
+    public bool Timer(float seconds)
+    {
+        time += Time.deltaTime;
+        while (time < seconds)
+        {
+            return false;
+        }
+        time = 0;
+        return true;
     }
 }

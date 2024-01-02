@@ -162,18 +162,22 @@ public class Manager : MonoBehaviour
                 break;
             case "USB":
                 tempGO = Instantiate(finalUSB, itemPosition,true);
+                tempGO.transform.position = itemPosition.position;
                 script.material = tempGO;
                 break;
             case "PushButton":
                 tempGO = Instantiate(finalPushButton, itemPosition, true);
+                tempGO.transform.position = itemPosition.position;
                 script.material = tempGO;
                 break;
             case "Limit":
                 tempGO = Instantiate(finalLimitSwitch, itemPosition, true);
+                tempGO.transform.position = itemPosition.position;
                 script.material = tempGO;
                 break;
             case "Wifi":
                 tempGO = Instantiate(finalWifi, itemPosition, true);
+                tempGO.transform.position = itemPosition.position;
                 script.material = tempGO;
                 break;
         }
