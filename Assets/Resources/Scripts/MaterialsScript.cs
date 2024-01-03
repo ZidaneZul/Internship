@@ -9,6 +9,7 @@ public class MaterialsScript : MonoBehaviour
     public Transform spawnPoint;
 
     public GameObject manufactoringMachine;
+    GameObject floor;
 
     public bool isItemInManufactoringZone;
 
@@ -28,6 +29,8 @@ public class MaterialsScript : MonoBehaviour
     {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<Manager>();
         machineMatScript = GameObject.Find("Machine2").GetComponent<MachineMaterialScript>();
+
+        floor = GameObject.Find("Floor");
     }
 
     // Update is called once per frame
@@ -57,14 +60,14 @@ public class MaterialsScript : MonoBehaviour
 
             TeleportBackToBox();
         }
-        else
-        {
-            TeleportBackToBox();
-        }
+        //else
+        //{
+        //    TeleportBackToBox();
+        //}
     }
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log(gameObject + "Item has collided with " + other.gameObject);
+        //Debug.Log(gameObject + "Item has collided with " + other.gameObject);
         if (other.gameObject == manufactoringMachine)
         {
             Debug.Log("Item is in zone!");
@@ -76,6 +79,14 @@ public class MaterialsScript : MonoBehaviour
         if (other.gameObject == manufactoringMachine)
         {
             isItemInManufactoringZone = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject == floor)
+        {
+            TeleportBackToBox();
         }
     }
 

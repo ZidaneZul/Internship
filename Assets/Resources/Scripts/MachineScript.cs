@@ -140,9 +140,7 @@ public class MachineScript : MonoBehaviour
                     productPoint = machineMatsScript.PutProductsOnPoints(pickRobot_animScript.materialToParent);
 
                     pickRobot_animScript.PickLastMachine();
-                    Debug.Log("THis shit is " + pickRobot_animScript.isAnimationDone);
                     yield return new WaitUntil(() => pickRobot_animScript.isAnimationDone);
-                    Debug.Log("Going to reset bools");
                     ResetBothMachineBools();
 
                     canCarrierMoveOn = true;

@@ -90,6 +90,7 @@ public class MachineMaterialScript : MonoBehaviour
     {
         foreach(GameObject point in Product_Points)
         {
+            ProductMaterialScript productScript = product.GetComponent<ProductMaterialScript>();
             productHolder = point.GetComponent<MaterialPointHolder>();
 
             if(productHolder.matWaiting == null)
@@ -97,6 +98,7 @@ public class MachineMaterialScript : MonoBehaviour
                 productHolder.matWaiting = product;
                 product.transform.parent = point.transform;
                 product.transform.position = point.transform.position;
+                productScript.pointScript = productHolder;
                 return point;
             }
         }
