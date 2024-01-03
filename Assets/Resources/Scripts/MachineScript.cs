@@ -98,7 +98,7 @@ public class MachineScript : MonoBehaviour
 
     public IEnumerator RunMachineSequence(int machineNumber,GameObject carrier, ConveyorItemScript carrierScript)
     {
-        Debug.Log("received " + machineNumber + "\n " + carrier + "\n" + carrierScript  );
+       // Debug.Log("received " + machineNumber + "\n " + carrier + "\n" + carrierScript  );
         canCarrierMoveOn = false;
         switch (machineNumber)
         {
@@ -127,7 +127,6 @@ public class MachineScript : MonoBehaviour
 
                 if (gameObject.name == "Machine2" && !carrierScript.pastStartingMachine)
                 {
-                    Debug.Log("IM Here");
                     PlayPlaceTrigger();
                     yield return new WaitUntil(() => placeRobot_animScript.isAnimationDone);
                     ResetBothMachineBools();

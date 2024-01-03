@@ -198,24 +198,20 @@ public class ConveyorItemScript : MonoBehaviour
                         ///else continue with the 
                         ///next machine.
                         i++;
-                        Debug.Log(gameObject + "Stuck in this one");
 
                         StartCoroutine(machineScript.RunMachineSequence(currentMachineNumber, gameObject, this));
-                        Debug.Log(gameObject + "Stuck in this one");
 
                         yield return new WaitUntil(() => machineScript.AllowCarrierToMoveOn());
 
                         //if its the second last machine
                         if (i == order.Count() - 1)
                         {
-                            Debug.Log(gameObject + "Stuck in this one");
 
                             manager.SwitchToFinalProduct(itemToMake_string, material, itemLocation.transform, this);
                         }
 
                         if (i < order.Count())
                         {
-                            Debug.Log(gameObject + "Stuck in this one");
 
                             currentMachineNumber = order[i];
                             //Debug.Log("Current machine number is " + currentMachineNumber);
@@ -223,15 +219,12 @@ public class ConveyorItemScript : MonoBehaviour
                         ///This else statement will run after finishing all the machine order
                         else
                         {
-                            Debug.Log(gameObject + "Stuck in this one");
-
                             StartCoroutine(ResetToBay());
                             yield break;
                         }
                     }
                     yield return null;
                 }
-                // Debug.Log("In foreach out of everything");
             }
         }
     }
@@ -273,6 +266,7 @@ public class ConveyorItemScript : MonoBehaviour
                     ///stops the carrier if its close to the item infront
                     while (IsCloseToFrontItem())
                     {
+                        Debug.Log(gameObject.name + " is close to item infront!");
                         yield return null;
                     }
 
@@ -356,9 +350,10 @@ public class ConveyorItemScript : MonoBehaviour
                         yield return null;
                     }
 
+                    Vector3 currrentPosition = transform.position;
+
                     ///function to move the carriers
                     transform.position = Vector3.MoveTowards(transform.position, point.transform.position, speed * Time.deltaTime);
-                    Vector3 currrentPosition = transform.position;
 
                     if (currrentPosition == transform.position && Timer(5f))
                     {

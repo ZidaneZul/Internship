@@ -108,12 +108,9 @@ public class MachineMaterialScript : MonoBehaviour
         foreach(GameObject point in Mats_Points)
         {
             matsPointHolder2 = point.GetComponent<MaterialPointHolder>();
-            Debug.Log("Mats is " + point.name);
 
             if(matsPointHolder2.matWaiting != null)
             {
-                Debug.Log("There is a material in " + matsPointHolder2.gameObject + 
-                    "\n which is " + matsPointHolder2.matWaiting);
                 carrierScript.material = matsPointHolder2.matWaiting;
                 matsPointHolder2.matWaiting = null;
                 break;
