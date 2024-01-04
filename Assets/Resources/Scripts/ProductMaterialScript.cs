@@ -20,6 +20,7 @@ public class ProductMaterialScript : MonoBehaviour
         storingBox = GameObject.Find("StoringBox");
 
         point = storingBox.transform.GetChild(2).gameObject;
+        floor = GameObject.Find("Floor");
     }
 
     // Update is called once per frame
@@ -33,15 +34,21 @@ public class ProductMaterialScript : MonoBehaviour
         if (isInZone)
         {
             Debug.Log("the shit is in the zone");
-            rb.useGravity = true;
             pointScript.matWaiting = null;
             transform.parent = storingBox.transform;
             keptInBox = true;
         }
     }
+    public void DisableGrav()
+    {
+        rb.useGravity = false;
+        rb.velocity = Vector3.zero;
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Product collided with trigger " + other.gameObject);
         if(other.gameObject == storingBox)
         {
             isInZone = true;
@@ -49,6 +56,7 @@ public class ProductMaterialScript : MonoBehaviour
 
         if(other.gameObject == floor)
         {
+            Debug.Log("The flor the floor th flooeoooeoeoeoe");
             if (keptInBox)
             {
                 transform.position = point.transform.position;
@@ -56,6 +64,8 @@ public class ProductMaterialScript : MonoBehaviour
             else
             {
                 transform.position = pointScript.gameObject.transform.position;
+                rb.velocity = Vector3.zero;
+                transform.rotation = new Quaternion(0, 0, 0, 0);
             }
         }
     }

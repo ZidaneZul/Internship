@@ -162,9 +162,11 @@ public class ConveyorItemScript : MonoBehaviour
                     ///moves the plate using the transform position
                     transform.position = Vector3.MoveTowards(transform.position, point.transform.position, speed * Time.deltaTime);
 
+                    ///<summary>
                     ///to remember which machine the carrier would be in after finishing producing the 
                     ///item. Makes it so running ResetToBay the carrier would follow the correect points
                     ///instead of floating to the starting point and looping arond from there.
+                    ///</summary>
                     currentMachine_GO = point;
 
                     ///To make the carrier stop when its too close to the carrier infront
@@ -191,12 +193,14 @@ public class ConveyorItemScript : MonoBehaviour
                         }
                         machineScript.GetCarrierProperties(material, itemLocation);
 
+                        /// <summary>
                         ///i is used to get the value in the array of machine order. Helps to check if the next cycle of this 
                         ///code
                         ///would be needed to be ran again. Checks if there is a next machine or not
                         ///If i++ would be bigger than the array of machine order, make the carrier run ResetToBay(), 
                         ///else continue with the 
                         ///next machine.
+                        ///</summary>
                         i++;
 
                         StartCoroutine(machineScript.RunMachineSequence(currentMachineNumber, gameObject, this));
@@ -330,9 +334,11 @@ public class ConveyorItemScript : MonoBehaviour
 
                 while (Vector3.Distance(point.transform.position, transform.position) > 0.05f)
                 {
+                    ///<summary>
                     ///to make make sure it goes past its own rest point before changing the bool
                     ///to true. Bool is there to make sure it stops at the resting point after 
                     ///circle, else there would be infinite circling.
+                    ///</summary>
                     if (Vector3.Distance(point.transform.position, transform.position) < 0.5f)
                     {
                         pastRestPoint = true;

@@ -16,6 +16,8 @@ public class RobotAnimationScript : MonoBehaviour
 
     GameObject pointInMachine;
 
+    Rigidbody rb;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -108,6 +110,9 @@ public class RobotAnimationScript : MonoBehaviour
         materialToParent.transform.parent = point.transform;
         materialToParent.transform.position = point.transform.position;
         materialToParent.transform.rotation = new Quaternion(0,0,0,0);
+        rb = materialToParent.GetComponent<Rigidbody>();
+        rb.useGravity = true;
+        rb.velocity = new Vector3(0,0,0);
     }
 
     public void ParentMatToCarrier()
@@ -119,7 +124,7 @@ public class RobotAnimationScript : MonoBehaviour
 
     public void GetMaterialAndCarrierPoint(GameObject material, GameObject carryPoint)
     {
-        Debug.Log("rooted function is running");
+        //Debug.Log("rooted function is running");
         materialToParent = material;
         carrierPoint = carryPoint;
     }

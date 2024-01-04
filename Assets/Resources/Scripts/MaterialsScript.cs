@@ -60,10 +60,6 @@ public class MaterialsScript : MonoBehaviour
 
             TeleportBackToBox();
         }
-        //else
-        //{
-        //    TeleportBackToBox();
-        //}
     }
     private void OnTriggerStay(Collider other)
     {

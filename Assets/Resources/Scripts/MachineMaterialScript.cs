@@ -86,6 +86,11 @@ public class MachineMaterialScript : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// Finds a an empty point in Machine 2 to store the final product, returns
+    /// which point is it being stored at.
+    /// </summary>
     public GameObject PutProductsOnPoints(GameObject product)
     {
         foreach(GameObject point in Product_Points)
@@ -119,6 +124,21 @@ public class MachineMaterialScript : MonoBehaviour
             }
         }
     }
+
+    public bool CheckForEmptyProductPoint()
+    {
+        foreach(GameObject product in Product_Points)
+        {
+            productHolder = product.GetComponent<MaterialPointHolder>();
+
+            if(productHolder.matWaiting == null)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 
 }

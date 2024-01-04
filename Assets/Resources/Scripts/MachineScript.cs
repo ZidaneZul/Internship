@@ -136,14 +136,21 @@ public class MachineScript : MonoBehaviour
                 }
                 else if(gameObject.name == "Machine2" && carrierScript.pastStartingMachine)
                 {
+                    ///Saves which point item is stored in to make the transform of item be the same.
 
-                    productPoint = machineMatsScript.PutProductsOnPoints(pickRobot_animScript.materialToParent);
+                    while(machineMatsScript.CheckForEmptyProductPoint())
+                    {
+                        Debug.Log("This shit is runnninggggggg");
+                        productPoint = machineMatsScript.PutProductsOnPoints(pickRobot_animScript.materialToParent);
 
-                    pickRobot_animScript.PickLastMachine();
-                    yield return new WaitUntil(() => pickRobot_animScript.isAnimationDone);
-                    ResetBothMachineBools();
+                        pickRobot_animScript.PickLastMachine();
+                        yield return new WaitUntil(() => pickRobot_animScript.isAnimationDone);
+                        ResetBothMachineBools();
 
-                    canCarrierMoveOn = true;
+                        canCarrierMoveOn = true;
+                        break;
+                    }
+                    yield return null;
                 }
                 break;
             case 3:
