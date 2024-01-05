@@ -16,6 +16,7 @@ public class MachineScript : MonoBehaviour
 
     public GameObject pointInMachine, productPoint;
 
+    ErrorImageScript errorImageScript;
     
 
     // Start is called before the first frame update
@@ -24,6 +25,8 @@ public class MachineScript : MonoBehaviour
         machineMatsScript = GameObject.Find("Machine2").GetComponent<MachineMaterialScript>();
         pickRobot_animScript = pickRobot.GetComponent<RobotAnimationScript>();
         placeRobot_animScript = placeRobot.GetComponent<RobotAnimationScript>();
+
+        errorImageScript = GameObject.Find("ErrorImageMachine2").GetComponent<ErrorImageScript>();
     }
 
     // Update is called once per frame
@@ -140,7 +143,9 @@ public class MachineScript : MonoBehaviour
 
                     while(machineMatsScript.CheckForEmptyProductPoint())
                     {
-                        Debug.Log("This shit is runnninggggggg");
+                        Debug.Log("Slot is avail");
+                        errorImageScript.isEnabled = false;
+
                         productPoint = machineMatsScript.PutProductsOnPoints(pickRobot_animScript.materialToParent);
 
                         pickRobot_animScript.PickLastMachine();
@@ -150,6 +155,8 @@ public class MachineScript : MonoBehaviour
                         canCarrierMoveOn = true;
                         break;
                     }
+                    Debug.Log("waiting for slot");
+                    errorImageScript.isEnabled = true;
                     yield return null;
                 }
                 break;

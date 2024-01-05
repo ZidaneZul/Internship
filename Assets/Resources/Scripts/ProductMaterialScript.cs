@@ -33,7 +33,7 @@ public class ProductMaterialScript : MonoBehaviour
     {
         if (isInZone)
         {
-            Debug.Log("the shit is in the zone");
+            //Debug.Log("the shit is in the zone");
             pointScript.matWaiting = null;
             transform.parent = storingBox.transform;
             keptInBox = true;
