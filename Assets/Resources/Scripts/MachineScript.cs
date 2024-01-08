@@ -128,44 +128,40 @@ public class MachineScript : MonoBehaviour
                 break;
             case 2:
 
-                bool didItemPlaceinMachine = false;
-
                 if (gameObject.name == "Machine2" && !carrierScript.pastStartingMachine)
                 {
                     PlayPlaceTrigger();
                     yield return new WaitUntil(() => placeRobot_animScript.isAnimationDone);
                     ResetBothMachineBools();
-                    
+
                     canCarrierMoveOn = true;
                     carrierScript.pastStartingMachine = true;
                 }
-                else if(gameObject.name == "Machine2" && carrierScript.pastStartingMachine)
+                else if (gameObject.name == "Machine2" && carrierScript.pastStartingMachine)
                 {
-                    ///Saves which point item is stored in to make the transform of item be the same.
 
-                    while(machineMatsScript.CheckForEmptyProductPoint())
-                    {
-                        Debug.Log("Slot is avail");
-                        errorImageScript.isEnabled = false;
+                    ///this line of codes would play the error flashing first and then checks if there is 
+                    ///available space to store the products, if there isnt, it waits for the player 
+                    ///to make space by moving the products into the box. If there is space, run the code
+                    ///to play the animation and move the product from the carrier into the machine.
+                    errorImageScript.isEnabled = true;
+                    yield return new WaitUntil(() => machineMatsScript.CheckForEmptyProductPoint());
+                    errorImageScript.isEnabled = false;
 
-                        productPoint = machineMatsScript.PutProductsOnPoints(pickRobot_animScript.materialToParent);
+                    productPoint = machineMatsScript.PutProductsOnPoints(pickRobot_animScript.materialToParent);
 
-                        pickRobot_animScript.PickLastMachine();
-                        yield return new WaitUntil(() => pickRobot_animScript.isAnimationDone);
-                        ResetBothMachineBools();
+                    pickRobot_animScript.PickLastMachine();
+                    yield return new WaitUntil(() => pickRobot_animScript.isAnimationDone);
+                    ResetBothMachineBools();
 
-                        canCarrierMoveOn = true;
-                        didItemPlaceinMachine = true;
-                        break;
-                    }
-                    if (!didItemPlaceinMachine)
-                    {
-                        Debug.Log("waiting for slot");
-                        errorImageScript.isEnabled = true;
-                    }
-                    yield return null;
+                    canCarrierMoveOn = true;
+                    break;
                 }
-                break;
+                if (gameObject.name == "Machine2" && carrierScript.pastStartingMachine)
+                {
+                    Debug.Log("Too bad we breking");
+                }
+                    break;
             case 3:
                 if (gameObject.name == "Machine3")
                 {

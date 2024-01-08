@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ErrorImageScript : MonoBehaviour
 {
     public Camera camera;
-
+    public AudioSource audioSource;
     public Image image;
 
     float timer;
@@ -20,7 +20,7 @@ public class ErrorImageScript : MonoBehaviour
     {
         camera = Camera.main;
         image = GetComponent<Image>();
-
+        audioSource = GetComponent<AudioSource>();
         image.color = Color.clear;
     }
 
@@ -29,20 +29,22 @@ public class ErrorImageScript : MonoBehaviour
     {
         transform.forward = camera.transform.forward;
 
-        if (Input.GetButton("Jump"))
-        {
+        if (Input.GetKeyDown(KeyCode.W))
             isEnabled = !isEnabled;
-        }
 
         if (isEnabled)
         {
             image.color = Color.white;
             BlinkingTimer(1f);
             Blinking(flipBool);
+            Debug.Log("Playing sound");
+            audioSource.Play();
         }
         else
         {
             image.color = Color.clear;
+            Debug.Log("not playing sound");
+            audioSource.Stop();
         }
     }
 
