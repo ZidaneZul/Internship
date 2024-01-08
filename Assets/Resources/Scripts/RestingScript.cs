@@ -103,7 +103,7 @@ public class RestingScript : MonoBehaviour
     {
 
     restart:
-        Debug.Log("restarting");
+       // Debug.Log("restarting");
         for(int i = 7; i > 0; i--)
         {
             //Debug.Log("for looop " + i);

@@ -270,7 +270,7 @@ public class ConveyorItemScript : MonoBehaviour
                     ///stops the carrier if its close to the item infront
                     while (IsCloseToFrontItem())
                     {
-                        Debug.Log(gameObject.name + " is close to item infront!");
+                       // Debug.Log(gameObject.name + " is close to item infront!");
                         yield return null;
                     }
 
@@ -279,7 +279,7 @@ public class ConveyorItemScript : MonoBehaviour
                     if (Vector3.Distance(transform.position, currentRestPoint_GO.transform.position) < 0.1f)
                     //if (transform.position == currentRestPoint_GO.transform.position)
                     {
-                        Debug.Log("ResetToBay complete");
+                        //Debug.Log("ResetToBay complete");
                         resting = true;
                         pastStartingMachine = false;
                         TextChange("");

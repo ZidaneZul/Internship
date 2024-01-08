@@ -48,7 +48,7 @@ public class ProductMaterialScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Product collided with trigger " + other.gameObject);
+       // Debug.Log("Product collided with trigger " + other.gameObject);
         if(other.gameObject == storingBox)
         {
             isInZone = true;

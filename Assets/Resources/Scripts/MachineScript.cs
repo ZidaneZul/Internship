@@ -128,6 +128,8 @@ public class MachineScript : MonoBehaviour
                 break;
             case 2:
 
+                bool didItemPlaceinMachine = false;
+
                 if (gameObject.name == "Machine2" && !carrierScript.pastStartingMachine)
                 {
                     PlayPlaceTrigger();
@@ -153,10 +155,14 @@ public class MachineScript : MonoBehaviour
                         ResetBothMachineBools();
 
                         canCarrierMoveOn = true;
+                        didItemPlaceinMachine = true;
                         break;
                     }
-                    Debug.Log("waiting for slot");
-                    errorImageScript.isEnabled = true;
+                    if (!didItemPlaceinMachine)
+                    {
+                        Debug.Log("waiting for slot");
+                        errorImageScript.isEnabled = true;
+                    }
                     yield return null;
                 }
                 break;
@@ -206,7 +212,7 @@ public class MachineScript : MonoBehaviour
 
     public void GetCarrierProperties(GameObject material, GameObject carryPoint)
     {
-        Debug.Log("In the machine SCriopt" + material.name + carryPoint.name);
+        //Debug.Log("In the machine SCriopt" + material.name + carryPoint.name);
         pickRobot_animScript.GetMaterialAndCarrierPoint(material, carryPoint);
         placeRobot_animScript.GetMaterialAndCarrierPoint(material,carryPoint);
     }
