@@ -499,6 +499,7 @@ MonoBehaviour:
   camera: {fileID: 0}
   audioSource: {fileID: 0}
   image: {fileID: 0}
+  isAudioPlaying: 0
   isEnabled: 0
 --- !u!114 &56568527
 MonoBehaviour:
@@ -9969,11 +9970,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   matWaiting: {fileID: 0}
---- !u!1 &2095908107 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7211782923445961668, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
-  m_PrefabInstance: {fileID: 3080411459418887129}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2115410060 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7205259384336726532, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
@@ -15132,10 +15128,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 98483049}
     m_Modifications:
-    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
-      propertyPath: itemLocation
-      value: 
-      objectReference: {fileID: 2095908107}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: fifthMachine_GO
       value: 
