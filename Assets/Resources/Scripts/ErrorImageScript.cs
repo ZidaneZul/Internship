@@ -13,6 +13,7 @@ public class ErrorImageScript : MonoBehaviour
 
     bool flipBool;
 
+    public bool isAudioPlaying;
     public bool isEnabled;
 
     // Start is called before the first frame update
@@ -38,12 +39,14 @@ public class ErrorImageScript : MonoBehaviour
             BlinkingTimer(1f);
             Blinking(flipBool);
             Debug.Log("Playing sound");
-            audioSource.Play();
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(audioSource.clip);
+            }
         }
         else
         {
             image.color = Color.clear;
-            Debug.Log("not playing sound");
             audioSource.Stop();
         }
     }
