@@ -18,6 +18,9 @@ public class RobotAnimationScript : MonoBehaviour
 
     Rigidbody rb;
 
+    AudioSource audioSource;
+    public AudioClip Short1, Short2, Long1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -127,6 +130,19 @@ public class RobotAnimationScript : MonoBehaviour
         //Debug.Log("rooted function is running");
         materialToParent = material;
         carrierPoint = carryPoint;
+    }
+
+    public void PlayShort1Audio()
+    {
+        audioSource.PlayOneShot(Short1, 0.5f);
+    }
+    public void PlayShort2Audio()
+    {
+        audioSource.PlayOneShot(Short2, 0.5f);
+    }
+    public void PlayLong1Audio()
+    {
+        audioSource.PlayOneShot(Long1, 0.5f);
     }
 
 
