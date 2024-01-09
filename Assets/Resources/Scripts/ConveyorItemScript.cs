@@ -121,7 +121,7 @@ public class ConveyorItemScript : MonoBehaviour
         if (!audioSource.isPlaying)
         {
             audioSource.PlayOneShot(audioSource.clip);
-            audioSource.volume = 0.025f;
+            audioSource.volume = 0.1f;
             audioSource.Pause();
         }
     }
@@ -176,6 +176,7 @@ public class ConveyorItemScript : MonoBehaviour
                     ///moves the plate using the transform position
                     transform.position = Vector3.MoveTowards(transform.position, point.transform.position, speed * Time.deltaTime);
 
+                    Debug.Log("Playing audio");
                     audioSource.Play();
 
                     ///<summary>

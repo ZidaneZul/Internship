@@ -28,6 +28,9 @@ public class RobotAnimationScript : MonoBehaviour
         parentMachineScript = transform.parent.GetComponent<MachineScript>();
 
         pointInMachine = parentMachineScript.pointInMachine;
+
+        audioSource = GetComponent<AudioSource>();
+        Debug.Log(gameObject.name + Short1 + Short2 + Long1);
     }
 
     /// <summary>
