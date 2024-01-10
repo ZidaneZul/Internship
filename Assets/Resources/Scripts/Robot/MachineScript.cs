@@ -14,6 +14,8 @@ public class MachineScript : MonoBehaviour
 
     MachineMaterialScript machineMatsScript;
 
+    Machine5Script machine5Script;
+
     public GameObject pointInMachine, productPoint;
 
     ErrorImageScript errorImageScript;
@@ -27,6 +29,8 @@ public class MachineScript : MonoBehaviour
         placeRobot_animScript = placeRobot.GetComponent<RobotAnimationScript>();
 
         errorImageScript = GameObject.Find("ErrorImageMachine2").GetComponent<ErrorImageScript>();
+
+        machine5Script = GetComponent<Machine5Script>();
     }
 
     // Update is called once per frame

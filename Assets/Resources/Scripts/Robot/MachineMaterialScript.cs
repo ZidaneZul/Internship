@@ -127,7 +127,6 @@ public class MachineMaterialScript : MonoBehaviour
 
     public bool CheckForEmptyProductPoint()
     {
-        Debug.Log("RUNNNINNG TO CHECK");
         foreach(GameObject product in Product_Points)
         {
             productHolder = product.GetComponent<MaterialPointHolder>();

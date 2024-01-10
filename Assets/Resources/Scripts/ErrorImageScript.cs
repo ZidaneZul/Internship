@@ -23,6 +23,8 @@ public class ErrorImageScript : MonoBehaviour
         image = GetComponent<Image>();
         audioSource = GetComponent<AudioSource>();
         image.color = Color.clear;
+
+        isEnabled = false;
     }
 
     // Update is called once per frame
