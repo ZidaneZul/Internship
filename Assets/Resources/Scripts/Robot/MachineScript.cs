@@ -53,10 +53,13 @@ public class MachineScript : MonoBehaviour
     {
         pickRobot_animScript.PickTrigger();
     }
-
     public void PlayPlaceTrigger()
     {
         placeRobot_animScript.PlaceTrigger();
+    }
+    public void PlayPlaceMachine5()
+    {
+        placeRobot_animScript.Machine5PlaceAnimation();
     }
 
     public void SetToIdle()

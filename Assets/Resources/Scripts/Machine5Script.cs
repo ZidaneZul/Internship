@@ -77,4 +77,19 @@ public class Machine5Script : MonoBehaviour
             AddMaterialsToPoint();
         }
     }
+
+    public GameObject GetMaterial()
+    {
+        foreach(GameObject point in points)
+        {
+            MaterialPointHolder holder = point.GetComponent<MaterialPointHolder>();
+
+            if(holder.matWaiting != null)
+            {
+                return holder.matWaiting;
+            }
+        }
+        return null;
+    }
+    
 }

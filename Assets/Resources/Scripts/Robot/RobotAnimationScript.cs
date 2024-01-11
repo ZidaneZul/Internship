@@ -11,8 +11,9 @@ public class RobotAnimationScript : MonoBehaviour
     public bool canCarrierGo, isAnimationDone;
 
     public MachineScript parentMachineScript;
+    public Machine5Script machine5Script;
 
-    public GameObject materialToParent;
+    public GameObject materialToParent, machine5Material;
 
     GameObject pointInMachine;
 
@@ -26,6 +27,8 @@ public class RobotAnimationScript : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         parentMachineScript = transform.parent.GetComponent<MachineScript>();
+
+        machine5Script = transform.parent.GetComponent<Machine5Script>();
 
         pointInMachine = parentMachineScript.pointInMachine;
 
@@ -89,8 +92,7 @@ public class RobotAnimationScript : MonoBehaviour
 
     public void EndOfAnimation()
     {
-        isAnimationDone = true;
-        
+        isAnimationDone = true; 
     }
 
     public void SetBoolForCarriersToGo()
@@ -129,12 +131,16 @@ public class RobotAnimationScript : MonoBehaviour
 
     public void Machine5ParentMatToClaw()
     {
-    
+        GameObject mat = machine5Script.GetMaterial();
+        mat.transform.parent = Claw_GO.transform;
+        mat.transform.position = Claw_GO.transform.position;
+        mat.transform.rotation = new Quaternion(0, 0, 0, 0);
+        machine5Material = mat;
     }
 
-    public void Machine5ParentMatToCarrier()
+    public void DestroyMaterialMachine5()
     {
-    
+        Destroy(machine5Material);
     }
 
     /// <summary>
