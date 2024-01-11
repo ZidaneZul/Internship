@@ -209,7 +209,7 @@ public class MachineScript : MonoBehaviour
                     yield return new WaitUntil(() => machine5Script.IsThereMaterialsLeft());
                     errorImage5Script.isEnabled = false;
 
-                    PlayPlaceAnimation();
+                    PlayPlaceMachine5();
                     yield return new WaitUntil(() => placeRobot_animScript.isAnimationDone);
                     machine5Script.DecreaseMaterialCount();
                     ResetBothMachineBools();

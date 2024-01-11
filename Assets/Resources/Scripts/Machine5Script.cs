@@ -29,6 +29,7 @@ public class Machine5Script : MonoBehaviour
 
     public bool IsThereMaterialsLeft()
     {
+        Debug.Log("Material remainding is " + materialRemainingInside);
         if (materialRemainingInside > 0)
         {
             return true;
@@ -72,7 +73,8 @@ public class Machine5Script : MonoBehaviour
     public void GenerateRandomMats()
     {
         int random = Random.Range(0, 7);
-        for(int i = 0; i < random; i++)
+        materialRemainingInside = random;
+        for (int i = 0; i < random; i++)
         {
             AddMaterialsToPoint();
         }
