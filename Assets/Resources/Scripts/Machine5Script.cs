@@ -12,8 +12,6 @@ public class Machine5Script : MonoBehaviour
 
     bool didAddMaterialsToMachine = false;
 
-    public GameObject gameObject;
-    public ErrorImageScript errorImageScript;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,20 +19,15 @@ public class Machine5Script : MonoBehaviour
 
         GenerateRandomMats();
 
-        gameObject = GameObject.Find("ErrorImageMachine5");
-        errorImageScript = GameObject.Find("ErrorImageMachine5").GetComponent<ErrorImageScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!IsThereMaterialsLeft())
-        {
-            errorImageScript.enabled = true;
-        }
+        
     }
 
-    bool IsThereMaterialsLeft()
+    public bool IsThereMaterialsLeft()
     {
         if (materialRemainingInside > 0)
         {

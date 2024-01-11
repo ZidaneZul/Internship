@@ -65,20 +65,20 @@ public class RobotAnimationScript : MonoBehaviour
         anim.SetTrigger("PlaceTrigger");
     }
 
-    public void PlayPlaceOnPick()
-    {
-        Debug.Log("playing place anim after pick");
-        anim.SetBool("Pick", false);
-        isAnimationDone = false;
-        parentMachineScript.PlayPlaceAnimation();
-    }
-
     public void PlayPlaceAnim()
     {
         canCarrierGo = false;
         isAnimationDone = false;
         anim.SetBool("Place", true);
     }
+
+    public void Machine5PlaceAnimation()
+    {
+        canCarrierGo = false;
+        isAnimationDone = false;
+        anim.SetTrigger("Machine5PlaceTrigger");
+    }
+
     public void ResetBools()
     {
         anim.SetBool("Pick", false);
@@ -126,6 +126,20 @@ public class RobotAnimationScript : MonoBehaviour
         materialToParent.transform.position = carrierPoint.transform.position;
         materialToParent.transform.rotation = new Quaternion(0, 0, 0, 0);
     }
+
+    public void Machine5ParentMatToClaw()
+    {
+    
+    }
+
+    public void Machine5ParentMatToCarrier()
+    {
+    
+    }
+
+    /// <summary>
+    /// this code will get the material and carrier to run the animation, gets called in conveyorScript
+    /// </summary>
 
     public void GetMaterialAndCarrierPoint(GameObject material, GameObject carryPoint)
     {

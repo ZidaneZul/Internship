@@ -204,8 +204,7 @@ public class ConveyorItemScript : MonoBehaviour
                         machineToRunAnimation = Machines_GOs[currentMachineNumber - 1];
                         machineScript = machineToRunAnimation.GetComponent<MachineScript>();
 
-                        ///THE CODE TO RUN ANIMATIONS AND WAIT FOR MACHINE SHOULD BE HERE INSTEADDDDDD!!!!!
-                        ///
+                       
                         if(material == null)
                         {
                         machineScript.SetMaterialToCarrier(this);

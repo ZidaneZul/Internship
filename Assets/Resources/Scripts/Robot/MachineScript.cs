@@ -14,11 +14,12 @@ public class MachineScript : MonoBehaviour
 
     MachineMaterialScript machineMatsScript;
 
-    Machine5Script machine5Script;
+    public Machine5Script machine5Script;
 
     public GameObject pointInMachine, productPoint;
 
-    ErrorImageScript errorImageScript;
+    ErrorImageScript errorImage2Script, errorImage5Script;
+
     
 
     // Start is called before the first frame update
@@ -28,7 +29,9 @@ public class MachineScript : MonoBehaviour
         pickRobot_animScript = pickRobot.GetComponent<RobotAnimationScript>();
         placeRobot_animScript = placeRobot.GetComponent<RobotAnimationScript>();
 
-        errorImageScript = GameObject.Find("ErrorImageMachine2").GetComponent<ErrorImageScript>();
+        errorImage2Script = GameObject.Find("ErrorImageMachine2").GetComponent<ErrorImageScript>();
+        errorImage5Script = GameObject.Find("ErrorImageMachine5").GetComponent<ErrorImageScript>();
+
 
         machine5Script = GetComponent<Machine5Script>();
     }
@@ -148,9 +151,9 @@ public class MachineScript : MonoBehaviour
                     ///available space to store the products, if there isnt, it waits for the player 
                     ///to make space by moving the products into the box. If there is space, run the code
                     ///to play the animation and move the product from the carrier into the machine.
-                    errorImageScript.isEnabled = true;
+                    errorImage2Script.isEnabled = true;
                     yield return new WaitUntil(() => machineMatsScript.CheckForEmptyProductPoint());
-                    errorImageScript.isEnabled = false;
+                    errorImage2Script.isEnabled = false;
 
                     productPoint = machineMatsScript.PutProductsOnPoints(pickRobot_animScript.materialToParent);
 
@@ -199,8 +202,13 @@ public class MachineScript : MonoBehaviour
             case 5:
                 if (gameObject.name == "Machine5")
                 {
+                    errorImage5Script.isEnabled = true;
+                    yield return new WaitUntil(() => machine5Script.IsThereMaterialsLeft());
+                    errorImage5Script.isEnabled = false;
+
                     PlayPlaceAnimation();
                     yield return new WaitUntil(() => placeRobot_animScript.isAnimationDone);
+                    machine5Script.DecreaseMaterialCount();
                     ResetBothMachineBools();
 
                     canCarrierMoveOn = true;
