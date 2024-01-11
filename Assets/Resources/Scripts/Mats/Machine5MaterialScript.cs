@@ -8,7 +8,6 @@ public class Machine5MaterialScript : MonoBehaviour
 
     public GameObject machine5, floor;
 
-
     Machine5Script machine5Script;
 
     public bool IsInsideMachineZone;
@@ -52,7 +51,8 @@ public class Machine5MaterialScript : MonoBehaviour
         if (IsInsideMachineZone)
         {
             machine5Script.IncreaaseMaterialCount();
-            transform.position = spawnPoint.position; 
+            transform.position = spawnPoint.position;
+            IsInsideMachineZone = false;
         }
     }
 }

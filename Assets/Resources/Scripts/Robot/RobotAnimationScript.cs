@@ -30,7 +30,6 @@ public class RobotAnimationScript : MonoBehaviour
         pointInMachine = parentMachineScript.pointInMachine;
 
         audioSource = GetComponent<AudioSource>();
-        Debug.Log(gameObject.name + Short1 + Short2 + Long1);
     }
 
     /// <summary>

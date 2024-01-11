@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 4260197178532356976}
   - component: {fileID: 4260197178532356977}
   - component: {fileID: 4260197178532356978}
-  - component: {fileID: 4260197178532357004}
+  - component: {fileID: -6000903699404206334}
+  - component: {fileID: -990143745016187940}
   m_Layer: 0
   m_Name: Material_Machine5
   m_TagString: Untagged
@@ -161,9 +162,9 @@ MonoBehaviour:
   m_LastSelectExited:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4260197178532357004}
-        m_TargetAssemblyTypeName: MaterialsScript, Assembly-CSharp
-        m_MethodName: CheckIfItemShouldBeManufactored
+      - m_Target: {fileID: -990143745016187940}
+        m_TargetAssemblyTypeName: Machine5MaterialScript, Assembly-CSharp
+        m_MethodName: CheckIfInZone
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -354,7 +355,23 @@ MonoBehaviour:
       reference: MixedReality.Toolkit.SpatialManipulation.RotateLogic, MixedReality.Toolkit.SpatialManipulation
     scaleLogicType:
       reference: MixedReality.Toolkit.SpatialManipulation.ScaleLogic, MixedReality.Toolkit.SpatialManipulation
---- !u!114 &4260197178532357004
+--- !u!54 &-6000903699404206334
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4260197178532356979}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &-990143745016187940
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -363,11 +380,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4260197178532356979}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9e06805cc400b84b82e43658585546a, type: 3}
+  m_Script: {fileID: 11500000, guid: 555f2a30a4ee31e428fddf7b68bbb197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeOfMaterial: USB
   spawnPoint: {fileID: 0}
-  manufactoringMachine: {fileID: 0}
-  isItemInManufactoringZone: 0
-  machineMatScript: {fileID: 0}
+  machine5: {fileID: 0}
+  floor: {fileID: 0}
+  IsInsideMachineZone: 0
