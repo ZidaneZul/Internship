@@ -792,7 +792,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1.65
-    functionName: Machine5ParentMatToCarrier
+    functionName: DestroyMaterialMachine5
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

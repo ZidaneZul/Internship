@@ -12,12 +12,15 @@ public class Machine5MaterialScript : MonoBehaviour
 
     public bool IsInsideMachineZone;
 
+    Rigidbody rb;
+
     // Start is called before the first frame update
     void Start()
     {
         machine5 = GameObject.Find("Machine5");
         machine5Script = machine5.GetComponent<Machine5Script>();
         floor = GameObject.Find("Floor");
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -53,6 +56,7 @@ public class Machine5MaterialScript : MonoBehaviour
             machine5Script.IncreaaseMaterialCount();
             transform.position = spawnPoint.position;
             IsInsideMachineZone = false;
+            rb.useGravity = false;
         }
     }
 }

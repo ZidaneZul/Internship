@@ -3264,7 +3264,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 556917107}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3291,6 +3291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickRobot: {fileID: 6986873483126682789}
   placeRobot: {fileID: 6530551173502769749}
+  machine5Script: {fileID: 0}
   pointInMachine: {fileID: 318502568}
   productPoint: {fileID: 0}
 --- !u!1 &573179633
@@ -4574,7 +4575,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 854554224}
   m_LocalRotation: {x: -0, y: -0, z: -1.5777216e-30, w: 1}
-  m_LocalPosition: {x: 0, y: 0.00000011920929, z: 0.0000019073486}
+  m_LocalPosition: {x: 0, y: 0.00000011920929, z: -0.1}
   m_LocalScale: {x: 1, y: 1.0000002, z: 1.0000002}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4603,6 +4604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickRobot: {fileID: 3571839542692626767}
   placeRobot: {fileID: 1805125594951811780}
+  machine5Script: {fileID: 0}
   pointInMachine: {fileID: 12011974}
   productPoint: {fileID: 0}
 --- !u!1 &856044894
@@ -6887,7 +6889,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265448432}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.44765, y: 0.39485574, z: -3.5}
+  m_LocalPosition: {x: -7.44765, y: 0.39485574, z: -3.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6917,6 +6919,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickRobot: {fileID: 5121117620479850938}
   placeRobot: {fileID: 5121117620479850938}
+  machine5Script: {fileID: 0}
   pointInMachine: {fileID: 0}
   productPoint: {fileID: 0}
 --- !u!114 &1265448438
@@ -6934,8 +6937,6 @@ MonoBehaviour:
   materialRemainingInside: 0
   matToInstantiate: {fileID: 4260197178532356979, guid: fd91b64b2e0e34546abba92bb186a77b, type: 3}
   points: []
-  gameObject: {fileID: 0}
-  errorImageScript: {fileID: 0}
 --- !u!65 &1265448439
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7940,7 +7941,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1453840242}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7969,6 +7970,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickRobot: {fileID: 3042074279413938786}
   placeRobot: {fileID: 9205336595513105879}
+  machine5Script: {fileID: 0}
   pointInMachine: {fileID: 624649347}
   productPoint: {fileID: 0}
 --- !u!1 &1455458348
@@ -8481,6 +8483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickRobot: {fileID: 3943288730981119631}
   placeRobot: {fileID: 1587420299895642179}
+  machine5Script: {fileID: 0}
   pointInMachine: {fileID: 0}
   productPoint: {fileID: 0}
 --- !u!65 &1537637390
@@ -18548,7 +18551,9 @@ MonoBehaviour:
   canCarrierGo: 0
   isAnimationDone: 0
   parentMachineScript: {fileID: 0}
+  machine5Script: {fileID: 0}
   materialToParent: {fileID: 0}
+  machine5Material: {fileID: 0}
   Short1: {fileID: 8300000, guid: 76a575856b6ea3f4cae140bccead7d0b, type: 3}
   Short2: {fileID: 8300000, guid: f277617ce79689b4d90cb961f46a1765, type: 3}
   Long1: {fileID: 8300000, guid: 88f99a95785ab034080e028fedceb4fb, type: 3}
@@ -19184,7 +19189,9 @@ MonoBehaviour:
   canCarrierGo: 0
   isAnimationDone: 0
   parentMachineScript: {fileID: 0}
+  machine5Script: {fileID: 0}
   materialToParent: {fileID: 0}
+  machine5Material: {fileID: 0}
   Short1: {fileID: 8300000, guid: 76a575856b6ea3f4cae140bccead7d0b, type: 3}
   Short2: {fileID: 8300000, guid: f277617ce79689b4d90cb961f46a1765, type: 3}
   Long1: {fileID: 8300000, guid: 88f99a95785ab034080e028fedceb4fb, type: 3}
@@ -21913,7 +21920,9 @@ MonoBehaviour:
   canCarrierGo: 0
   isAnimationDone: 0
   parentMachineScript: {fileID: 0}
+  machine5Script: {fileID: 0}
   materialToParent: {fileID: 0}
+  machine5Material: {fileID: 0}
   Short1: {fileID: 8300000, guid: 76a575856b6ea3f4cae140bccead7d0b, type: 3}
   Short2: {fileID: 8300000, guid: f277617ce79689b4d90cb961f46a1765, type: 3}
   Long1: {fileID: 8300000, guid: 88f99a95785ab034080e028fedceb4fb, type: 3}
@@ -22349,7 +22358,9 @@ MonoBehaviour:
   canCarrierGo: 0
   isAnimationDone: 0
   parentMachineScript: {fileID: 0}
+  machine5Script: {fileID: 0}
   materialToParent: {fileID: 0}
+  machine5Material: {fileID: 0}
   Short1: {fileID: 8300000, guid: 76a575856b6ea3f4cae140bccead7d0b, type: 3}
   Short2: {fileID: 8300000, guid: f277617ce79689b4d90cb961f46a1765, type: 3}
   Long1: {fileID: 8300000, guid: 88f99a95785ab034080e028fedceb4fb, type: 3}
@@ -22622,7 +22633,9 @@ MonoBehaviour:
   canCarrierGo: 0
   isAnimationDone: 0
   parentMachineScript: {fileID: 0}
+  machine5Script: {fileID: 0}
   materialToParent: {fileID: 0}
+  machine5Material: {fileID: 0}
   Short1: {fileID: 8300000, guid: 76a575856b6ea3f4cae140bccead7d0b, type: 3}
   Short2: {fileID: 8300000, guid: f277617ce79689b4d90cb961f46a1765, type: 3}
   Long1: {fileID: 8300000, guid: 88f99a95785ab034080e028fedceb4fb, type: 3}
@@ -22982,7 +22995,9 @@ MonoBehaviour:
   canCarrierGo: 0
   isAnimationDone: 0
   parentMachineScript: {fileID: 0}
+  machine5Script: {fileID: 0}
   materialToParent: {fileID: 0}
+  machine5Material: {fileID: 0}
   Short1: {fileID: 8300000, guid: 76a575856b6ea3f4cae140bccead7d0b, type: 3}
   Short2: {fileID: 8300000, guid: f277617ce79689b4d90cb961f46a1765, type: 3}
   Long1: {fileID: 8300000, guid: 88f99a95785ab034080e028fedceb4fb, type: 3}
@@ -24478,7 +24493,9 @@ MonoBehaviour:
   canCarrierGo: 0
   isAnimationDone: 0
   parentMachineScript: {fileID: 0}
+  machine5Script: {fileID: 0}
   materialToParent: {fileID: 0}
+  machine5Material: {fileID: 0}
   Short1: {fileID: 8300000, guid: 76a575856b6ea3f4cae140bccead7d0b, type: 3}
   Short2: {fileID: 8300000, guid: f277617ce79689b4d90cb961f46a1765, type: 3}
   Long1: {fileID: 8300000, guid: 88f99a95785ab034080e028fedceb4fb, type: 3}
@@ -26567,7 +26584,9 @@ MonoBehaviour:
   canCarrierGo: 0
   isAnimationDone: 0
   parentMachineScript: {fileID: 0}
+  machine5Script: {fileID: 0}
   materialToParent: {fileID: 0}
+  machine5Material: {fileID: 0}
   Short1: {fileID: 8300000, guid: 76a575856b6ea3f4cae140bccead7d0b, type: 3}
   Short2: {fileID: 8300000, guid: f277617ce79689b4d90cb961f46a1765, type: 3}
   Long1: {fileID: 8300000, guid: 88f99a95785ab034080e028fedceb4fb, type: 3}
@@ -27767,7 +27786,9 @@ MonoBehaviour:
   canCarrierGo: 0
   isAnimationDone: 0
   parentMachineScript: {fileID: 0}
+  machine5Script: {fileID: 0}
   materialToParent: {fileID: 0}
+  machine5Material: {fileID: 0}
   Short1: {fileID: 8300000, guid: 76a575856b6ea3f4cae140bccead7d0b, type: 3}
   Short2: {fileID: 8300000, guid: f277617ce79689b4d90cb961f46a1765, type: 3}
   Long1: {fileID: 8300000, guid: 88f99a95785ab034080e028fedceb4fb, type: 3}
