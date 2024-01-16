@@ -2222,7 +2222,6 @@ Transform:
   - {fileID: 847021779}
   - {fileID: 98483049}
   - {fileID: 26443824}
-  - {fileID: 961221691}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5131,7 +5130,7 @@ RectTransform:
   m_Children:
   - {fileID: 122391333}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5923,7 +5922,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -5941,12 +5940,12 @@ RectTransform:
   m_Children:
   - {fileID: 56568525}
   - {fileID: 926787776}
-  m_Father: {fileID: 327857329}
-  m_RootOrder: 9
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1.29}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &963455051
@@ -10892,6 +10891,9 @@ MonoBehaviour:
   - 2.1
   - 2.77
   zoomIndex: 0
+  debuggingTextPrefab: {fileID: 1068602344807085386, guid: f17a8694eada071439014af0d3c6a397, type: 3}
+  worldSpaceCanvas: {fileID: 961221687}
+  offset: {x: 0, y: 0.1, z: 0}
 --- !u!4 &2027803127
 Transform:
   m_ObjectHideFlags: 0

@@ -56,7 +56,9 @@ public class Manager : MonoBehaviour
         {
             Debug.Log("Going in i " + i);
             GameObject text = Instantiate(debuggingTextPrefab,worldSpaceCanvas.transform);
-            text.transform.position = point.transform.position + offset;
+
+
+            text.transform.position = new Vector3(point.transform.position.x, point.transform.position.y + 0.5f, point.transform.position.z);
 
             TextMeshProUGUI tmp = text.GetComponent<TextMeshProUGUI>();
 
@@ -69,7 +71,7 @@ public class Manager : MonoBehaviour
             Debug.Log("Going in a " + a);
 
             GameObject text = Instantiate(debuggingTextPrefab, worldSpaceCanvas.transform);
-            text.transform.position = point.transform.position;
+            text.transform.position = new Vector3(point.transform.position.x, point.transform.position.y + 0.5f, point.transform.position.z);
             TextMeshProUGUI tmp = text.GetComponent<TextMeshProUGUI>();
 
             tmp.text = a.ToString(); 
