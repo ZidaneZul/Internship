@@ -90,9 +90,11 @@ public class ConveyorItemScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pointsToFollow = GameObject.FindGameObjectsWithTag("StopPoint");
+        //pointsToFollow = GameObject.FindGameObjectsWithTag("StopPoint");
 
         manager = GameObject.Find("SceneManager").GetComponent<Manager>();
+        pointsToFollow = manager.points;
+
         restPointScript = GameObject.Find("RestPoints").GetComponent<RestingScript>();
 
         audioSource = GetComponent<AudioSource>();
@@ -114,7 +116,6 @@ public class ConveyorItemScript : MonoBehaviour
         Machines_GOs[2] = thirdMachine_GO;
         Machines_GOs[3] = fourthMachine_GO;
         Machines_GOs[4] = fifthMachine_GO;
-        Debug.Log(gameObject.name + "points to follow" + pointsToFollow.Length);
     }
 
     private void Update()

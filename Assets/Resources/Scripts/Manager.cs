@@ -38,12 +38,14 @@ public class Manager : MonoBehaviour
     public GameObject worldSpaceCanvas;
     public Vector3 offset = new Vector3(0, 0.1f,0);
 
+
+
     // Start is called before the first frame update
     void Start()
     {
-        points = GameObject.FindGameObjectsWithTag("StopPoint");
-        carriers = GameObject.FindGameObjectsWithTag("Carrier");
-        restPoints = GameObject.FindGameObjectsWithTag("RestPoint");
+        points = SortArrays(GameObject.FindGameObjectsWithTag("StopPoint"));
+        carriers = SortArrays(GameObject.FindGameObjectsWithTag("Carrier"));
+        restPoints = SortArrays(GameObject.FindGameObjectsWithTag("RestPoint"));
 
         machineMatsScript = GameObject.Find("Machine2").GetComponent<MachineMaterialScript>();
 
@@ -54,7 +56,6 @@ public class Manager : MonoBehaviour
         int a = 0;
         foreach (GameObject point in points)
         {
-            Debug.Log("Going in i " + i);
             GameObject text = Instantiate(debuggingTextPrefab,worldSpaceCanvas.transform);
 
 
@@ -68,12 +69,12 @@ public class Manager : MonoBehaviour
 
         foreach (GameObject point in carriers)
         {
-            Debug.Log("Going in a " + a);
-
+            Debug.Log("showing" + point.name + a);
             GameObject text = Instantiate(debuggingTextPrefab, worldSpaceCanvas.transform);
             text.transform.position = new Vector3(point.transform.position.x, point.transform.position.y + 0.5f, point.transform.position.z);
             TextMeshProUGUI tmp = text.GetComponent<TextMeshProUGUI>();
 
+            Debug.Log(point.name + a);
             tmp.text = a.ToString(); 
             a++;
         }
@@ -284,6 +285,30 @@ public class Manager : MonoBehaviour
                 script.material = tempGO;
                 break;
         }
+    }
+
+    public GameObject[] SortArrays(GameObject[] arrayToSort)
+    {
+        Debug.Log("Sorting array");
+
+        GameObject[] array = new GameObject[arrayToSort.Length];
+
+
+        string debugTest = null;
+
+        foreach (GameObject item in arrayToSort)
+        {
+            SortingValueScript valueScript = item.GetComponent<SortingValueScript>();
+
+            array[valueScript.value] = item;
+        }
+
+        foreach (GameObject sort in array)
+        {
+            debugTest += sort.ToString() + "\n";
+        }
+        Debug.Log(debugTest);
+        return array;
     }
 
     #region UI Functions
