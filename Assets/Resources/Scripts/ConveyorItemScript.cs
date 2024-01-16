@@ -114,6 +114,7 @@ public class ConveyorItemScript : MonoBehaviour
         Machines_GOs[2] = thirdMachine_GO;
         Machines_GOs[3] = fourthMachine_GO;
         Machines_GOs[4] = fifthMachine_GO;
+        Debug.Log(gameObject.name + "points to follow" + pointsToFollow.Length);
     }
 
     private void Update()

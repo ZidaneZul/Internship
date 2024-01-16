@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour
 {
@@ -23,6 +24,15 @@ public class Manager : MonoBehaviour
 
     MachineMaterialScript machineMatsScript;
 
+    public GameObject entireMachine;
+    public GameObject player;
+
+    public float[] zoomSize = {1, 0.5f, .25f};
+    public float[] zoomX = { 3, 2.78f, 2.95f };
+    public float[] zoomY = { 1.29f, 1.29f, 1.62f };
+    public float[] zoomZ = { 0, 2.1f, 2.77f };
+    public int zoomIndex = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +41,9 @@ public class Manager : MonoBehaviour
         restPoints = GameObject.FindGameObjectsWithTag("RestPoint");
 
         machineMatsScript = GameObject.Find("Machine2").GetComponent<MachineMaterialScript>();
+
+        entireMachine = GameObject.Find("Machine");
+        player = Camera.main.gameObject;
     }
 
     // Update is called once per frame
@@ -42,7 +55,21 @@ public class Manager : MonoBehaviour
            // GameObject item = Instantiate(itemPrefab, startPoint.transform);
         }
 
-        DisplayCorrectNumberOfItemsToMake();
+        if (Input.GetKey(KeyCode.T))
+        {
+            ZoomIn();
+        }
+        if (Input.GetKey(KeyCode.Y))
+        {
+            ZoomOut();
+        }
+        if (Input.GetKey(KeyCode.U))
+        {
+            RestartSimulation();
+        }
+
+            DisplayCorrectNumberOfItemsToMake();
+        Debug.Log("Player is in " + player.transform.position + "\n machine is in " + entireMachine.transform.position);
     }
 
     /// <summary>
@@ -146,6 +173,49 @@ public class Manager : MonoBehaviour
                 StartProductionAR(itemType);
                 break;
         }
+    }
+
+    public void ZoomIn()
+    {
+        if(zoomIndex > 0)
+        {
+            zoomIndex--;
+            float zoomScale = zoomSize[zoomIndex];
+
+            entireMachine.transform.localScale = new Vector3(zoomScale, zoomScale, zoomScale);
+            entireMachine.transform.position = new Vector3(zoomX[zoomIndex], zoomY[zoomIndex], zoomZ[zoomIndex]);
+        }
+
+    }
+    public void ZoomOut()
+    {
+        if(zoomIndex < 3)
+        {
+            zoomIndex++;
+            float zoomScale = zoomSize[zoomIndex];
+
+            entireMachine.transform.localScale = new Vector3(zoomScale, zoomScale, zoomScale);
+            entireMachine.transform.position = new Vector3(zoomX[zoomIndex], zoomY[zoomIndex], zoomZ[zoomIndex]);
+        }
+    }
+
+    public void RestartSimulation()
+    {
+        SceneManager.LoadScene("MainScene");
+    }
+
+    public void RepositionToPlayer()
+    {
+        Vector3 offset = new Vector3(-3.19f, -0.37f, -5.09f);
+        Vector3 playerVect = player.transform.position;
+        Vector3 playerDir = player.transform.forward;
+        playerDir.z = 0;
+
+        Vector3 machine = playerVect + offset;
+        
+        entireMachine.transform.position = machine;
+        //ntireMachine.transform.forward = playerDir;
+        
     }
 
     public void SwitchToFinalProduct(string matName, GameObject matGO, Transform itemPosition, ConveyorItemScript script)
