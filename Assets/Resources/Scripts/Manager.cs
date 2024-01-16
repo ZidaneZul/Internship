@@ -33,6 +33,11 @@ public class Manager : MonoBehaviour
     public float[] zoomZ = { 0, 2.1f, 2.77f };
     public int zoomIndex = 0;
 
+
+    public GameObject debuggingTextPrefab;
+    public GameObject worldSpaceCanvas;
+    public Vector3 offset = new Vector3(0, 0.1f,0);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +49,32 @@ public class Manager : MonoBehaviour
 
         entireMachine = GameObject.Find("Machine");
         player = Camera.main.gameObject;
+
+        int i = 0;
+        int a = 0;
+        foreach (GameObject point in points)
+        {
+            Debug.Log("Going in i " + i);
+            GameObject text = Instantiate(debuggingTextPrefab,worldSpaceCanvas.transform);
+            text.transform.position = point.transform.position + offset;
+
+            TextMeshProUGUI tmp = text.GetComponent<TextMeshProUGUI>();
+
+            tmp.text = i.ToString(); 
+            i++;
+        }
+
+        foreach (GameObject point in carriers)
+        {
+            Debug.Log("Going in a " + a);
+
+            GameObject text = Instantiate(debuggingTextPrefab, worldSpaceCanvas.transform);
+            text.transform.position = point.transform.position;
+            TextMeshProUGUI tmp = text.GetComponent<TextMeshProUGUI>();
+
+            tmp.text = a.ToString(); 
+            a++;
+        }
     }
 
     // Update is called once per frame
@@ -69,7 +100,7 @@ public class Manager : MonoBehaviour
         }
 
             DisplayCorrectNumberOfItemsToMake();
-        Debug.Log("Player is in " + player.transform.position + "\n machine is in " + entireMachine.transform.position);
+       // Debug.Log("Player is in " + player.transform.position + "\n machine is in " + entireMachine.transform.position);
     }
 
     /// <summary>
