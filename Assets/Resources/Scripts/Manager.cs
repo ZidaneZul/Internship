@@ -39,9 +39,7 @@ public class Manager : MonoBehaviour
     public Vector3 offset = new Vector3(0, 0.1f,0);
 
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         points = SortArrays(GameObject.FindGameObjectsWithTag("StopPoint"));
         carriers = SortArrays(GameObject.FindGameObjectsWithTag("Carrier"));
@@ -50,6 +48,12 @@ public class Manager : MonoBehaviour
         machineMatsScript = GameObject.Find("Machine2").GetComponent<MachineMaterialScript>();
 
         entireMachine = GameObject.Find("Machine");
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
         player = Camera.main.gameObject;
 
         int i = 0;

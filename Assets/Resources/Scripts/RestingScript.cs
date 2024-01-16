@@ -15,12 +15,19 @@ public class RestingScript : MonoBehaviour
 
     public string testing;
 
+    Manager manager;
+
     // Start is called before the first frame update
     void Start()
     {
-        restPoints = GameObject.FindGameObjectsWithTag("RestPoint");
+        manager = GameObject.Find("SceneManager").GetComponent<Manager>();
 
-        carriers = GameObject.FindGameObjectsWithTag("Carrier");
+        //restPoints = GameObject.FindGameObjectsWithTag("RestPoint");
+        restPoints = manager.restPoints;
+
+        //carriers = GameObject.FindGameObjectsWithTag("Carrier");
+        carriers = manager.carriers;
+        
 
         for(int i = 8; i >=0; i--)
         {
