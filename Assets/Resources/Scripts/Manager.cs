@@ -41,6 +41,7 @@ public class Manager : MonoBehaviour
 
     private void Awake()
     {
+        ///
         points = SortArrays(GameObject.FindGameObjectsWithTag("StopPoint"));
         carriers = SortArrays(GameObject.FindGameObjectsWithTag("Carrier"));
         restPoints = SortArrays(GameObject.FindGameObjectsWithTag("RestPoint"));
