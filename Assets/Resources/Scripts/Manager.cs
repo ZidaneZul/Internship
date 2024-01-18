@@ -58,32 +58,32 @@ public class Manager : MonoBehaviour
         
         player = Camera.main.gameObject;
 
-        int i = 0;
-        int a = 0;
-        foreach (GameObject point in points)
-        {
-            GameObject text = Instantiate(debuggingTextPrefab,worldSpaceCanvas.transform);
+        //int i = 0;
+        //int a = 0;
+        //foreach (GameObject point in points)
+        //{
+        //    GameObject text = Instantiate(debuggingTextPrefab,worldSpaceCanvas.transform);
 
 
-            text.transform.position = new Vector3(point.transform.position.x, point.transform.position.y + 0.5f, point.transform.position.z);
+        //    text.transform.position = new Vector3(point.transform.position.x, point.transform.position.y + 0.5f, point.transform.position.z);
 
-            TextMeshProUGUI tmp = text.GetComponent<TextMeshProUGUI>();
+        //    TextMeshProUGUI tmp = text.GetComponent<TextMeshProUGUI>();
 
-            tmp.text = i.ToString(); 
-            i++;
-        }
+        //    tmp.text = i.ToString(); 
+        //    i++;
+        //}
 
-        foreach (GameObject point in carriers)
-        {
-            Debug.Log("showing" + point.name + a);
-            GameObject text = Instantiate(debuggingTextPrefab, worldSpaceCanvas.transform);
-            text.transform.position = new Vector3(point.transform.position.x, point.transform.position.y + 0.5f, point.transform.position.z);
-            TextMeshProUGUI tmp = text.GetComponent<TextMeshProUGUI>();
+        //foreach (GameObject point in carriers)
+        //{
+        //    Debug.Log("showing" + point.name + a);
+        //    GameObject text = Instantiate(debuggingTextPrefab, worldSpaceCanvas.transform);
+        //    text.transform.position = new Vector3(point.transform.position.x, point.transform.position.y + 0.5f, point.transform.position.z);
+        //    TextMeshProUGUI tmp = text.GetComponent<TextMeshProUGUI>();
 
-            Debug.Log(point.name + a);
-            tmp.text = a.ToString(); 
-            a++;
-        }
+        //    Debug.Log(point.name + a);
+        //    tmp.text = a.ToString(); 
+        //    a++;
+        //}
     }
 
     // Update is called once per frame

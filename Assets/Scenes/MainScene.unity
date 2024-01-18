@@ -701,6 +701,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: debugText
+      value: 
+      objectReference: {fileID: 1068602344807085386, guid: f17a8694eada071439014af0d3c6a397, type: 3}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentSpeed
       value: 5
       objectReference: {fileID: 0}
@@ -748,6 +752,10 @@ PrefabInstance:
       propertyPath: secondMachine_GO
       value: 
       objectReference: {fileID: 1537637384}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: worldSpaceCanvas
+      value: 
+      objectReference: {fileID: 961221687}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentOrderNumber
       value: 4
@@ -1101,6 +1109,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: debugText
+      value: 
+      objectReference: {fileID: 1068602344807085386, guid: f17a8694eada071439014af0d3c6a397, type: 3}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentSpeed
       value: 5
       objectReference: {fileID: 0}
@@ -1148,6 +1160,10 @@ PrefabInstance:
       propertyPath: secondMachine_GO
       value: 
       objectReference: {fileID: 1537637384}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: worldSpaceCanvas
+      value: 
+      objectReference: {fileID: 961221687}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentOrderNumber
       value: 7
@@ -7105,6 +7121,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: debugText
+      value: 
+      objectReference: {fileID: 1068602344807085386, guid: f17a8694eada071439014af0d3c6a397, type: 3}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentSpeed
       value: 5
       objectReference: {fileID: 0}
@@ -7152,6 +7172,10 @@ PrefabInstance:
       propertyPath: secondMachine_GO
       value: 
       objectReference: {fileID: 1537637384}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: worldSpaceCanvas
+      value: 
+      objectReference: {fileID: 961221687}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentOrderNumber
       value: 5
@@ -8323,6 +8347,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: debugText
+      value: 
+      objectReference: {fileID: 1068602344807085386, guid: f17a8694eada071439014af0d3c6a397, type: 3}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentSpeed
       value: 5
       objectReference: {fileID: 0}
@@ -8370,6 +8398,10 @@ PrefabInstance:
       propertyPath: secondMachine_GO
       value: 
       objectReference: {fileID: 1537637384}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: worldSpaceCanvas
+      value: 
+      objectReference: {fileID: 961221687}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentOrderNumber
       value: 1
@@ -8857,6 +8889,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: debugText
+      value: 
+      objectReference: {fileID: 1068602344807085386, guid: f17a8694eada071439014af0d3c6a397, type: 3}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentSpeed
       value: 5
       objectReference: {fileID: 0}
@@ -8904,6 +8940,10 @@ PrefabInstance:
       propertyPath: secondMachine_GO
       value: 
       objectReference: {fileID: 1537637384}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: worldSpaceCanvas
+      value: 
+      objectReference: {fileID: 961221687}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentOrderNumber
       value: 6
@@ -9161,6 +9201,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: debugText
+      value: 
+      objectReference: {fileID: 1068602344807085386, guid: f17a8694eada071439014af0d3c6a397, type: 3}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentSpeed
       value: 5
       objectReference: {fileID: 0}
@@ -9208,6 +9252,10 @@ PrefabInstance:
       propertyPath: secondMachine_GO
       value: 
       objectReference: {fileID: 1537637384}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: worldSpaceCanvas
+      value: 
+      objectReference: {fileID: 961221687}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentOrderNumber
       value: 3
@@ -11283,6 +11331,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: debugText
+      value: 
+      objectReference: {fileID: 1068602344807085386, guid: f17a8694eada071439014af0d3c6a397, type: 3}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentSpeed
       value: 5
       objectReference: {fileID: 0}
@@ -11330,6 +11382,10 @@ PrefabInstance:
       propertyPath: secondMachine_GO
       value: 
       objectReference: {fileID: 1537637384}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: worldSpaceCanvas
+      value: 
+      objectReference: {fileID: 961221687}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentOrderNumber
       value: 2
@@ -16737,6 +16793,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 5b51291896f7a314f88cd13e7cc011cf, type: 3}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: debugText
+      value: 
+      objectReference: {fileID: 1068602344807085386, guid: f17a8694eada071439014af0d3c6a397, type: 3}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: currentSpeed
       value: 5
       objectReference: {fileID: 0}
@@ -16760,6 +16820,10 @@ PrefabInstance:
       propertyPath: secondMachine_GO
       value: 
       objectReference: {fileID: 1537637384}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: worldSpaceCanvas
+      value: 
+      objectReference: {fileID: 961221687}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: fifthMachine_Point
       value: 

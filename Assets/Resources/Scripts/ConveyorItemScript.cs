@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using System;
 using TMPro;
+using System.Text.RegularExpressions;
 
 public class ConveyorItemScript : MonoBehaviour
 {
@@ -13,7 +14,6 @@ public class ConveyorItemScript : MonoBehaviour
     public GameObject[] pointsToFollow;
     [HideInInspector]
     public GameObject[] carriers;
-    [HideInInspector]
     public GameObject carrierInfront;
 
     public GameObject firstMachine_Point, secondMachine_Point, thirdMachine_Point, fourthMachine_Point, fifthMachine_Point;
@@ -84,6 +84,12 @@ public class ConveyorItemScript : MonoBehaviour
 
     public bool pastStartingMachine = false;
 
+    public GameObject debugText;
+    public GameObject worldSpaceCanvas;
+    public TextMeshProUGUI debugTMP;
+
+    bool trigger1, trigger2, trigger3;
+
     #endregion
 
 
@@ -128,6 +134,59 @@ public class ConveyorItemScript : MonoBehaviour
             audioSource.volume = 0.1f;
             audioSource.Pause();
         }
+
+        if(carrierInfront == null && !trigger1)
+        {
+            GameObject text = Instantiate(debugText, worldSpaceCanvas.transform);
+            text.transform.position = transform.position;
+
+            debugTMP = text.GetComponent<TextMeshProUGUI>();
+
+            debugTMP.text = "!";
+            trigger1 = true;
+        }
+
+        if (carrierInfront_Script == null && !trigger2)
+        {
+            GameObject text = Instantiate(debugText, worldSpaceCanvas.transform);
+            text.transform.position = transform.position;
+
+            debugTMP = text.GetComponent<TextMeshProUGUI>();
+
+            debugTMP.text = "?";
+            trigger2 = true;
+        }
+
+        if (!trigger3)
+        {
+            GameObject text = Instantiate(debugText, worldSpaceCanvas.transform);
+            text.transform.position = transform.position;
+
+            debugTMP = text.GetComponent<TextMeshProUGUI>();
+
+
+            string objectInfrontString = carrierInfront.gameObject.name;
+
+            int[] interString =  ExtractIntegers(objectInfrontString);
+            foreach (int i in interString)
+            {
+                debugTMP.text = i.ToString();
+            }
+            trigger2 = true;
+        }
+    }
+
+    int[] ExtractIntegers(string input)
+    {
+        MatchCollection matches = Regex.Matches(input, @"-?\d+");
+        int[] result = new int[matches.Count];
+
+        for (int i = 0; i < matches.Count; i++)
+        {
+            result[i] = int.Parse(matches[i].Value);
+        }
+
+        return result;
     }
 
     public void ChangeSpeed(float multiplier)
