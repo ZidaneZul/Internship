@@ -31,6 +31,7 @@ public class Manager : MonoBehaviour
     public float[] zoomX = { 0, 0, 0 };
     public float[] zoomY = { 1.29f, 1.29f, 1.62f };
     public float[] zoomZ = { 0, 0, 0 };
+    public float[] zoomPos = { 14.5f, 2.5f, 1.5f };
     public int zoomIndex = 0;
 
 
@@ -222,7 +223,6 @@ public class Manager : MonoBehaviour
             float zoomScale = this.zoomScale[zoomIndex];
 
             entireMachine.transform.localScale = new Vector3(zoomScale, zoomScale, zoomScale);
-            entireMachine.transform.position = new Vector3(zoomX[zoomIndex], zoomY[zoomIndex], zoomZ[zoomIndex]);
             foreach(GameObject carry in carriers)
             {
                 ConveyorItemScript carryScript = carry.GetComponent<ConveyorItemScript>();
@@ -240,7 +240,6 @@ public class Manager : MonoBehaviour
             float zoomScale = this.zoomScale[zoomIndex];
 
             entireMachine.transform.localScale = new Vector3(zoomScale, zoomScale, zoomScale);
-            entireMachine.transform.position = new Vector3(zoomX[zoomIndex], zoomY[zoomIndex], zoomZ[zoomIndex]);
             foreach (GameObject carry in carriers)
             {
                 ConveyorItemScript carryScript = carry.GetComponent<ConveyorItemScript>();
@@ -257,12 +256,12 @@ public class Manager : MonoBehaviour
 
     public void RepositionToPlayer()
     {
-        Vector3 offset = new Vector3(-3.19f, -0.37f, -5.09f);
+        float distance = zoomPos[zoomIndex];
         Vector3 playerVect = player.transform.position;
         Vector3 playerDir = player.transform.forward;
-        playerDir.z = 0;
+        playerDir.y = 0;
 
-        Vector3 machine = playerVect + offset;
+        Vector3 machine = playerVect + (playerDir * distance);
         
         entireMachine.transform.position = machine;
         //ntireMachine.transform.forward = playerDir;
