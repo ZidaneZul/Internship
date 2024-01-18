@@ -23,7 +23,6 @@ public class ConveyorItemScript : MonoBehaviour
     [HideInInspector]
     public GameObject[] Machines_GOs = new GameObject[5];
 
-    [HideInInspector]
     public GameObject currentRestPoint_GO;
     public int currentRestPoint_int;
 
@@ -73,6 +72,7 @@ public class ConveyorItemScript : MonoBehaviour
 
     public float limitDistance;
     public float speed;
+    public float currentSpeed;
     float time;
     public bool PauseHere;
     public bool isFinished = false;
@@ -130,6 +130,10 @@ public class ConveyorItemScript : MonoBehaviour
         }
     }
 
+    public void ChangeSpeed(float multiplier)
+    {
+        currentSpeed = speed * multiplier;
+    }
     public void MakeItem()
     {
         switch (itemToMake_string)
@@ -178,7 +182,7 @@ public class ConveyorItemScript : MonoBehaviour
                 while (Vector3.Distance(point.transform.position, transform.position) > 0.05f)
                 {
                     ///moves the plate using the transform position
-                    transform.position = Vector3.MoveTowards(transform.position, point.transform.position, speed * Time.deltaTime);
+                    transform.position = Vector3.MoveTowards(transform.position, point.transform.position, currentSpeed * Time.deltaTime);
 
                     Debug.Log("Playing audio");
                     audioSource.Play();
@@ -296,7 +300,7 @@ public class ConveyorItemScript : MonoBehaviour
                         yield return null;
                     }
 
-                    transform.position = Vector3.MoveTowards(transform.position, point.transform.position, speed * Time.deltaTime);
+                    transform.position = Vector3.MoveTowards(transform.position, point.transform.position, currentSpeed * Time.deltaTime);
 
                     if (Vector3.Distance(transform.position, currentRestPoint_GO.transform.position) < 0.1f)
                     //if (transform.position == currentRestPoint_GO.transform.position)
@@ -333,7 +337,7 @@ public class ConveyorItemScript : MonoBehaviour
                 audioSource.Pause();
                 yield return null;
             }
-            transform.position = Vector3.MoveTowards(transform.position, currentRestPoint_GO.transform.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, currentRestPoint_GO.transform.position, currentSpeed * Time.deltaTime);
             yield return null;
         }
 
@@ -392,15 +396,15 @@ public class ConveyorItemScript : MonoBehaviour
                     Vector3 currrentPosition = transform.position;
 
                     ///function to move the carriers
-                    transform.position = Vector3.MoveTowards(transform.position, point.transform.position, speed * Time.deltaTime);
+                    transform.position = Vector3.MoveTowards(transform.position, point.transform.position, currentSpeed * Time.deltaTime);
 
-                    if (currrentPosition == transform.position && Timer(5f))
-                    {
-                        transform.position = currentRestPoint_GO.transform.position;
-                        TextChange("");
-                        audioSource.Pause();
-                        yield break;
-                    }
+                    //if (currrentPosition == transform.position && Timer(5f))
+                    //{
+                    //    transform.position = currentRestPoint_GO.transform.position;
+                    //    TextChange("");
+                    //    audioSource.Pause();
+                    //    yield break;
+                    //}
                     yield return null;
                 }
             }
@@ -454,7 +458,7 @@ public class ConveyorItemScript : MonoBehaviour
     public bool IsCloseToFrontItem()
     {
         //Debug.Log(Vector3.Distance(transform.position, carrierInfront.transform.position) + gameObject.name);
-        if(Vector3.Distance(transform.position, carrierInfront.transform.position) <= limitDistance)
+        if(Vector3.Distance(transform.position, carrierInfront.transform.position) <= limitDistance * manager.zoomScale[manager.zoomIndex])
         {
             if (carrierInfront_Script.resting == true && resting == false)
             {

@@ -27,10 +27,10 @@ public class Manager : MonoBehaviour
     public GameObject entireMachine;
     public GameObject player;
 
-    public float[] zoomSize = {1, 0.5f, .25f};
-    public float[] zoomX = { 3, 2.78f, 2.95f };
+    public float[] zoomScale = {1, 0.5f, .25f};
+    public float[] zoomX = { 0, 0, 0 };
     public float[] zoomY = { 1.29f, 1.29f, 1.62f };
-    public float[] zoomZ = { 0, 2.1f, 2.77f };
+    public float[] zoomZ = { 0, 0, 0 };
     public int zoomIndex = 0;
 
 
@@ -219,22 +219,34 @@ public class Manager : MonoBehaviour
         if(zoomIndex > 0)
         {
             zoomIndex--;
-            float zoomScale = zoomSize[zoomIndex];
+            float zoomScale = this.zoomScale[zoomIndex];
 
             entireMachine.transform.localScale = new Vector3(zoomScale, zoomScale, zoomScale);
             entireMachine.transform.position = new Vector3(zoomX[zoomIndex], zoomY[zoomIndex], zoomZ[zoomIndex]);
+            foreach(GameObject carry in carriers)
+            {
+                ConveyorItemScript carryScript = carry.GetComponent<ConveyorItemScript>();
+
+                carryScript.ChangeSpeed(zoomScale);
+            }
         }
 
     }
     public void ZoomOut()
     {
-        if(zoomIndex < 3)
+        if(zoomIndex < 2)
         {
             zoomIndex++;
-            float zoomScale = zoomSize[zoomIndex];
+            float zoomScale = this.zoomScale[zoomIndex];
 
             entireMachine.transform.localScale = new Vector3(zoomScale, zoomScale, zoomScale);
             entireMachine.transform.position = new Vector3(zoomX[zoomIndex], zoomY[zoomIndex], zoomZ[zoomIndex]);
+            foreach (GameObject carry in carriers)
+            {
+                ConveyorItemScript carryScript = carry.GetComponent<ConveyorItemScript>();
+
+                carryScript.ChangeSpeed(zoomScale);
+            }
         }
     }
 
@@ -267,26 +279,31 @@ public class Manager : MonoBehaviour
             case "Flashlight":
                 tempGO = Instantiate(finalFlashLight, itemPosition, true);
                 tempGO.transform.position = itemPosition.position;
+                tempGO.transform.localScale = new Vector3(zoomScale[zoomIndex], zoomScale[zoomIndex], zoomScale[zoomIndex]);
                 script.material = tempGO;
                 break;
             case "USB":
                 tempGO = Instantiate(finalUSB, itemPosition,true);
                 tempGO.transform.position = itemPosition.position;
+                tempGO.transform.localScale = new Vector3(zoomScale[zoomIndex], zoomScale[zoomIndex], zoomScale[zoomIndex]);
                 script.material = tempGO;
                 break;
             case "PushButton":
                 tempGO = Instantiate(finalPushButton, itemPosition, true);
                 tempGO.transform.position = itemPosition.position;
+                tempGO.transform.localScale = new Vector3(zoomScale[zoomIndex], zoomScale[zoomIndex], zoomScale[zoomIndex]);
                 script.material = tempGO;
                 break;
             case "Limit":
                 tempGO = Instantiate(finalLimitSwitch, itemPosition, true);
                 tempGO.transform.position = itemPosition.position;
+                tempGO.transform.localScale = new Vector3(zoomScale[zoomIndex], zoomScale[zoomIndex], zoomScale[zoomIndex]);
                 script.material = tempGO;
                 break;
             case "Wifi":
                 tempGO = Instantiate(finalWifi, itemPosition, true);
                 tempGO.transform.position = itemPosition.position;
+                tempGO.transform.localScale = new Vector3(zoomScale[zoomIndex], zoomScale[zoomIndex], zoomScale[zoomIndex]);
                 script.material = tempGO;
                 break;
         }

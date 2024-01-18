@@ -701,6 +701,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: currentSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: fifthMachine
       value: 
       objectReference: {fileID: 1260659176}
@@ -928,7 +932,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1624, y: 1331}
+  m_AnchoredPosition: {x: 1624, y: 877}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &122391334
@@ -1095,6 +1099,10 @@ PrefabInstance:
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: resting
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: currentSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: fifthMachine
@@ -7097,6 +7105,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: currentSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: fifthMachine
       value: 
       objectReference: {fileID: 1260659176}
@@ -8311,6 +8323,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: currentSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: fifthMachine
       value: 
       objectReference: {fileID: 1260659176}
@@ -8841,6 +8857,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: currentSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: fifthMachine
       value: 
       objectReference: {fileID: 1260659176}
@@ -9139,6 +9159,10 @@ PrefabInstance:
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: resting
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: currentSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: fifthMachine
@@ -11192,22 +11216,22 @@ MonoBehaviour:
   ListOfItemsToMake: []
   entireMachine: {fileID: 0}
   player: {fileID: 0}
-  zoomSize:
+  zoomScale:
   - 1
   - 0.5
   - 0.25
   zoomX:
-  - 3
-  - 2.78
-  - 2.95
+  - 0
+  - 0
+  - 0
   zoomY:
   - 1.29
   - 1.29
   - 1.62
   zoomZ:
   - 0
-  - 2.1
-  - 2.77
+  - 0
+  - 0
   zoomIndex: 0
   debuggingTextPrefab: {fileID: 1068602344807085386, guid: f17a8694eada071439014af0d3c6a397, type: 3}
   worldSpaceCanvas: {fileID: 961221687}
@@ -11253,6 +11277,10 @@ PrefabInstance:
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: resting
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: currentSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: fifthMachine
@@ -16704,6 +16732,10 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 5b51291896f7a314f88cd13e7cc011cf, type: 3}
+    - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
+      propertyPath: currentSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4947692701655146471, guid: ecf151e6841219649bc74f7cc646972d, type: 3}
       propertyPath: fifthMachine_GO
       value: 
