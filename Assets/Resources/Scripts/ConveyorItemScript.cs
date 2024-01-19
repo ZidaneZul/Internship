@@ -88,7 +88,7 @@ public class ConveyorItemScript : MonoBehaviour
     public GameObject worldSpaceCanvas;
     public TextMeshProUGUI debugTMP;
 
-    bool trigger1, trigger2, trigger3;
+    bool trigger1, trigger2, trigger3, trigger4, trigger5;
 
     #endregion
 
@@ -165,14 +165,48 @@ public class ConveyorItemScript : MonoBehaviour
             debugTMP = text.GetComponent<TextMeshProUGUI>();
 
 
-            string objectInfrontString = carrierInfront.gameObject.name;
+            string objectInfrontString = gameObject.name;
 
             int[] interString =  ExtractIntegers(objectInfrontString);
             foreach (int i in interString)
             {
-                debugTMP.text = i.ToString();
+                debugTMP.text = "t" + i.ToString();
+                debugTMP.fontSize = 0.5f;
             }
             trigger3 = true;
+        }
+        if (!trigger4)
+        {
+            GameObject text = Instantiate(debugText, worldSpaceCanvas.transform);
+            text.transform.position = transform.position + new Vector3 (0,1f,0);
+
+            debugTMP = text.GetComponent<TextMeshProUGUI>();
+
+
+            string objectInfrontString = carrierInfront_Script.gameObject.name;
+
+            int[] interString = ExtractIntegers(objectInfrontString);
+            foreach (int i in interString)
+            {
+                debugTMP.text = "a" + i.ToString();
+                debugTMP.fontSize = 0.5f;
+            }
+            trigger4 = true;
+        }
+        if (!trigger5)
+        {
+            GameObject text = Instantiate(debugText, worldSpaceCanvas.transform);
+            text.transform.position = transform.position + new Vector3(0, 0.5f, 0);
+
+            debugTMP = text.GetComponent<TextMeshProUGUI>();
+
+            if (resting)
+                debugTMP.text = "r";
+            else
+                debugTMP.text = "x";
+
+            debugTMP.fontSize = 0.5f;
+            trigger5 = true;
         }
     }
 

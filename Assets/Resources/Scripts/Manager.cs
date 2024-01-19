@@ -157,6 +157,11 @@ public class Manager : MonoBehaviour
     {
         foreach(GameObject carry in carriersInOrder)
         {
+            GameObject text = Instantiate(debuggingTextPrefab, worldSpaceCanvas.transform);
+
+            text.GetComponent<TextMeshProUGUI>().text = "c";
+            text.GetComponent<TextMeshProUGUI>().fontSize = 0.5f;
+
             if (carry != null)
             {
                 ConveyorItemScript carrierScript = carry.GetComponent<ConveyorItemScript>();
