@@ -172,7 +172,7 @@ public class ConveyorItemScript : MonoBehaviour
             {
                 debugTMP.text = i.ToString();
             }
-            trigger2 = true;
+            trigger3 = true;
         }
     }
 
