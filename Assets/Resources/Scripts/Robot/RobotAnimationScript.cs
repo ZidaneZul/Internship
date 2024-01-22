@@ -135,6 +135,7 @@ public class RobotAnimationScript : MonoBehaviour
         mat.transform.parent = Claw_GO.transform;
         mat.transform.position = Claw_GO.transform.position;
         mat.transform.rotation = new Quaternion(0, 0, 0, 0);
+        mat.GetComponent<Rigidbody>().useGravity = false;
         machine5Material = mat;
     }
 

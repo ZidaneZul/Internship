@@ -232,7 +232,7 @@ public class Manager : MonoBehaviour
             {
                 ConveyorItemScript carryScript = carry.GetComponent<ConveyorItemScript>();
 
-                carryScript.ChangeSpeed(zoomScale);
+                carryScript.ChangeZoomScale(zoomScale);
             }
         }
 
@@ -249,7 +249,7 @@ public class Manager : MonoBehaviour
             {
                 ConveyorItemScript carryScript = carry.GetComponent<ConveyorItemScript>();
 
-                carryScript.ChangeSpeed(zoomScale);
+                carryScript.ChangeZoomScale(zoomScale);
             }
         }
     }
@@ -261,12 +261,13 @@ public class Manager : MonoBehaviour
 
     public void RepositionToPlayer()
     {
+        Vector3 offsetHeight = new Vector3(0, 1f,0);
         float distance = zoomPos[zoomIndex];
         Vector3 playerVect = player.transform.position;
         Vector3 playerDir = player.transform.forward;
         playerDir.y = 0;
 
-        Vector3 machine = playerVect + (playerDir * distance);
+        Vector3 machine = playerVect + (playerDir * distance) - (offsetHeight * zoomScale[zoomIndex]);
         
         entireMachine.transform.position = machine;
         //ntireMachine.transform.forward = playerDir;

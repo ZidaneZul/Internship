@@ -90,6 +90,8 @@ public class ConveyorItemScript : MonoBehaviour
 
     bool trigger1, trigger2, trigger3, trigger4, trigger5;
 
+    public float zoomScale = 1f;
+
     #endregion
 
 
@@ -135,79 +137,79 @@ public class ConveyorItemScript : MonoBehaviour
             audioSource.Pause();
         }
 
-        if(carrierInfront == null && !trigger1)
-        {
-            GameObject text = Instantiate(debugText, worldSpaceCanvas.transform);
-            text.transform.position = transform.position;
+        //if(carrierInfront == null && !trigger1)
+        //{
+        //    GameObject text = Instantiate(debugText, worldSpaceCanvas.transform);
+        //    text.transform.position = transform.position;
 
-            debugTMP = text.GetComponent<TextMeshProUGUI>();
+        //    debugTMP = text.GetComponent<TextMeshProUGUI>();
 
-            debugTMP.text = "!";
-            trigger1 = true;
-        }
+        //    debugTMP.text = "!";
+        //    trigger1 = true;
+        //}
 
-        if (carrierInfront_Script == null && !trigger2)
-        {
-            GameObject text = Instantiate(debugText, worldSpaceCanvas.transform);
-            text.transform.position = transform.position;
+        //if (carrierInfront_Script == null && !trigger2)
+        //{
+        //    GameObject text = Instantiate(debugText, worldSpaceCanvas.transform);
+        //    text.transform.position = transform.position;
 
-            debugTMP = text.GetComponent<TextMeshProUGUI>();
+        //    debugTMP = text.GetComponent<TextMeshProUGUI>();
 
-            debugTMP.text = "?";
-            trigger2 = true;
-        }
+        //    debugTMP.text = "?";
+        //    trigger2 = true;
+        //}
 
-        if (!trigger3)
-        {
-            GameObject text = Instantiate(debugText, worldSpaceCanvas.transform);
-            text.transform.position = transform.position;
+        //if (!trigger3)
+        //{
+        //    GameObject text = Instantiate(debugText, worldSpaceCanvas.transform);
+        //    text.transform.position = transform.position;
 
-            debugTMP = text.GetComponent<TextMeshProUGUI>();
-
-
-            string objectInfrontString = gameObject.name;
-
-            int[] interString =  ExtractIntegers(objectInfrontString);
-            foreach (int i in interString)
-            {
-                debugTMP.text = "t" + i.ToString();
-                debugTMP.fontSize = 0.5f;
-            }
-            trigger3 = true;
-        }
-        if (!trigger4)
-        {
-            GameObject text = Instantiate(debugText, worldSpaceCanvas.transform);
-            text.transform.position = transform.position + new Vector3 (0,1f,0);
-
-            debugTMP = text.GetComponent<TextMeshProUGUI>();
+        //    debugTMP = text.GetComponent<TextMeshProUGUI>();
 
 
-            string objectInfrontString = carrierInfront_Script.gameObject.name;
+        //    string objectInfrontString = gameObject.name;
 
-            int[] interString = ExtractIntegers(objectInfrontString);
-            foreach (int i in interString)
-            {
-                debugTMP.text = "a" + i.ToString();
-                debugTMP.fontSize = 0.5f;
-            }
-            trigger4 = true;
-        }
-        if (!trigger5)
-        {
-            GameObject text = Instantiate(debugText, worldSpaceCanvas.transform);
-            text.transform.position = transform.position + new Vector3(0, 0.5f, 0);
+        //    int[] interString =  ExtractIntegers(objectInfrontString);
+        //    foreach (int i in interString)
+        //    {
+        //        debugTMP.text = "t" + i.ToString();
+        //        debugTMP.fontSize = 0.5f;
+        //    }
+        //    trigger3 = true;
+        //}
+        //if (!trigger4)
+        //{
+        //    GameObject text = Instantiate(debugText, worldSpaceCanvas.transform);
+        //    text.transform.position = transform.position + new Vector3 (0,1f,0);
 
-            debugTMP = text.GetComponent<TextMeshProUGUI>();
+        //    debugTMP = text.GetComponent<TextMeshProUGUI>();
 
-            if (resting)
-                debugTMP.text = "r";
-            else
-                debugTMP.text = "x";
 
-            debugTMP.fontSize = 0.5f;
-            trigger5 = true;
-        }
+        //    string objectInfrontString = carrierInfront_Script.gameObject.name;
+
+        //    int[] interString = ExtractIntegers(objectInfrontString);
+        //    foreach (int i in interString)
+        //    {
+        //        debugTMP.text = "a" + i.ToString();
+        //        debugTMP.fontSize = 0.5f;
+        //    }
+        //    trigger4 = true;
+        //}
+        //if (!trigger5)
+        //{
+        //    GameObject text = Instantiate(debugText, worldSpaceCanvas.transform);
+        //    text.transform.position = transform.position + new Vector3(0, 0.5f, 0);
+
+        //    debugTMP = text.GetComponent<TextMeshProUGUI>();
+
+        //    if (resting)
+        //        debugTMP.text = "r";
+        //    else
+        //        debugTMP.text = "x";
+
+        //    debugTMP.fontSize = 0.5f;
+        //    trigger5 = true;
+        //}
     }
 
     int[] ExtractIntegers(string input)
@@ -223,9 +225,10 @@ public class ConveyorItemScript : MonoBehaviour
         return result;
     }
 
-    public void ChangeSpeed(float multiplier)
+    public void ChangeZoomScale(float multiplier)
     {
         currentSpeed = speed * multiplier;
+        zoomScale = multiplier;
     }
     public void MakeItem()
     {
@@ -272,7 +275,7 @@ public class ConveyorItemScript : MonoBehaviour
             foreach (GameObject point in pointsToFollow)
             {
                 ///while loop runs if the plate is far from the point to follow
-                while (Vector3.Distance(point.transform.position, transform.position) > 0.05f)
+                while (Vector3.Distance(point.transform.position, transform.position) > 0.05f * zoomScale)
                 {
                     ///moves the plate using the transform position
                     transform.position = Vector3.MoveTowards(transform.position, point.transform.position, currentSpeed * Time.deltaTime);
@@ -298,7 +301,7 @@ public class ConveyorItemScript : MonoBehaviour
 
                     ///if the plate is close enough, runs code to continue to the next machine order or reset to bay.
                     /// currentMachine - 1 is cuz array starts from 0 while naming the machines starts from 1
-                    if (Vector3.Distance(transform.position, Machines_Points[currentMachineNumber - 1].transform.position) <= 0.1)
+                    if (Vector3.Distance(transform.position, Machines_Points[currentMachineNumber - 1].transform.position) <= 0.1f * zoomScale)
                     {
                         audioSource.Pause();
 
@@ -395,7 +398,7 @@ public class ConveyorItemScript : MonoBehaviour
 
                     transform.position = Vector3.MoveTowards(transform.position, point.transform.position, currentSpeed * Time.deltaTime);
 
-                    if (Vector3.Distance(transform.position, currentRestPoint_GO.transform.position) < 0.1f)
+                    if (Vector3.Distance(transform.position, currentRestPoint_GO.transform.position) < 0.1f * zoomScale)
                     //if (transform.position == currentRestPoint_GO.transform.position)
                     {
                         //Debug.Log("ResetToBay complete");
@@ -434,7 +437,7 @@ public class ConveyorItemScript : MonoBehaviour
             yield return null;
         }
 
-        if (Vector3.Distance(transform.position, currentRestPoint_GO.transform.position) < 0.2f)
+        if (Vector3.Distance(transform.position, currentRestPoint_GO.transform.position) < 0.2f * zoomScale)
         {
             resting = true;
             TextChange("");
@@ -458,7 +461,7 @@ public class ConveyorItemScript : MonoBehaviour
 
                 // Debug.Log("goin thru points");
 
-                while (Vector3.Distance(point.transform.position, transform.position) > 0.05f)
+                while (Vector3.Distance(point.transform.position, transform.position) > 0.05f * zoomScale)
                 {
 
                     audioSource.Play();
@@ -467,12 +470,12 @@ public class ConveyorItemScript : MonoBehaviour
                     ///to true. Bool is there to make sure it stops at the resting point after 
                     ///circle, else there would be infinite circling.
                     ///</summary>
-                    if (Vector3.Distance(point.transform.position, transform.position) < 0.5f)
+                    if (Vector3.Distance(point.transform.position, transform.position) < 0.5f * zoomScale)
                     {
                         pastRestPoint = true;
                     }
 
-                    if (pastRestPoint && Vector3.Distance(transform.position, currentRestPoint_GO.transform.position) < 0.1f)
+                    if (pastRestPoint && Vector3.Distance(transform.position, currentRestPoint_GO.transform.position) < 0.1f * zoomScale)
                     {
                         TextChange("");
                         audioSource.Pause();
@@ -551,7 +554,7 @@ public class ConveyorItemScript : MonoBehaviour
     public bool IsCloseToFrontItem()
     {
         //Debug.Log(Vector3.Distance(transform.position, carrierInfront.transform.position) + gameObject.name);
-        if(Vector3.Distance(transform.position, carrierInfront.transform.position) <= limitDistance * manager.zoomScale[manager.zoomIndex])
+        if(Vector3.Distance(transform.position, carrierInfront.transform.position) <= limitDistance * zoomScale)
         {
             if (carrierInfront_Script.resting == true && resting == false)
             {

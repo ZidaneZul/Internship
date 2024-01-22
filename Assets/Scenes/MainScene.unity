@@ -8266,6 +8266,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6093529804887672797}
     m_Modifications:
+    - target: {fileID: -6000903699404206334, guid: fd91b64b2e0e34546abba92bb186a77b, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -990143745016187940, guid: fd91b64b2e0e34546abba92bb186a77b, type: 3}
       propertyPath: spawnPoint
       value: 
