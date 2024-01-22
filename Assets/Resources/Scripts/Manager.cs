@@ -157,11 +157,6 @@ public class Manager : MonoBehaviour
     {
         foreach(GameObject carry in carriersInOrder)
         {
-            GameObject text = Instantiate(debuggingTextPrefab, worldSpaceCanvas.transform);
-
-            text.GetComponent<TextMeshProUGUI>().text = "c";
-            text.GetComponent<TextMeshProUGUI>().fontSize = 0.5f;
-
             if (carry != null)
             {
                 ConveyorItemScript carrierScript = carry.GetComponent<ConveyorItemScript>();
@@ -284,31 +279,31 @@ public class Manager : MonoBehaviour
             case "Flashlight":
                 tempGO = Instantiate(finalFlashLight, itemPosition, true);
                 tempGO.transform.position = itemPosition.position;
-                tempGO.transform.localScale = new Vector3(zoomScale[zoomIndex], zoomScale[zoomIndex], zoomScale[zoomIndex]);
+                tempGO.transform.localScale *= zoomScale[zoomIndex];
                 script.material = tempGO;
                 break;
             case "USB":
                 tempGO = Instantiate(finalUSB, itemPosition,true);
                 tempGO.transform.position = itemPosition.position;
-                tempGO.transform.localScale = new Vector3(zoomScale[zoomIndex], zoomScale[zoomIndex], zoomScale[zoomIndex]);
+                tempGO.transform.localScale *= zoomScale[zoomIndex];
                 script.material = tempGO;
                 break;
             case "PushButton":
                 tempGO = Instantiate(finalPushButton, itemPosition, true);
                 tempGO.transform.position = itemPosition.position;
-                tempGO.transform.localScale = new Vector3(zoomScale[zoomIndex], zoomScale[zoomIndex], zoomScale[zoomIndex]);
+                tempGO.transform.localScale *= zoomScale[zoomIndex];
                 script.material = tempGO;
                 break;
             case "Limit":
                 tempGO = Instantiate(finalLimitSwitch, itemPosition, true);
                 tempGO.transform.position = itemPosition.position;
-                tempGO.transform.localScale = new Vector3(zoomScale[zoomIndex], zoomScale[zoomIndex], zoomScale[zoomIndex]);
+                tempGO.transform.localScale *= zoomScale[zoomIndex];
                 script.material = tempGO;
                 break;
             case "Wifi":
                 tempGO = Instantiate(finalWifi, itemPosition, true);
                 tempGO.transform.position = itemPosition.position;
-                tempGO.transform.localScale = new Vector3(zoomScale[zoomIndex], zoomScale[zoomIndex], zoomScale[zoomIndex]);
+                tempGO.transform.localScale *= zoomScale[zoomIndex];
                 script.material = tempGO;
                 break;
         }
