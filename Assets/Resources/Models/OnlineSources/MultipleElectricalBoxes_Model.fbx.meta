@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: electrical boxes
-    second: {fileID: 2100000, guid: 3834d1c17973f3542bcb371ff37f2a9b, type: 2}
+    second: {fileID: 2100000, guid: 18157f7803d8b7b47aa74b54e5ca17b4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
