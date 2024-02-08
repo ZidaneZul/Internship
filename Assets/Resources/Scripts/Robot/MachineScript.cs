@@ -20,6 +20,8 @@ public class MachineScript : MonoBehaviour
 
     ErrorImageScript errorImage2Script, errorImage5Script;
 
+    public bool buttonPressed;
+
     
 
     // Start is called before the first frame update
@@ -205,8 +207,17 @@ public class MachineScript : MonoBehaviour
             case 5:
                 if (gameObject.name == "Machine5")
                 {
-                    errorImage5Script.isEnabled = true;
-                    yield return new WaitUntil(() => machine5Script.IsThereMaterialsLeft());
+                    while (!machine5Script.IsThereMaterialsLeft())
+                    {
+                        errorImage5Script.isEnabled = true;
+                        if (buttonPressed)
+                        {
+
+                        }
+
+
+                    }
+                   
                     errorImage5Script.isEnabled = false;
 
                     PlayPlaceMachine5();
@@ -232,6 +243,11 @@ public class MachineScript : MonoBehaviour
     {
         machineMatsScript.SetCarrierMaterial(carrierScript);
 
+    }
+
+    public void ButtonPressed()
+    {
+        buttonPressed = true;  
     }
 
 }
