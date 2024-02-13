@@ -32,9 +32,6 @@ public class ErrorImageScript : MonoBehaviour
     {
         transform.forward = camera.transform.forward;
 
-        if (Input.GetKeyDown(KeyCode.W))
-            isEnabled = !isEnabled;
-
         if (isEnabled)
         {
             image.color = Color.white;

@@ -207,18 +207,23 @@ public class MachineScript : MonoBehaviour
             case 5:
                 if (gameObject.name == "Machine5")
                 {
-                    while (!machine5Script.IsThereMaterialsLeft())
+
+                    if (!machine5Script.IsThereMaterialsLeft())
                     {
                         errorImage5Script.isEnabled = true;
-                        if (buttonPressed)
-                        {
+                        machine5Script.didMaterialRanOut = true;
+                        yield return new WaitUntil(() => machine5Script.IsThereMaterialsLeft());
+                    }
 
-                        }
-
+                    while (machine5Script.didMaterialRanOut)
+                    {
+                        yield return new WaitUntil(() => buttonPressed);
+                        machine5Script.didMaterialRanOut = false;
+                        errorImage5Script.isEnabled = false;
 
                     }
+
                    
-                    errorImage5Script.isEnabled = false;
 
                     PlayPlaceMachine5();
                     yield return new WaitUntil(() => placeRobot_animScript.isAnimationDone);

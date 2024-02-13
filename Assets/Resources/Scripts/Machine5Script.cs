@@ -11,6 +11,7 @@ public class Machine5Script : MonoBehaviour
     public GameObject[] points;
 
     bool didAddMaterialsToMachine = false;
+    public bool didMaterialRanOut;
 
     // Start is called before the first frame update
     void Start()
