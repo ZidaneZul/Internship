@@ -16,6 +16,9 @@ public class ErrorImageScript : MonoBehaviour
     public bool isAudioPlaying;
     public bool isEnabled;
 
+    public Transform pointToBeIn;
+    public Vector3 originalScale;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,7 @@ public class ErrorImageScript : MonoBehaviour
         image.color = Color.clear;
 
         isEnabled = false;
+        originalScale = transform.localScale;
     }
 
     // Update is called once per frame
@@ -67,5 +71,11 @@ public class ErrorImageScript : MonoBehaviour
             flipBool = !flipBool;
             timer = 0f;
         }
+    }
+
+    public void Reposition(float ScaleMulitplier)
+    {
+        transform.position = pointToBeIn.position;
+        transform.localScale = originalScale * ScaleMulitplier;
     }
 }

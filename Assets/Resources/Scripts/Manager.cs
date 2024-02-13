@@ -16,6 +16,8 @@ public class Manager : MonoBehaviour
 
     public GameObject[] carriersInOrder = new GameObject[8];
 
+    public GameObject[] errorSigns;
+
     public int Wifi, LimitButton, FlashLight, USB, PushButton;
 
     public TextMeshProUGUI Amt;
@@ -50,6 +52,8 @@ public class Manager : MonoBehaviour
         machineMatsScript = GameObject.Find("Machine2").GetComponent<MachineMaterialScript>();
 
         entireMachine = GameObject.Find("Machine");
+
+        errorSigns = GameObject.FindGameObjectsWithTag("ErrorSign");
     }
 
     // Start is called before the first frame update
@@ -217,17 +221,21 @@ public class Manager : MonoBehaviour
 
     public void ZoomIn()
     {
-        if(zoomIndex > 0)
+        if (zoomIndex > 0)
         {
             zoomIndex--;
             float zoomScale = this.zoomScale[zoomIndex];
 
             entireMachine.transform.localScale = new Vector3(zoomScale, zoomScale, zoomScale);
-            foreach(GameObject carry in carriers)
+            foreach (GameObject carry in carriers)
             {
                 ConveyorItemScript carryScript = carry.GetComponent<ConveyorItemScript>();
 
                 carryScript.ChangeZoomScale(zoomScale);
+            }
+            foreach (GameObject sign in errorSigns)
+            {
+                sign.GetComponent<ErrorImageScript>().Reposition(zoomScale);
             }
         }
 
@@ -245,6 +253,10 @@ public class Manager : MonoBehaviour
                 ConveyorItemScript carryScript = carry.GetComponent<ConveyorItemScript>();
 
                 carryScript.ChangeZoomScale(zoomScale);
+            }
+            foreach (GameObject sign in errorSigns)
+            {
+                sign.GetComponent<ErrorImageScript>().Reposition(zoomScale);
             }
         }
     }
@@ -266,7 +278,11 @@ public class Manager : MonoBehaviour
         
         entireMachine.transform.position = machine;
         //ntireMachine.transform.forward = playerDir;
-        
+
+        foreach (GameObject sign in errorSigns)
+        {
+            sign.GetComponent<ErrorImageScript>().Reposition(zoomScale[zoomIndex]);
+        }
     }
 
     public void SwitchToFinalProduct(string matName, GameObject matGO, Transform itemPosition, ConveyorItemScript script)

@@ -11,6 +11,7 @@ TagManager:
   - ProductPoint
   - MaterialPoint
   - Machine5MaterialPoint
+  - ErrorSign
   layers:
   - Default
   - TransparentFX
