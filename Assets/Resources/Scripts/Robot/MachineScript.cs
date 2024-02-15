@@ -18,9 +18,11 @@ public class MachineScript : MonoBehaviour
 
     public GameObject pointInMachine, productPoint;
 
-    ErrorImageScript errorImage2Script, errorImage5Script;
+    ErrorImageScript errorImage1Script, errorImage2Script, errorImage3Script, errorImage4Script, errorImage5Script;
 
-    public bool buttonPressed;
+    public bool buttonPressed = false;
+
+    public bool didMachineMalfunction;
 
     
 
@@ -31,7 +33,11 @@ public class MachineScript : MonoBehaviour
         pickRobot_animScript = pickRobot.GetComponent<RobotAnimationScript>();
         placeRobot_animScript = placeRobot.GetComponent<RobotAnimationScript>();
 
+
+        errorImage1Script = GameObject.Find("ErrorImageMachine1").GetComponent<ErrorImageScript>();
         errorImage2Script = GameObject.Find("ErrorImageMachine2").GetComponent<ErrorImageScript>();
+        errorImage3Script = GameObject.Find("ErrorImageMachine3").GetComponent<ErrorImageScript>();
+        errorImage4Script = GameObject.Find("ErrorImageMachine4").GetComponent<ErrorImageScript>();
         errorImage5Script = GameObject.Find("ErrorImageMachine5").GetComponent<ErrorImageScript>();
 
 
@@ -135,6 +141,7 @@ public class MachineScript : MonoBehaviour
                     ResetBothMachineBools();
 
                     canCarrierMoveOn = true;
+                    Debug.Log("Resuming the carriers movement!");
 
                 }
                 break;
@@ -252,7 +259,80 @@ public class MachineScript : MonoBehaviour
 
     public void ButtonPressed()
     {
-        buttonPressed = true;  
+        buttonPressed = true;
+        Debug.Log(gameObject.name + "Button pressed!");
+    }
+
+    public IEnumerator ActivateMachineMalfunction(Animator anim)
+    {
+        Debug.Log(gameObject.name + " has a malfuntion arm!");
+        didMachineMalfunction = true;
+
+        switch (gameObject.name)
+        {
+            case "Machine1":
+                Debug.Log("Machine1 waiting for button reset");
+                errorImage1Script.isEnabled = true;
+
+                yield return new WaitUntil(() => buttonPressed);
+
+                anim.speed = 1.0f;
+                buttonPressed = false;
+                errorImage1Script.isEnabled=false;
+                break;
+
+
+
+            case "Machine2":
+                Debug.Log("Machine2 waiting for button reset");
+
+                errorImage2Script.isEnabled = true;
+
+                yield return new WaitUntil(() => buttonPressed);
+
+                anim.speed = 1.0f;
+                buttonPressed = false;
+                errorImage2Script.isEnabled= false;
+                break;
+
+            case "Machine3":
+                Debug.Log("Machine3 waiting for button reset");
+
+                errorImage3Script.isEnabled = true;
+
+                yield return new WaitUntil(() => buttonPressed);
+
+                anim.speed = 1.0f;
+                buttonPressed = false;
+                errorImage3Script.isEnabled = false;
+                break ;
+
+            case "Machine4":
+                Debug.Log("Machine4 waiting for button reset");
+
+                errorImage4Script.isEnabled = true;
+
+                yield return new WaitUntil(() => buttonPressed);
+
+                anim.speed = 1.0f;
+                buttonPressed = false;
+                errorImage4Script.isEnabled = false;
+
+                break;
+
+            case "Machine5":
+                Debug.Log("Machine5 waiting for button reset");
+
+                errorImage5Script.isEnabled = true;
+
+                yield return new WaitUntil(() => buttonPressed);
+
+                anim.speed = 1.0f;
+                buttonPressed = false;
+                errorImage5Script.isEnabled=false;
+                break;
+                
+        }
     }
 
 }

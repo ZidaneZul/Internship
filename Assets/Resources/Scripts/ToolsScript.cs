@@ -5,7 +5,8 @@ using UnityEngine;
 public class ToolsScript : MonoBehaviour
 {
     Rigidbody rb;
-    public GameObject floor;
+    public GameObject floor, pointToKeep;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,19 +21,13 @@ public class ToolsScript : MonoBehaviour
 
     public void OnGrab()
     {
-        rb.useGravity = false;
     }
 
     public void OnRelease()
     {
-        rb.useGravity = true;
+        transform.position = pointToKeep.transform.position;
+        transform.rotation = pointToKeep.transform.rotation;
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject == floor)
-        {
-
-        }
-    }
+   
 }

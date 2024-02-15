@@ -168,6 +168,15 @@ public class RobotAnimationScript : MonoBehaviour
         audioSource.PlayOneShot(Long1, 0.5f);
     }
 
+    public void RollAnimationMalfunction()
+    {
+        if(Random.Range(1,3) == 2)
+        {
+            Debug.Log("Machine malfunction!");
+            anim.speed = 0;
+            StartCoroutine(parentMachineScript.ActivateMachineMalfunction(anim));
+        }
+    }
 
 
 }
