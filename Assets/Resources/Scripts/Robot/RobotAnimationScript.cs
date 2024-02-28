@@ -170,7 +170,7 @@ public class RobotAnimationScript : MonoBehaviour
 
     public void RollAnimationMalfunction()
     {
-        if(Random.Range(1,3) == 2)
+        if(Random.Range(1,10) == 2)
         {
             Debug.Log("Machine malfunction!");
             anim.speed = 0;

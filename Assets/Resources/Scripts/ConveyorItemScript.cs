@@ -130,12 +130,12 @@ public class ConveyorItemScript : MonoBehaviour
 
     private void Update()
     {
-        if (!audioSource.isPlaying)
-        {
-            audioSource.PlayOneShot(audioSource.clip);
-            audioSource.volume = 0.1f;
-            audioSource.Pause();
-        }
+        //if (!audioSource.isPlaying)
+        //{
+            //audioSource.PlayOneShot(audioSource.clip);
+            //audioSource.volume = 0.1f;
+            //audioSource.Pause();
+        //}
 
         //if(carrierInfront == null && !trigger1)
         //{
@@ -265,7 +265,7 @@ public class ConveyorItemScript : MonoBehaviour
         currentMachineNumber = order[i];
         Debug.Log("before running foreach loop, i= " + currentMachineNumber);
 
-        TextChange("M");
+        //TextChange("M");
 
         ///this foreach loop is just so that the carrier would not be stuck after looping
         ///pointsToFollow once
@@ -281,7 +281,7 @@ public class ConveyorItemScript : MonoBehaviour
                     transform.position = Vector3.MoveTowards(transform.position, point.transform.position, currentSpeed * Time.deltaTime);
 
                     Debug.Log("Playing audio");
-                    audioSource.Play();
+                    //audioSource.Play();
 
                     ///<summary>
                     ///to remember which machine the carrier would be in after finishing producing the 
@@ -293,7 +293,7 @@ public class ConveyorItemScript : MonoBehaviour
                     ///To make the carrier stop when its too close to the carrier infront
                     while (IsCloseToFrontItem())
                     {
-                        audioSource.Pause();
+                        //audioSource.Pause();
                         yield return null;
                     }
 
@@ -303,7 +303,7 @@ public class ConveyorItemScript : MonoBehaviour
                     /// currentMachine - 1 is cuz array starts from 0 while naming the machines starts from 1
                     if (Vector3.Distance(transform.position, Machines_Points[currentMachineNumber - 1].transform.position) <= 0.1f * zoomScale)
                     {
-                        audioSource.Pause();
+                        //audioSource.Pause();
 
                         machineToRunAnimation = Machines_GOs[currentMachineNumber - 1];
                         machineScript = machineToRunAnimation.GetComponent<MachineScript>();
@@ -358,7 +358,7 @@ public class ConveyorItemScript : MonoBehaviour
     {
         itemToMake_string = null;
 
-        TextChange("R");
+        //TextChange("R");
 
         startGoing = false;
         currentRestPoint_int = restPointScript.GetLastPossibleRestSlot() + 1;
@@ -386,13 +386,13 @@ public class ConveyorItemScript : MonoBehaviour
                 ///while (Vector3.Distance(point.transform.position, transform.position) > 0.05f && startGoing)
                 while (point.transform.position != transform.position && startGoing)
                 {
-                    audioSource.Play();
+                    //audioSource.Play();
 
                     ///stops the carrier if its close to the item infront
                     while (IsCloseToFrontItem())
                     {
                         // Debug.Log(gameObject.name + " is close to item infront!");
-                        audioSource.Pause();
+                       // audioSource.Pause();
                         yield return null;
                     }
 
@@ -404,9 +404,9 @@ public class ConveyorItemScript : MonoBehaviour
                         //Debug.Log("ResetToBay complete");
                         resting = true;
                         pastStartingMachine = false;
-                        TextChange("");
+                        //TextChange("");
 
-                        audioSource.Pause();
+                        //audioSource.Pause();
                         yield break;
                     }
 
@@ -419,18 +419,18 @@ public class ConveyorItemScript : MonoBehaviour
     }
     public IEnumerator MoveUpRestBay()
     {
-        TextChange("G");
+        //TextChange("G");
         //while(Vector3.Distance(currentRestPoint_GO.transform.position, transform.position) > 0.05f)
         Debug.Log("Move up restBay!");
         while(currentRestPoint_GO.transform.position != transform.position)
         {
             //Debug.Log("going there!");
 
-            audioSource.Play();
+            //audioSource.Play();
 
             while (IsCloseToFrontItem())
             {
-                audioSource.Pause();
+                //audioSource.Pause();
                 yield return null;
             }
             transform.position = Vector3.MoveTowards(transform.position, currentRestPoint_GO.transform.position, currentSpeed * Time.deltaTime);
@@ -440,8 +440,8 @@ public class ConveyorItemScript : MonoBehaviour
         if (Vector3.Distance(transform.position, currentRestPoint_GO.transform.position) < 0.2f * zoomScale)
         {
             resting = true;
-            TextChange("");
-            audioSource.Pause();
+            //TextChange("");
+            //audioSource.Pause();
            // Debuging(gameObject + " MoveUpRestBay Complete \n Distance: " + Vector3.Distance(transform.position, currentRestPoint_GO.transform.position) + currentRestPoint_GO);
             yield break;
         }
@@ -449,7 +449,7 @@ public class ConveyorItemScript : MonoBehaviour
     }
     public IEnumerator Circling()
     {
-        TextChange("C");
+        //TextChange("C");
 
         pastRestPoint = false; 
 
@@ -464,7 +464,7 @@ public class ConveyorItemScript : MonoBehaviour
                 while (Vector3.Distance(point.transform.position, transform.position) > 0.05f * zoomScale)
                 {
 
-                    audioSource.Play();
+                  //  audioSource.Play();
                     ///<summary>
                     ///to make make sure it goes past its own rest point before changing the bool
                     ///to true. Bool is there to make sure it stops at the resting point after 
@@ -477,8 +477,8 @@ public class ConveyorItemScript : MonoBehaviour
 
                     if (pastRestPoint && Vector3.Distance(transform.position, currentRestPoint_GO.transform.position) < 0.1f * zoomScale)
                     {
-                        TextChange("");
-                        audioSource.Pause();
+                        //TextChange("");
+                      //  audioSource.Pause();
                         yield break;
                     }
 
@@ -506,7 +506,7 @@ public class ConveyorItemScript : MonoBehaviour
             }
             resting = true;
             audioSource.Pause();
-            TextChange("");
+            //TextChange("");
         }
     }
 
@@ -582,10 +582,10 @@ public class ConveyorItemScript : MonoBehaviour
         Debug.Log(str);
     }
 
-    public void TextChange(string str)
-    {
-        TMP.text = str;
-    }
+    //public void TextChange(string str)
+    //{
+    //    TMP.text = str;
+    //}
     public bool Timer(float seconds)
     {
         time += Time.deltaTime;
